@@ -1499,3 +1499,1097 @@ lessons.forEach((lesson,i)=>{lesson.sources=referenceMap[i].map(key=>lessonRefer
 
 lessons[1].sources.push({title:'OpenStax — The Income Statement',url:'https://openstax.org/books/introduction-business/pages/14-5-the-income-statement',note:'Revenue, expenses and profit measured over a period.'});
 lessons[2].sources.push({title:'OpenStax — The Statement of Cash Flows',url:'https://openstax.org/books/introduction-business-2e/pages/14-6-the-statement-of-cash-flows',note:'Cash receipts and payments differ from the profit measure.'});
+
+// Full Weeks 5 and 6. Existing lesson indices remain unchanged.
+lessons.push(...[
+  {
+    "title": "Task suitability and stability",
+    "eyebrow": "Choose the work before the tool",
+    "objective": "Classify tasks by repeatability, rule clarity and consequences, and distinguish a stable process from a frequently repeated problem.",
+    "scenario": "Juniper Admin, a fictional agency, wants to automate three tasks: notifying an owner when a verified request is ready, deciding whether an unhappy customer deserves a refund, and copying status labels that staff change every few days. All three happen repeatedly. The owner assumes repetition makes them equally suitable. You need to recommend a proportionate next step and explain the different risks without starting with a tool demonstration.",
+    "explain": "Automation suitability asks whether a specific task can be performed reliably by a defined system in a defined context. Start with the business outcome and the exact boundary: what starts the task, which information it receives, what it produces and who acts next. A broad phrase such as “automate customer service” combines many tasks with different rules and consequences. Split it into smaller decisions and actions before judging suitability.<br><br>Repeatability means similar inputs can follow the same understood steps. Stability means the relevant rules and data definitions are settled enough to maintain and test. A process can run a hundred times a day and still be unstable if everyone interprets its statuses differently. Frequency is evidence of potential workload, not evidence that the rules are good. Examine actual cases, including exceptions, and ask staff which decisions depend on context, authority or negotiation.<br><br>A useful first classification is automate a bounded rule, improve the process first, or keep the decision human-led. These are not permanent labels for whole departments. A human-led complaint decision can still use a tracked queue and approved draft messages. A stable notification can still fail if its input is wrong or nobody maintains it. Consider the consequence of a mistaken action, whether it can be detected and reversed, and whether uncertainty reaches an appropriate person.<br><br>Do not use a total score to override a missing prerequisite such as authority, reliable data or approved access. Document the reason for the recommendation and what evidence would change it. A small pilot should test one stable path, define success and stop conditions, and leave people able to continue the work if the system is paused.",
+    "worked": "Practice assessment: a ready-request notification has a verified case ID, accepted status definition, named receiving owner and a failure queue. It is a reasonable rule-based pilot if duplicate prevention and maintenance are included. Refund negotiation needs an authorized person to consider the agreement and customer context; a system can collect the case history without deciding the remedy. Changing status labels require process improvement first: agree meanings, owners and a versioned rule before connecting systems. State the boundary of each recommendation. “Automate the notification for one request type” is testable; “remove all manual administration” is not a usable scope.",
+    "flow": [
+      "Define outcome and task",
+      "Inspect normal and unusual cases",
+      "Check stable rules and inputs",
+      "Choose the appropriate approach",
+      "Pilot with owner and fallback"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">Verified ready-status notification</th><td>Bounded rules may suit automation.</td></tr><tr><th scope=\"row\">Contested refund</th><td>Authorized human decision with supporting tools.</td></tr><tr><th scope=\"row\">Changing status meanings</th><td>Agree process and definitions before integration.</td></tr></tbody></table>",
+    "businessName": "Juniper Admin",
+    "businessType": "fictional administration agency",
+    "perspective": "The owner wants dependable service and capacity. Staff want relief without losing the ability to handle unusual cases. The customer wants a fair outcome, not simply a fast automated answer.",
+    "assessment": "A stable, verified notification can be automated. An unclear status process needs improvement first; a contested remedy stays human-led. Explain which task is in scope and who handles exceptions.",
+    "pain": {
+      "quote": "“Everything is repetitive, so surely we can automate all of it.”",
+      "symptom": "A broad automation request mixes routine actions and judgment.",
+      "causes": "Unclear task boundaries, unsettled rules or pressure to choose a tool before diagnosis.",
+      "questions": "Show a normal case and an exception. Which rules change? Who can authorize the outcome? What happens if it is wrong?",
+      "consequence": "Avoidable implementation effort, incorrect actions and extra exception work; benefits are not guaranteed by frequency.",
+      "improve": "Split the process into tasks and agree rules and authority.",
+      "automation": "Notify one named owner from a verified event with duplicate prevention and a failure route.",
+      "evidence": "Correct notifications, duplicate rate, unresolved exceptions and owner response time."
+    },
+    "exercise": "Classify the three Juniper tasks. For each, state a business goal, one reason for your choice, the evidence still needed and the person who owns exceptions. Rewrite “automate customer service” into one testable pilot scope.",
+    "rubric": [
+      "Classifies the task rather than an entire function.",
+      "Uses stability, authority and consequences rather than repetition alone.",
+      "Defines a bounded scope with owner and evidence."
+    ],
+    "sample": "Notify a ready-request owner: automate a bounded rule after checking case IDs, current status and recipient. Maintenance lead handles failed sends. Refund negotiation: human-led under the manager’s authority; verify the agreement and complaint history. Changing statuses: improve first by agreeing definitions and update ownership. Pilot scope: one verified ready-status event for one request type, routed to its assigned owner, with one send log and a failure queue. Measure correct and duplicate notifications plus unhandled exceptions; do not claim saved hours before comparing actual work.",
+    "quiz": [
+      {
+        "q": "Which repeated task needs improvement before automation?",
+        "options": [
+          "A verified status notification with a named owner",
+          "Copying statuses whose meanings keep changing",
+          "A stable calculation checked against known cases"
+        ],
+        "answer": 1,
+        "why": [
+          "This may suit a bounded pilot when inputs and failure handling are reliable.",
+          "Correct. Repeated execution does not compensate for unsettled meanings and rules.",
+          "Stable calculations can be automated with appropriate validation and maintenance."
+        ]
+      },
+      {
+        "q": "What is the clearest pilot scope?",
+        "options": [
+          "Automate the business",
+          "Replace all customer service",
+          "Notify the assigned owner for one verified ready-request type"
+        ],
+        "answer": 2,
+        "why": [
+          "This has no usable boundary or testable outcome.",
+          "This combines many different decisions, consequences and exceptions.",
+          "Correct. The event, recipient and limited process can be tested and owned."
+        ]
+      }
+    ],
+    "decision": "automate",
+    "decisionPrompt": "One verified ready-status rule has reliable case IDs, an assigned recipient, duplicate prevention and an owned failure queue. Is a narrow notification pilot appropriate?",
+    "decisionWhy": "Automate this bounded task and monitor it. The prerequisites are defined; the pilot still needs a baseline, stop conditions and a maintainer. This does not authorize automating the surrounding judgments.",
+    "insight": "Repetition identifies work to investigate; stable rules determine what can be automated responsibly.",
+    "hooks": [
+      "Repetitive does not always mean ready to automate.",
+      "Automate a task, not a vague department name.",
+      "The exception tells you as much as the normal case."
+    ],
+    "linkedin": [
+      "Introduce the three fictional tasks.",
+      "Explain their different recommendations using rules and authority.",
+      "Offer a small-pilot boundary and evidence checklist."
+    ],
+    "facebook": [
+      "Describe the difference between a reminder and a difficult complaint decision.",
+      "Show automate, improve and human-led as practical choices.",
+      "Invite a specific repeated-task example."
+    ],
+    "conversation": "Which repeated task has clear rules, and which still needs someone to interpret the situation?",
+    "claims": "Examples are fictional. Verify real rules, failure consequences and measured results before recommending a production workflow or claiming benefits.",
+    "recap": "Assess a defined task. Check stability, data, authority and exceptions; then choose automation, improvement or human ownership.",
+    "reflection": "What task would you deliberately keep human-led even if software could execute it?",
+    "deeper": "Choose a fictional healthcare administrative task with no patient information. List the authorized decisions and data-handling review needed before a real pilot.",
+    "sources": [
+      {
+        "title": "GSA — Eliminate, Optimize, Automate",
+        "url": "https://www.gsa.gov/technology/government-it-initiatives/eliminate-optimize-automate",
+        "note": "Process improvement before repetitive-task automation; federal guidance adapted to service-business practice."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Define an aim, evidence of improvement and changes to test on a small scale."
+      }
+    ]
+  },
+  {
+    "title": "Volume, effort and data quality",
+    "eyebrow": "Estimate the work you can actually remove",
+    "objective": "Estimate gross repetitive effort, account for exceptions and review, and treat data quality as a prerequisite rather than a small inconvenience.",
+    "scenario": "Juniper receives 600 standard requests a month. Staff spend four minutes copying fields on each request. The owner announces that automation will save 40 hours. A closer look shows some fields are missing, twelve minutes of manual investigation is needed for certain exceptions, and someone will need to review failed runs. Another task occurs only twelve times a month but has a much higher consequence if it is wrong.",
+    "explain": "Transaction volume is the number of relevant cases or events in a defined period. Task effort is active staff time spent on the step, not all the time a case waits. Multiplying volume by active minutes gives a gross estimate of repetitive workload. It does not by itself predict net time released, cash saved or improved turnaround. Confirm the frequency, task boundary and timing with representative records rather than one unusually easy case.<br><br>Data quality concerns whether information is present, valid, consistent, current and suitable for the intended use. Completeness is not the same as accuracy: a filled address field may still contain an old value. A stable case ID helps avoid duplicates, while an agreed authoritative source helps resolve conflicting values. Before scoring a candidate, check whether required fields exist and whether staff can trust them. A high-volume process with unreliable data can produce high-volume errors.<br><br>Estimate exception handling, review, monitoring and ongoing maintenance separately. If a pilot handles only eligible cases, use eligible volume for the first estimate and state what happens to excluded work. Do not subtract the same effort twice or ignore new checking tasks. A weighted opportunity score can help compare candidates, but its weights express local priorities; it is not an objective certification that a task is safe or valuable.<br><br>Consider implementation effort and consequences alongside volume. A low-volume task may matter because it prevents a serious error, but its benefit needs a defensible explanation. Start with transparent assumptions, a range of plausible outcomes and a measured pilot. Stop if the data cannot support the proposed action, then improve capture or definitions before automating it.",
+    "worked": "Hypothetical gross workload: 600 × 4 minutes = 2,400 minutes = 40 hours/month. Suppose only 450 cases meet the pilot’s verified input rules. At four minutes each, their gross candidate workload is 30 hours. If the pilot replaces that step fully but creates six hours of review and monitoring, the estimate is 24 hours released; the remaining 150 cases stay on the manual path. This is a forecast under stated assumptions, not measured savings. Check whether review time overlaps with the original task, whether some copying remains and whether exception handling gets slower. Do not value all 40 hours as cash unless actual spending can be reduced.",
+    "flow": [
+      "Count relevant cases",
+      "Time the active task",
+      "Check usable inputs",
+      "Estimate eligible volume and review",
+      "Compare effort, risk and evidence"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">600 × 4 minutes</th><td>40 hours gross workload, not guaranteed savings.</td></tr><tr><th scope=\"row\">450 eligible × 4 minutes</th><td>30 gross pilot hours.</td></tr><tr><th scope=\"row\">30 − 6 review hours</th><td>24 forecast released hours under stated assumptions.</td></tr></tbody></table>",
+    "businessName": "Juniper Admin",
+    "businessType": "fictional administration agency",
+    "perspective": "The owner wants a realistic opportunity, staff want exception work counted, and the future maintainer needs time allocated for monitoring. Inflated estimates can make a useful small pilot look like a failure.",
+    "assessment": "Improve input reliability before expanding scope. A pilot on verified eligible cases may be reasonable if review, exception work, implementation effort and maintenance are included. Do not select solely by the largest gross-hour estimate.",
+    "pain": {
+      "quote": "“There are hundreds of these every month; the saving must be huge.”",
+      "symptom": "Large volume is presented as a guaranteed benefit.",
+      "causes": "Unmeasured task times, ineligible inputs, ignored review work or duplicate counting of effort.",
+      "questions": "How was four minutes measured? Which cases qualify? What new work appears? Are filled fields actually correct?",
+      "consequence": "Overstated business cases, hidden exception workload and poor prioritization.",
+      "improve": "Measure representative work, improve required fields and separate eligible from exception volume.",
+      "automation": "Pilot verified field transfer on one segment while retaining owned manual exceptions.",
+      "evidence": "Eligible proportion, residual task effort, review hours, errors and maintenance time."
+    },
+    "exercise": "Calculate gross workload and forecast released time using the example. List three assumptions that could reduce the estimate. Compare it with the twelve-times-monthly task without inventing a monetary risk reduction.",
+    "rubric": [
+      "Separates 40 gross hours, 30 eligible hours and 24 forecast released hours.",
+      "Accounts for review, exclusions and remaining work.",
+      "Considers consequences and implementation effort without fabricating savings."
+    ],
+    "sample": "Gross workload is 40 hours. Eligible pilot workload is 30 hours; subtract six new review hours for a forecast of 24 hours released. This assumes the copying step disappears for all 450 cases, review is additional and no hidden correction work increases. The 150 excluded cases remain owned on the manual path. Timing variation, fewer eligible cases or residual manual copying would reduce the estimate. Compare the smaller task by consequence, evidence, authority and effort as well as hours. Request actual error history before assigning a financial benefit. Trial reliable inputs first.",
+    "quiz": [
+      {
+        "q": "A filled field always proves which quality property?",
+        "options": [
+          "Accuracy",
+          "Suitability for every action",
+          "None of these without further checks"
+        ],
+        "answer": 2,
+        "why": [
+          "A filled field can still contain the wrong value.",
+          "Information can be present yet unsuitable, outdated or unauthorized for the proposed use.",
+          "Correct. Presence is only one dimension; validate meaning, accuracy and fitness for use."
+        ]
+      },
+      {
+        "q": "What does 600 cases × 4 minutes establish?",
+        "options": [
+          "Forty hours of estimated gross task effort",
+          "Forty hours of proven cash savings",
+          "A guaranteed forty-hour improvement in customer turnaround"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. It estimates active workload under the stated volume and timing assumptions.",
+          "Cash savings require an actual change in spending and a net cost calculation.",
+          "Active task time and total customer waiting time are different measures."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Required fields conflict across records and the owner wants to automate all 600 cases immediately. What comes first?",
+    "decisionWhy": "Improve data and eligibility rules first. A score based on volume cannot override unreliable inputs. Then pilot a verified subset with an owned exception path and measured review effort.",
+    "insight": "Gross task hours describe the workload; net released time depends on the work that remains and the work you add.",
+    "hooks": [
+      "Forty repetitive hours are not forty guaranteed hours saved.",
+      "Count exception work before celebrating the volume.",
+      "A completed field can still be wrong."
+    ],
+    "linkedin": [
+      "Show the fictional 40-to-30-to-24-hour calculation.",
+      "List eligibility, residual work and review assumptions.",
+      "Explain why released capacity differs from reduced spending."
+    ],
+    "facebook": [
+      "Use the familiar experience of a “quick” task that creates checking work.",
+      "Explain gross time minus new work with simple arithmetic.",
+      "Ask what hidden checking would remain."
+    ],
+    "conversation": "What new review or correction work would appear if this task were automated?",
+    "claims": "All figures are hypothetical forecasts. Verify representative timings, eligible volume and actual spending before claiming time or financial savings.",
+    "recap": "Use eligible volume and active effort, validate data, subtract new work and make assumptions explicit. Scores guide comparison but do not replace prerequisites.",
+    "reflection": "Which assumption in a time-saving estimate would you measure first?",
+    "deeper": "Recalculate if only 300 cases qualify and review takes eight hours. Explain why a quality improvement may still matter even when the time estimate shrinks.",
+    "sources": [
+      {
+        "title": "GSA — Eliminate, Optimize, Automate",
+        "url": "https://www.gsa.gov/technology/government-it-initiatives/eliminate-optimize-automate",
+        "note": "Process improvement before repetitive-task automation; federal guidance adapted to service-business practice."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Define an aim, evidence of improvement and changes to test on a small scale."
+      }
+    ],
+    "calc": {
+      "q": "450 eligible cases each remove four active minutes, but six additional hours are needed for review. How many hours are forecast to be released?",
+      "answer": 24,
+      "explanation": "450 × 4 ÷ 60 = 30 gross eligible hours. 30 − 6 = 24 forecast released hours. This is an assumption-based estimate, not measured savings."
+    }
+  },
+  {
+    "title": "Systems and integrations",
+    "eyebrow": "Design the handoff between systems",
+    "objective": "Create a simple integration inventory covering data mapping, permissions, duplicate prevention, failures and maintenance.",
+    "scenario": "Juniper wants an n8n workflow to create a task in its project system when a request becomes ready in Airtable. During a connection timeout, staff retry and two tasks appear. Later an address change in one system overwrites the verified address in the other. The owner thought the integration was finished once a successful test run created a task.",
+    "explain": "An integration moves information or actions between systems. An application programming interface, usually shortened to API, is a defined way for software to request data or actions from another service. A trigger can be a scheduled check or an event notice. A webhook is an event notification sent to a receiving endpoint. These mechanisms describe how a message travels; they do not define which business action is correct.<br><br>Field mapping states which source value belongs in which destination field, including format, meaning and authority. A stable business case ID links the same request across systems. A source of truth must be agreed at field or stage level so an update does not overwrite a verified value with a stale copy. Check which permissions the integration needs, use approved credentials, and avoid granting broader access than the task requires. Store secrets in the appropriate protected configuration, never in a public page or a content example.<br><br>Failures include invalid data, denied access, service outages and ambiguous outcomes. A timeout may occur after the destination performed an action but before the caller received confirmation. Blindly retrying can create duplicates. Idempotency means repeated handling of the same intended action does not produce an additional business effect. Implementing it may require a supported destination feature, unique event record or other reliable coordination; a casual “check then create” can still race when runs overlap.<br><br>Define what is logged, how failed work is found, who investigates and how cases continue manually. Logs should contain only the information needed and follow approved access and retention rules. Test duplicate, delayed, incomplete and unavailable-system cases, not just the happy path. A maintainer needs current documentation, monitoring and a way to pause the workflow without losing ownership of the work.",
+    "worked": "Practice inventory: source request register; event “ready for review”; key case J-72 plus event version; destination project task; authoritative source owns readiness and contact fields; integration can read eligible requests and create the necessary tasks only. A duplicate event must resolve to the same intended task. If a timeout leaves the outcome uncertain, inspect the action log and destination reference before retrying. Invalid owner or missing ID goes to a visible exception queue; the coordinator keeps case ownership. An integration maintainer reviews failures daily and after changes. Test with dummy records and confirm the actual vendor’s supported duplicate-prevention behavior before production.",
+    "flow": [
+      "Validate source event",
+      "Map authoritative fields",
+      "Perform one intended action",
+      "Record result or uncertainty",
+      "Review failures and maintain"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">Stable case/event ID</th><td>Links action to the right case and intended event.</td></tr><tr><th scope=\"row\">Timeout after create</th><td>May have succeeded; reconcile before repeating.</td></tr><tr><th scope=\"row\">Field ownership</th><td>Prevents stale copies overwriting authoritative values.</td></tr></tbody></table>",
+    "businessName": "Juniper Admin",
+    "businessType": "fictional administration agency",
+    "perspective": "The manager wants reliable handoffs, staff want one correct task, and the maintainer wants failures they can understand. A successful demo run is reassuring but does not show how duplicate or uncertain events behave.",
+    "assessment": "A small integration is suitable only after mapping, authority, permission and failure rules are explicit. Retain a manual route, test retries and duplicates, and verify capabilities in the systems’ current documentation.",
+    "pain": {
+      "quote": "“It worked in the demo, but now we have duplicate tasks.”",
+      "symptom": "Repeated events create extra work and inconsistent records.",
+      "causes": "No stable action key, overlapping runs, blind retries or undefined field ownership.",
+      "questions": "Was the first action completed before the timeout? What uniquely identifies it? Which system owns each field? Who sees failures?",
+      "consequence": "Duplicate assignments, wrong updates, manual reconciliation and lost trust in records.",
+      "improve": "Agree mapping, authority, reliable duplicate handling and an owned exception queue.",
+      "automation": "Create one task from a verified ready event with observable outcomes and safe failure handling.",
+      "evidence": "Duplicate business effects, unmatched events, time to detect failure and correct ownership."
+    },
+    "exercise": "Write a six-line integration inventory for J-72: event, key, field mapping, access, failure handling and maintainer. Explain the difference between retrying a request and safely repeating the intended business action. Include one timeout test.",
+    "rubric": [
+      "Defines event identity, field authority and minimum needed access.",
+      "Handles ambiguous outcomes rather than blindly creating again.",
+      "Names monitoring, manual ownership and maintenance."
+    ],
+    "sample": "Event: verified ready transition. Key: J-72 plus accepted transition version. Map case ID, approved title and assigned owner from authoritative fields. Access: read eligible requests and create/check the intended tasks with approved credentials. Failure: missing fields pause to the coordinator; uncertain timeout is reconciled against the destination/action record before retry. Maintainer: integration lead reviews the failure queue and can pause safely. Test a duplicate delivery and a timeout after task creation; both must leave one intended task. A repeated network request is not safe unless the destination or coordination design prevents a second business effect.",
+    "quiz": [
+      {
+        "q": "A create request times out. What is the safest next design step?",
+        "options": [
+          "Always create again immediately",
+          "Assume no task exists",
+          "Reconcile the uncertain outcome using the supported action identity"
+        ],
+        "answer": 2,
+        "why": [
+          "The first action may have succeeded, so this can create a duplicate.",
+          "Missing confirmation does not prove the destination did nothing.",
+          "Correct. Determine the outcome and use a tested duplicate-prevention strategy."
+        ]
+      },
+      {
+        "q": "What does field mapping need besides matching names?",
+        "options": [
+          "Meaning, format and authoritative ownership",
+          "Only a matching color",
+          "Permission to overwrite every field"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. Similar names can hide different meanings and update authority.",
+          "Visual similarity does not establish compatible data or business meaning.",
+          "Broad overwrite permission increases risk and does not resolve conflicts."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should Juniper ship the integration while duplicate handling and field ownership remain undefined?",
+    "decisionWhy": "Improve the design first. A happy-path test does not establish safe repeated execution, update authority or recoverable failures. Resolve these prerequisites and test with fictional records.",
+    "insight": "A reliable integration is a business handoff with rules, not just a connection between logos.",
+    "hooks": [
+      "A timeout does not always mean nothing happened.",
+      "One successful run is not an integration test plan.",
+      "Before syncing fields, decide which record can change them."
+    ],
+    "linkedin": [
+      "Describe fictional J-72 and the ambiguous timeout.",
+      "Explain action identity and field ownership in plain language.",
+      "Share the six-line integration inventory and exception owner."
+    ],
+    "facebook": [
+      "Use the experience of receiving the same task twice.",
+      "Explain why retrying may repeat an action.",
+      "Ask who notices when an integration stops."
+    ],
+    "conversation": "If a workflow fails halfway through, how will someone know what actually happened?",
+    "claims": "Verify current vendor APIs, permissions and duplicate-prevention guarantees before implementation. This example is not an assurance that any named tool provides those controls automatically.",
+    "recap": "Integrations need stable identity, meaningful field mapping, approved access, duplicate prevention and owned recovery. Test unusual paths and maintain the workflow.",
+    "reflection": "Which failure would leave your current workflow’s outcome uncertain?",
+    "deeper": "Draw source → integration → destination with an action log and human exception queue. Use dummy data and mark the exact point at which an external action becomes irreversible.",
+    "sources": [
+      {
+        "title": "GSA — Eliminate, Optimize, Automate",
+        "url": "https://www.gsa.gov/technology/government-it-initiatives/eliminate-optimize-automate",
+        "note": "Process improvement before repetitive-task automation; federal guidance adapted to service-business practice."
+      },
+      {
+        "title": "NIST — AI Risk Management Framework",
+        "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "note": "Context, evaluation and ongoing management of AI risks; not a claim of product certification or compliance."
+      }
+    ],
+    "sequence": [
+      "Verify the event and required fields",
+      "Identify the intended action and authoritative mapping",
+      "Execute using the tested duplicate-prevention design",
+      "Record the confirmed result or uncertain failure",
+      "Route unresolved cases to the named maintainer"
+    ],
+    "sequenceIntro": "Order the controlled integration path; a failed validation does not continue to execution.",
+    "sequenceExplanation": "Validate before action, preserve identity and authority, record the result and route unresolved outcomes. Retries must follow the supported design rather than blindly repeat the action."
+  },
+  {
+    "title": "Rules, AI and analytics",
+    "eyebrow": "Match the method to the decision",
+    "objective": "Choose between explicit rules, AI assistance, analytics and process redesign, and explain when human review changes the business case.",
+    "scenario": "Juniper is offered one AI system for overdue reminders, complaint replies and a weekly error report. The finance rule is already explicit. Complaint messages contain varied wording and sometimes require a manager. The report only needs counts grouped by an agreed reason code. Staff hope AI will also settle their conflicting status definitions.",
+    "explain": "Rule-based automation follows explicit conditions and actions: when a verified case meets approved criteria, perform the specified step. It is appropriate when the rules can be stated, relevant inputs are reliable and exceptions have a route. Rules still require testing and maintenance; an incorrect rule can be applied consistently at scale. Simple arithmetic and structured aggregation often belong here rather than in a language model.<br><br>AI-assisted work uses a model to produce a suggestion, classification or draft from information. It can help with varied text, but plausible output may be wrong or incomplete. Evaluate it against representative examples, including unusual and difficult cases. A confidence-looking number is not automatically a reliable probability; check what it means and how it performs in the intended context. Provide an uncertainty route rather than forcing every case into a confident label.<br><br>Analytics uses data to describe patterns, compare groups or support a decision. Counting error reasons by week is analytics even if no AI is involved. A chart can show a pattern without establishing its cause. Process redesign changes how work is organized, such as removing duplicate approval or agreeing a meaningful status. Software should not decide an organization’s authority or service promise simply because people disagree.<br><br>Choose the simplest adequate method for the defined outcome and consequences. A hybrid workflow may use rules for eligibility, AI for an optional draft, human approval for a sensitive decision and analytics for monitoring. Review is real work: it needs time, expertise and the ability to reject or correct the suggestion. Include that effort and the risk of people accepting suggestions uncritically when comparing options. Use only approved data and systems; an AI feature is not permission to disclose confidential information.",
+    "worked": "Hypothetical choices: verified overdue eligibility → explicit rules plus finance-owned exceptions; varied complaint text → optional AI draft tested on fictional messages, with an authorized manager deciding the remedy and sending; weekly totals by agreed reason code → structured aggregation and a chart; conflicting status meanings → process-owner agreement. A pilot might draft five low-risk internal summaries for review without sending anything externally. Compare factual omissions, correction time and reviewer workload with the current method. A fluent draft does not establish a correct outcome, and a reduced drafting time may be offset by checking. Keep a manual route for uncertain or inappropriate inputs.",
+    "flow": [
+      "Define outcome and consequence",
+      "Check explicit rules",
+      "Choose rules, AI, analytics or redesign",
+      "Evaluate representative cases",
+      "Review and monitor outcomes"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">Known eligibility rule</th><td>Use explicit conditions with current verified data.</td></tr><tr><th scope=\"row\">Varied text draft</th><td>AI may assist after evaluation and meaningful review.</td></tr><tr><th scope=\"row\">Weekly grouped counts</th><td>Analytics; no language model is necessary.</td></tr><tr><th scope=\"row\">Unagreed status meanings</th><td>Process redesign and authorized agreement.</td></tr></tbody></table>",
+    "businessName": "Juniper Admin",
+    "businessType": "fictional administration agency",
+    "perspective": "The owner wants a useful method rather than an impressive label. Staff need time to check drafts, and customers need authorized, accurate communication. The manager remains accountable for the decision.",
+    "assessment": "Use rules for stable eligibility, analytics for defined comparisons and process redesign for unclear work. Consider AI only where its contribution can be evaluated and review is feasible. Keep consequential complaint decisions with authorized people.",
+    "pain": {
+      "quote": "“Can we add AI to all of this?”",
+      "symptom": "Different tasks are grouped under one technology proposal.",
+      "causes": "Unclear outcomes, vendor-led framing or uncounted review work.",
+      "questions": "Which task needs interpretation? What could be wrong? Who checks it and how long will that take? What simpler method works?",
+      "consequence": "Unnecessary cost, unsupported decisions, checking burden and possible inappropriate disclosure.",
+      "improve": "Separate tasks, agree definitions and compare methods using representative cases.",
+      "automation": "Use a tested draft or classification aid with approved inputs, rejection and exception handling.",
+      "evidence": "Factual error, correction effort, uncertain-case rate and final decision quality."
+    },
+    "exercise": "Choose a method for each of Juniper’s four tasks. For an optional AI draft pilot, define inputs, reviewer authority, one quality measure, one effort measure and a case that should bypass the model.",
+    "rubric": [
+      "Explains method choice in terms of the task and consequences.",
+      "Keeps process agreement and authorized decisions with people.",
+      "Measures quality and review effort and defines a bypass."
+    ],
+    "sample": "Overdue eligibility uses rules; complaint drafts may use evaluated AI assistance with manager review; reason-code totals use analytics; status disagreement needs process-owner agreement. Draft pilot inputs are fictional low-risk messages. Manager verifies facts, tone and permitted remedy before any send. Measure unsupported statements and total drafting-plus-review minutes against the current approach. A message containing an urgent or confidential matter outside approved scope bypasses the model to the responsible person. Do not deploy solely because drafts sound professional or because the vendor describes the system as intelligent.",
+    "quiz": [
+      {
+        "q": "Which task needs no AI by default?",
+        "options": [
+          "A sum of verified amounts under an explicit definition",
+          "Every possible text interpretation",
+          "An unresolved service dispute"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. A deterministic calculation is clearer and easier to check for this task.",
+          "Some varied text tasks may benefit from evaluated assistance, depending on context.",
+          "A dispute needs authorized judgment; a model cannot supply that authority."
+        ]
+      },
+      {
+        "q": "A model produces a fluent complaint reply. What does that establish?",
+        "options": [
+          "The remedy is authorized",
+          "The draft is correct",
+          "Only that it produced readable text; facts and authority still need checking"
+        ],
+        "answer": 2,
+        "why": [
+          "Authorization comes from the organization’s rules and responsible person.",
+          "Fluency does not prove factual accuracy or suitability.",
+          "Correct. Evaluate facts, context, permissions and the decision before use."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should a model independently decide the remedy for a disputed service commitment?",
+    "decisionWhy": "Keep the remedy decision human-led. AI may assist with approved evidence organization or drafting, but authority, context and accountable review remain necessary.",
+    "insight": "The right method follows the task: rules, analysis, redesign or evaluated assistance can each be useful.",
+    "hooks": [
+      "Not every automation needs AI.",
+      "A fluent reply can still be the wrong reply.",
+      "Who checks the draft, and is that work in the estimate?"
+    ],
+    "linkedin": [
+      "Compare the four fictional task types in a simple table.",
+      "Explain why rules and analytics may be sufficient.",
+      "Describe one bounded AI-assistance experiment with review measures."
+    ],
+    "facebook": [
+      "Use the difference between adding numbers and settling a complaint.",
+      "Explain AI drafts as suggestions requiring checking.",
+      "Invite examples of a task where a simpler rule works."
+    ],
+    "conversation": "What part of this task actually requires interpretation rather than a known rule?",
+    "claims": "Verify any model or vendor capability and real evaluation result before publication. Fictional pilot suggestions are not evidence of accuracy, compliance or achieved savings.",
+    "recap": "Match methods to tasks and consequences. Evaluate AI assistance, count review effort, and use human authority for contested decisions.",
+    "reflection": "Which proposed AI feature would you replace with a simpler rule or clearer process?",
+    "deeper": "Create five fictional test messages, including one ambiguous case and one out-of-scope case. Write expected handling before evaluating any model output.",
+    "sources": [
+      {
+        "title": "GSA — Eliminate, Optimize, Automate",
+        "url": "https://www.gsa.gov/technology/government-it-initiatives/eliminate-optimize-automate",
+        "note": "Process improvement before repetitive-task automation; federal guidance adapted to service-business practice."
+      },
+      {
+        "title": "NIST — AI Risk Management Framework",
+        "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "note": "Context, evaluation and ongoing management of AI risks; not a claim of product certification or compliance."
+      }
+    ]
+  },
+  {
+    "title": "Exceptions and human review",
+    "eyebrow": "Design what happens when the rule cannot decide",
+    "objective": "Define exception ownership, meaningful review, stop conditions and a manual continuation path for a small pilot.",
+    "scenario": "Juniper’s proposed ready-request workflow works on a normal case. Then a request has no owner, another has two different IDs, and a third arrives after the workflow has been paused. The designer says those are rare edge cases. The coordinator points out that someone still needs to move the work forward and explain the delay.",
+    "explain": "An exception is a case that cannot safely follow the standard path under the agreed rules. It may involve missing information, conflicting data, an unusual request or a system failure. Do not define it only as a technical error. A system can execute successfully while taking the wrong business action because the input was inappropriate. List business exceptions and technical failures separately, with an owner for each.<br><br>Human review means a person has the information, authority, time and practical ability to accept, reject or correct a proposed action. A checkbox that staff must click without context is not meaningful oversight. Specify what the reviewer checks, what evidence they see and what happens when they are uncertain. Some actions can occur only after approval; others can be monitored afterward if their consequences and reversibility justify that design.<br><br>A fallback is the agreed way work continues when automation is unavailable or paused. It should preserve case ownership and avoid duplicate work when the system resumes. A stop condition identifies when the pilot must pause, such as a wrong-recipient message or unresolved duplicate action. A rollback reverses a change where reversal is possible; it cannot unsend a message or erase information already disclosed. Plan containment and correction for actions that cannot be reversed.<br><br>Maintenance is continuing responsibility for monitoring, changes, credentials, documentation and incident response. Name the role, a backup and a review routine before launch. A small pilot should have a defined volume or case type, success measures and a manual route. Testing an exception before launch is often more informative than another demonstration of the normal case. Track exceptions as evidence about the process, not as embarrassing records to hide.",
+    "worked": "Practice pilot: for one standard request type, create a draft internal task from a verified ready event. Missing owner or conflicting ID goes to coordinator Nia; the integration lead owns technical failures. Nia reviews the event, correct case and destination before approval. The workflow pauses if a task goes to the wrong owner or a duplicate business action is detected. On pause, the coordinator uses the same authoritative queue manually, marking actions so restart does not repeat them. Maintainer Omar reviews failures each working day and after rule changes; Lia is cover. Test an absent reviewer, duplicate event and a restart after manual completion before expanding scope.",
+    "flow": [
+      "Validate normal eligibility",
+      "Route exceptions with context",
+      "Review before the approved action",
+      "Monitor stop conditions",
+      "Continue manually and reconcile restart"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">Missing owner</th><td>Hold action; coordinator resolves assignment.</td></tr><tr><th scope=\"row\">Service outage</th><td>Technical owner investigates; case keeps a business owner.</td></tr><tr><th scope=\"row\">Wrong recipient</th><td>Pause and contain; sending may be irreversible.</td></tr><tr><th scope=\"row\">Restart after manual action</th><td>Reconcile completion before reprocessing.</td></tr></tbody></table>",
+    "businessName": "Juniper Admin",
+    "businessType": "fictional administration agency",
+    "perspective": "The owner needs confidence that unusual work will not disappear. The reviewer needs authority and time, and the customer needs continuity even during an outage. Maintenance should not be an unpaid surprise after launch.",
+    "assessment": "A bounded pilot can proceed when exception routing, real review, stop conditions, manual continuation and maintenance are tested. If those are absent, improve the design before sending real actions.",
+    "pain": {
+      "quote": "“The automation is running, but nobody knows what to do with failures.”",
+      "symptom": "Unresolved exceptions accumulate outside the visible workflow.",
+      "causes": "No named owner, insufficient review context, absent cover or no restart procedure.",
+      "questions": "Who checks which exceptions, by when? Can they reject? What happens if that person is away? How does paused work continue?",
+      "consequence": "Hidden delays, wrong actions, duplicate recovery work and loss of confidence.",
+      "improve": "Assign business and technical owners, define review, cover, stop rules and fallback.",
+      "automation": "Route known exception categories and alert the responsible person with only necessary context.",
+      "evidence": "Exception age, wrong actions, review effort, fallback completion and duplicate-free restart."
+    },
+    "exercise": "Design Juniper’s pilot exception plan. Include one business exception, one technical failure, reviewer checks, an absence rule, a stop condition, manual continuation and restart reconciliation. Explain one action that cannot truly be rolled back.",
+    "rubric": [
+      "Names owners and gives reviewers context, authority and cover.",
+      "Includes stop, fallback and restart handling.",
+      "Distinguishes reversible changes from irreversible actions."
+    ],
+    "sample": "Missing owner pauses the action for coordinator Nia; connection failures go to Omar while Nia keeps business ownership. Nia checks case ID, verified readiness and destination before approval; Lia covers absence. A wrong-recipient or duplicate task pauses the pilot for investigation. Manual continuation uses the same queue and logs completed actions. On restart, reconcile those events with destination references before retrying. A sent message cannot be unsent reliably, so containment and an authorized correction route matter more than a promised rollback. Review exception age and added checking time alongside correct-action rate.",
+    "quiz": [
+      {
+        "q": "What makes review meaningful?",
+        "options": [
+          "A mandatory approval click with no context",
+          "A person with evidence, authority, time and a reject/correct route",
+          "Calling a log “human in the loop”"
+        ],
+        "answer": 1,
+        "why": [
+          "A click without practical ability to assess the action can become a rubber stamp.",
+          "Correct. Oversight requires the ability and responsibility to make a real decision.",
+          "A label or after-the-fact log alone does not establish oversight."
+        ]
+      },
+      {
+        "q": "What must happen before restarting after manual processing?",
+        "options": [
+          "Replay every paused event",
+          "Delete the action history",
+          "Reconcile already completed actions to prevent duplicates"
+        ],
+        "answer": 2,
+        "why": [
+          "Replaying all events can repeat work already done manually.",
+          "History is needed to understand and recover the workflow correctly.",
+          "Correct. Restart must account for work performed during the pause."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should a pilot launch if exceptions have no owner and there is no manual continuation plan?",
+    "decisionWhy": "Improve the design first. A successful normal path is insufficient when unusual cases can become ownerless or recovery can duplicate actions.",
+    "insight": "The exception path is part of the solution, not an optional appendix.",
+    "hooks": [
+      "Who owns the work when the workflow stops?",
+      "An approval button is not automatically human oversight.",
+      "You cannot roll back a message someone has already read."
+    ],
+    "linkedin": [
+      "Introduce the fictional pilot and its missing-owner case.",
+      "Show review authority, stop conditions and fallback.",
+      "Explain how restart avoids duplicating manual work."
+    ],
+    "facebook": [
+      "Describe a task getting stuck because the usual person is absent.",
+      "Offer owner, cover and next-review-time as practical safeguards.",
+      "Ask who handles exceptions today."
+    ],
+    "conversation": "If the automation is paused tomorrow, who continues each open case?",
+    "claims": "Verify actual reversibility, response procedures and reviewer capacity. Do not imply an alert, tool or approval checkbox guarantees safe operation.",
+    "recap": "Design normal work and exceptions together. Real review needs authority and capacity; fallback and restart need ownership and reconciliation.",
+    "reflection": "Which “rare” exception would have the largest consequence if nobody noticed it?",
+    "deeper": "Run a tabletop exercise with fictional cases: reviewer absent, wrong destination and restart after manual completion. Record what the maintainer needs to know.",
+    "sources": [
+      {
+        "title": "GSA — Eliminate, Optimize, Automate",
+        "url": "https://www.gsa.gov/technology/government-it-initiatives/eliminate-optimize-automate",
+        "note": "Process improvement before repetitive-task automation; federal guidance adapted to service-business practice."
+      },
+      {
+        "title": "NIST — AI Risk Management Framework",
+        "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "note": "Context, evaluation and ongoing management of AI risks; not a claim of product certification or compliance."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Define an aim, evidence of improvement and changes to test on a small scale."
+      }
+    ]
+  },
+  {
+    "title": "Choose a baseline",
+    "eyebrow": "Define the starting point before the change",
+    "objective": "Define a measurable outcome and baseline using consistent event boundaries, units, eligibility and time windows.",
+    "scenario": "Maple Services, a fictional business, says its replies are slow. An automatic acknowledgment arrives immediately, but a person may not review the request until the following day. The manager wants to claim that a new workflow reduces response time to seconds. Staff cannot agree whether nights and weekends should count.",
+    "explain": "A baseline describes the starting performance before a change using an explicit measure. It provides a reference for judging whether a pilot helped. Begin with the business outcome: for example, customers receive a useful first response from someone who can act. Then define the events that start and stop the clock. Receipt of a request, automatic acknowledgment, meaningful response and resolution are different events. Choosing the wrong boundary can make a metric improve without improving the customer experience.<br><br>Define the unit, eligible cases, period, source, owner and exclusions. State whether elapsed time includes nights and weekends or uses a documented business-hours calendar. Neither convention is universally best; it should match the question and be applied consistently before and after. Do not quietly remove slow, incomplete or unresolved cases. Report their count and treatment so the result is understandable. A sample of only completed cases can hide the oldest unresolved work.<br><br>An average adds observed values and divides by the number of observations. It can be strongly influenced by a very slow case. A median is the middle value after ordering the observations, averaging the two central values for an even count. Show the case count and useful variation as well as a single summary. A small sample can illustrate a method but is weak evidence for a broad business claim.<br><br>Use available records to test the definition and manually check a sample against original events. If timestamps are missing, improve capture rather than inventing them. Keep the same definition during the pilot or document changes openly. A baseline is a measurement discipline, not a promise that the next tool will beat the number.",
+    "worked": "Hypothetical meaningful-response times are 10, 20, 30 and 100 minutes using the same clock definition. Mean = (10 + 20 + 30 + 100) ÷ 4 = 40 minutes. Median = (20 + 30) ÷ 2 = 25 minutes. These four completed cases do not represent all demand if older unresolved cases are excluded. A usable definition might be: eligible standard inquiries received this week; received timestamp to first substantive response; elapsed minutes; report still-unanswered cases separately at Friday cutoff. Acknowledgments get their own measure. Verify a sample against message history and compare similar channels and service types during a pilot.",
+    "flow": [
+      "Name the customer outcome",
+      "Define events and eligible cases",
+      "Choose clock and source",
+      "Check and summarize baseline",
+      "Keep definitions consistent"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">Acknowledgment in seconds</th><td>Measures receipt confirmation, not meaningful help.</td></tr><tr><th scope=\"row\">Mean 40 minutes</th><td>Affected by the 100-minute case.</td></tr><tr><th scope=\"row\">Median 25 minutes</th><td>Middle of the ordered four-case sample.</td></tr><tr><th scope=\"row\">Still-unanswered cases</th><td>Report separately; do not silently exclude the wait.</td></tr></tbody></table>",
+    "businessName": "Maple Services",
+    "businessType": "fictional service business",
+    "perspective": "The customer cares about a useful answer, the manager wants defensible improvement, and staff need a measure that does not penalize them for an undocumented clock convention. A transparent baseline supports fair decisions.",
+    "assessment": "Automate timestamp capture or calculation once event definitions and sources are reliable. Do not automate a misleading success claim or manufacture missing timestamps. A person checks the measure and investigates outliers.",
+    "pain": {
+      "quote": "“We respond instantly now, but customers still chase us.”",
+      "symptom": "Fast acknowledgments coexist with delayed meaningful responses.",
+      "causes": "Wrong metric boundary, incomplete timestamps, unresolved-case exclusion or unclear business-hour rules.",
+      "questions": "What counts as a response? Show start and end events. Are open cases included? Which hours count?",
+      "consequence": "Misleading improvement reports, continued waiting and poor prioritization.",
+      "improve": "Define meaningful events, a clock, eligibility and treatment of open work.",
+      "automation": "Capture approved event timestamps and produce a consistent review report.",
+      "evidence": "Audited timestamp quality, meaningful response distribution, open-case age and case count."
+    },
+    "exercise": "Write Maple’s response-time definition with start, finish, eligibility, clock, source and cutoff. Calculate the sample mean and median. Explain how unresolved cases and automatic acknowledgments should be reported.",
+    "rubric": [
+      "Defines consistent boundaries, clock and eligible cases.",
+      "Calculates mean 40 and median 25 minutes.",
+      "Reports open work and distinguishes acknowledgment from response."
+    ],
+    "sample": "Measure standard inquiries received Monday–Friday from receipt to first substantive reply using elapsed minutes from the shared inbox. At Friday 16:00 show completed response times and count/age of still-unanswered cases separately. Verify missing timestamps rather than treating them as zero. The four-case mean is 40 minutes; median is 25. Acknowledgment timing is a different measure, not evidence that a person helped. Keep the clock and service definition consistent in the pilot; record case count, channel and complexity. Four examples demonstrate arithmetic, not a validated organization-wide baseline.",
+    "quiz": [
+      {
+        "q": "Which comparison is defensible?",
+        "options": [
+          "Old meaningful replies versus new automatic acknowledgments",
+          "The same event definition and clock before and after",
+          "Only the fastest cases in each period"
+        ],
+        "answer": 1,
+        "why": [
+          "Different event boundaries can create a false improvement.",
+          "Correct. Consistent definitions are necessary for an interpretable comparison.",
+          "Selecting fast cases hides the work customers are actually waiting for."
+        ]
+      },
+      {
+        "q": "How should unresolved requests be treated?",
+        "options": [
+          "Silently drop them",
+          "Record them as zero minutes",
+          "Report their count and age with an explicit method"
+        ],
+        "answer": 2,
+        "why": [
+          "Dropping open work can hide the longest waits.",
+          "Zero misrepresents a request that has not received the defined response.",
+          "Correct. Open work needs visibility and a consistent treatment alongside completed-case results."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should Maple publish “response time reduced to seconds” when only the automated acknowledgment changed?",
+    "decisionWhy": "Improve the measurement first. Separate acknowledgment from meaningful response and resolution. Use a consistent baseline before making an outcome claim.",
+    "insight": "Before you measure improvement, agree what improvement means for the customer.",
+    "hooks": [
+      "An instant receipt is not an instant answer.",
+      "The longest waits may be missing from your average.",
+      "Two response-time reports can measure different events."
+    ],
+    "linkedin": [
+      "Show the fictional four-case example and both summaries.",
+      "Define meaningful response and treatment of open work.",
+      "Explain why a changed acknowledgment does not prove faster service."
+    ],
+    "facebook": [
+      "Describe receiving “we got your message” and still waiting for help.",
+      "Show why start and finish events matter.",
+      "Ask what customers actually need the reply to accomplish."
+    ],
+    "conversation": "What event tells you a customer received useful help rather than just a receipt?",
+    "claims": "All times are hypothetical. Verify event definitions, missing cases, sample size and comparable periods before publishing improvement percentages.",
+    "recap": "A baseline needs a defined outcome, boundary, clock and eligible population. Show variation and open work; do not confuse a receipt with useful response.",
+    "reflection": "Which excluded cases could make your baseline look better than reality?",
+    "deeper": "Recalculate with one still-open case. Do not assign it a completed response time; describe a reporting method that keeps its wait visible.",
+    "sources": [
+      {
+        "title": "Institute for Healthcare Improvement — Establishing Measures",
+        "url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+        "note": "Outcome, process and balancing measures for improvement. Practice datasets and targets here are invented."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Define an aim, evidence of improvement and changes to test on a small scale."
+      }
+    ],
+    "calc": {
+      "q": "The four meaningful-response times are 10, 20, 30 and 100 minutes. What is their mean in minutes?",
+      "answer": 40,
+      "explanation": "(10 + 20 + 30 + 100) ÷ 4 = 40 minutes. The median is 25 minutes; unresolved cases require separate treatment."
+    }
+  },
+  {
+    "title": "Errors and conversion",
+    "eyebrow": "Read percentages with their denominators",
+    "objective": "Define error and conversion rates, distinguish percentage points from relative change, and compare matched groups without claiming causation.",
+    "scenario": "Maple’s fictional invoice-error rate drops from ten affected invoices out of 100 to twelve out of 200. The error count increased, so one manager calls the pilot a failure; another advertises a 4% improvement. Meanwhile, sales conversion rises after marketing changes where inquiries come from. You need to explain what the numbers support and what remains uncertain.",
+    "explain": "A rate expresses outcomes relative to an appropriate amount of activity. For a case-level error rate, count cases with at least one defined error and divide by eligible cases inspected or processed under the stated method. Name the error definition and detection window. A case can contain several defects, so defect events and affected cases are different counts. Changing the inspection effort can change the observed rate even when underlying quality is unchanged.<br><br>A conversion rate divides the number reaching a specified outcome by the defined starting group. Use the same stage definitions and allow the group enough time to reach the outcome. A month’s sales divided by that month’s new inquiries may mix old and new cohorts. A cohort is a group sharing an entry condition or period, followed consistently. Missing outcomes and still-open decisions should be visible rather than silently treated as lost or removed.<br><br>Percentage points describe the arithmetic difference between two percentages. Relative change compares that difference with the original percentage. A fall from ten percent to six percent is four percentage points and a forty percent relative reduction. These statements answer different questions, so label them. Report counts alongside percentages, especially for small groups. A low rate based on a handful of cases may be unstable.<br><br>Before attributing a change to automation, check whether case mix, channel, season, staff, detection rules or policy also changed. A before-and-after pattern is evidence to investigate, not automatic causal proof. Use comparable groups and consistent definitions where practical, and disclose limitations. Monitor unintended effects: fewer detected errors is not a success if checking stopped or difficult cases were excluded.",
+    "worked": "Hypothetical invoice check: before, 10 ÷ 100 × 100 = 10%; after, 12 ÷ 200 × 100 = 6%. The count increased while the affected-case rate decreased. Difference = 4 percentage points; relative reduction = (10 − 6) ÷ 10 × 100 = 40%. You still need consistent inspection and comparable work before interpreting the change. For sales, compare matched inquiry cohorts from the same channels or show channel-specific rates. Do not claim the workflow caused the improvement if marketing simultaneously changed the quality of incoming leads. Label all figures practice data and keep uncertainty visible.",
+    "flow": [
+      "Define outcome and group",
+      "Count numerator and denominator",
+      "Calculate rates and changes",
+      "Check comparability and detection",
+      "Interpret with limitations"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">10/100 → 12/200</th><td>10% → 6% affected-case error rate.</td></tr><tr><th scope=\"row\">Difference</th><td>4 percentage points.</td></tr><tr><th scope=\"row\">Relative reduction</th><td>40% of the original 10% rate.</td></tr><tr><th scope=\"row\">Changed inspection or case mix</th><td>Limits attribution to the pilot.</td></tr></tbody></table>",
+    "businessName": "Maple Services",
+    "businessType": "fictional service business",
+    "perspective": "The manager needs an interpretation that survives scrutiny. Staff need like-for-like checks, and prospective clients deserve content that does not turn a percentage into an unsupported success story.",
+    "assessment": "Automate consistent rate calculations after definitions and source data are verified. Analytics supports interpretation; it does not establish cause or justify excluding difficult cases.",
+    "pain": {
+      "quote": "“The numbers look better, but I do not know if we actually improved.”",
+      "symptom": "Counts and percentages seem contradictory.",
+      "causes": "Different volume, case mix, inspection coverage, cohorts or ambiguous rate definitions.",
+      "questions": "What is the numerator and denominator? Were the same cases checked the same way? What else changed?",
+      "consequence": "Misleading decisions, false claims and improvements that disappear under comparable measurement.",
+      "improve": "Agree measures, show counts, preserve detection and compare appropriate groups.",
+      "automation": "Generate auditable rate summaries with explicit case eligibility and missing-data flags.",
+      "evidence": "Matched definitions, sample counts, inspection consistency and balancing measures."
+    },
+    "exercise": "Calculate both invoice error rates, the percentage-point change and relative reduction. Explain why the higher error count does not settle the result. Name two additional checks before attributing the change to automation.",
+    "rubric": [
+      "Uses 10% and 6% with correct denominators.",
+      "Distinguishes four percentage points from forty percent relative reduction.",
+      "Checks comparability, detection and other changes before making causal claims."
+    ],
+    "sample": "The case-level rate falls from 10% to 6%, a reduction of four percentage points or 40% relative to the original rate. Twelve errors is more than ten, but the inspected volume doubled. Check whether the error definition and inspection coverage stayed the same, whether case complexity changed, and whether staffing or policy changed. Show the counts and avoid saying the pilot caused the reduction without stronger evidence. For conversion, follow matched inquiry cohorts and report still-open cases rather than mixing this month’s inquiries with sales from older leads.",
+    "quiz": [
+      {
+        "q": "A rate falls from 10% to 6%. What is the absolute difference?",
+        "options": [
+          "4 percentage points",
+          "4% relative reduction",
+          "60 percentage points"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. Subtract the percentage values: ten minus six equals four percentage points.",
+          "The relative reduction is forty percent of the original ten percent rate.",
+          "The original and new rates do not support this difference."
+        ]
+      },
+      {
+        "q": "Which finding weakens a claim of improved quality?",
+        "options": [
+          "The same error definition was used",
+          "After the pilot, staff stopped checking half the cases",
+          "Counts and denominators are reported"
+        ],
+        "answer": 1,
+        "why": [
+          "Consistent definitions support a more interpretable comparison.",
+          "Correct. Reduced detection can lower observed errors without improving underlying work.",
+          "Showing counts and denominators helps readers assess the result."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should Maple announce a proven automation result when inspection coverage and incoming case mix changed?",
+    "decisionWhy": "Improve the comparison first. Report the observed rate and its limitations, verify detection and matched groups, and avoid claiming causation from the before-and-after pattern alone.",
+    "insight": "A percentage needs a denominator, a definition and a fair comparison.",
+    "hooks": [
+      "More errors can coexist with a lower error rate.",
+      "Four percentage points is not a four percent relative reduction.",
+      "Did quality improve, or did checking change?"
+    ],
+    "linkedin": [
+      "Show the hypothetical 10/100 and 12/200 comparison.",
+      "Explain counts, percentage points and relative change.",
+      "List comparison checks before making a client-result claim."
+    ],
+    "facebook": [
+      "Use a simple doubled-workload example.",
+      "Explain why the count alone can mislead.",
+      "Ask which denominator belongs beside a headline number."
+    ],
+    "conversation": "What changed besides the workflow between the two measurement periods?",
+    "claims": "Label all rates hypothetical. Verify detection, cohort maturity, denominator and comparable case mix before claiming real improvement or causal impact.",
+    "recap": "Report counts with rates, label percentage-point and relative changes, and check comparability before attributing an outcome to automation.",
+    "reflection": "Which headline percentage would you now rewrite more precisely?",
+    "deeper": "Create two fictional channels with different conversion rates. Change only their proportions and explain how the overall rate can change without either channel improving.",
+    "sources": [
+      {
+        "title": "Institute for Healthcare Improvement — Establishing Measures",
+        "url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+        "note": "Outcome, process and balancing measures for improvement. Practice datasets and targets here are invented."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Define an aim, evidence of improvement and changes to test on a small scale."
+      }
+    ],
+    "calc": {
+      "q": "An error rate falls from 10% to 6%. What is the relative reduction, expressed as a percentage of the original rate?",
+      "answer": 40,
+      "explanation": "(10 − 6) ÷ 10 × 100 = 40% relative reduction. The absolute difference is four percentage points."
+    }
+  },
+  {
+    "title": "Time and capacity",
+    "eyebrow": "Separate released hours from money saved",
+    "objective": "Calculate forecast net time released, distinguish capacity from cash savings, and state how the business could use the released time.",
+    "scenario": "Maple’s fictional coordinator processes 300 requests monthly at six active minutes each. A proposed workflow leaves two minutes of checking per request and needs four hours of monthly monitoring. The owner multiplies the original workload by an hourly wage and calls it guaranteed cash savings. Staff ask whether they will simply spend the released time handling more customers.",
+    "explain": "Time savings should compare the total relevant work before and after a change. Active time is staff effort spent on tasks; elapsed turnaround includes waiting between steps. A task can become quicker without changing the time the customer waits if a later approval remains constrained. Measure both when the business goal is faster service. State the case volume, eligible group and time assumptions before calculating.<br><br>Gross time removed describes the task effort that disappears. Net time released subtracts new or remaining work, such as review, exception handling and maintenance, within a consistent boundary. Be explicit about whether the after-time already includes checking so it is not subtracted twice. Separate one-time implementation effort from recurring monthly effort. Use a range when timings or eligibility are uncertain, and verify the estimate in a pilot.<br><br>Released capacity means staff can use time differently. It becomes a cash saving only when actual spending decreases, such as approved overtime or paid contractor hours that are genuinely no longer needed. Salaried staff doing other useful work does not automatically lower payroll. Valuing an hour at a cost rate can describe a capacity-equivalent estimate, but it is not proof that cash left in the bank increased. Additional sales also require demand and delivery capacity, not just free hours.<br><br>Describe the practical use of the released time: reduce a backlog, improve quality, serve more eligible customers or avoid a future hire under explicit assumptions. Include the owner’s plan and check whether time is available in usable blocks rather than scattered seconds. Measure quality and workload distribution so faster processing does not merely move effort to another person. Honest capacity estimates can support a good decision without exaggerating financial returns.",
+    "worked": "Hypothetical before effort: 300 × 6 ÷ 60 = 30 hours/month. After checking: 300 × 2 ÷ 60 = 10 hours; add four monitoring hours for 14 total. Forecast net release = 30 − 14 = 16 hours/month. At 25 currency units/hour, that is 400 units of capacity-equivalent value, not automatically cash savings. If there is no reduction in paid hours or spending, report cash saving as unproven. The manager proposes using the 16 hours to clear an owned backlog; the pilot checks whether review actually takes two minutes, monitoring stays at four hours and total turnaround improves without more corrections.",
+    "flow": [
+      "Measure current active effort",
+      "Estimate residual work",
+      "Include monitoring and exceptions",
+      "Calculate net released capacity",
+      "Agree use and verify results"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">Before: 30 hours</th><td>300 requests × 6 minutes.</td></tr><tr><th scope=\"row\">After: 14 hours</th><td>10 checking hours + 4 monitoring hours.</td></tr><tr><th scope=\"row\">Released: 16 hours</th><td>Forecast capacity, subject to measured assumptions.</td></tr><tr><th scope=\"row\">16 × 25 = 400 units</th><td>Capacity equivalent; actual cash saving needs reduced spending.</td></tr></tbody></table>",
+    "businessName": "Maple Services",
+    "businessType": "fictional service business",
+    "perspective": "The owner wants a useful business case, staff want realistic workload expectations, and finance needs to distinguish a valuation from an actual spending change. Capacity can be valuable without pretending payroll disappears.",
+    "assessment": "A small stable-task pilot can test whether net effort falls. Include all residual work and downstream effects. Keep staffing and spending decisions with authorized people and do not promise cash savings from a time estimate alone.",
+    "pain": {
+      "quote": "“The vendor says we save a salary, but nobody’s workload has changed.”",
+      "symptom": "Headline gross hours do not translate into usable capacity or spending reduction.",
+      "causes": "Ignored checking, fragmented time, shifted work, low eligibility or a constrained downstream step.",
+      "questions": "What remains after automation? Who performs it? Will spending actually fall? How will released time be used?",
+      "consequence": "Mispriced projects, unrealistic staffing plans and overlooked quality work.",
+      "improve": "Measure total relevant effort and agree a realistic capacity-use plan.",
+      "automation": "Automate a verified repetitive step while tracking review, failures and downstream workload.",
+      "evidence": "Net active effort, monitoring time, usable backlog capacity, error rate and actual spending changes if any."
+    },
+    "exercise": "Calculate Maple’s net forecast hours released and capacity-equivalent value. Write a plain-language statement that does not claim a guaranteed cash saving. Identify a practical use of the time and two measurements that would challenge the estimate.",
+    "rubric": [
+      "Calculates 16 hours and 400 capacity-equivalent units correctly.",
+      "Separates forecast capacity from actual spending reduction.",
+      "Names residual work, a use plan and verification measures."
+    ],
+    "sample": "Current effort is 30 hours monthly; forecast after-effort is 14, so 16 hours may be released. At 25 units/hour, the capacity equivalent is 400 units/month. Statement: “Under these hypothetical assumptions, the pilot could release 16 staff hours for backlog review; no payroll reduction is assumed.” The operations lead allocates that capacity to older complete requests. Measure actual review minutes and monitoring/exception hours; compare downstream queue age and error rate as well. If time appears only in tiny fragments or review is slower, usable capacity may be lower. Do not count capacity value and reduced spending for the same hours twice.",
+    "quiz": [
+      {
+        "q": "When do released hours become an evidenced cash saving?",
+        "options": [
+          "Whenever they are multiplied by a wage",
+          "When actual spending falls under a verified plan",
+          "Whenever a dashboard shows fewer tasks"
+        ],
+        "answer": 1,
+        "why": [
+          "A valuation does not itself change payroll or other spending.",
+          "Correct. Cash savings need a demonstrable spending reduction, not only a time estimate.",
+          "A task count alone does not establish reduced staff effort or spending."
+        ]
+      },
+      {
+        "q": "Which after-effort belongs in the estimate?",
+        "options": [
+          "Only automated run time",
+          "Only the easiest reviewed cases",
+          "Residual checking, exceptions and monitoring within the same boundary"
+        ],
+        "answer": 2,
+        "why": [
+          "Machine execution time does not measure the remaining human workload.",
+          "Selecting easy cases overstates the representative benefit.",
+          "Correct. Include the human work that remains or is introduced."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Can Maple publish “400 units saved monthly” before testing effort or showing reduced spending?",
+    "decisionWhy": "Improve the claim and verify the estimate. Label 400 as hypothetical capacity-equivalent value, not realized cash. Pilot the assumptions and state how the capacity will be used.",
+    "insight": "Freed staff time can be useful without being a reduction in payroll.",
+    "hooks": [
+      "Sixteen hours released is not automatically sixteen hours of cash savings.",
+      "What work appears after the automation?",
+      "A time estimate needs a plan for using the time."
+    ],
+    "linkedin": [
+      "Show the fictional 30-minus-14-hour calculation.",
+      "Distinguish capacity equivalent from cash reduction.",
+      "Explain the planned use and verification measures."
+    ],
+    "facebook": [
+      "Describe a repetitive task becoming shorter but checking remaining.",
+      "Explain what can be done with released time.",
+      "Ask which backlog or service improvement would benefit."
+    ],
+    "conversation": "If this workflow releases time, what specific work will that time make possible?",
+    "claims": "Forecast figures are hypothetical. Verify workload, eligibility, residual effort and actual spending before claiming savings, staff reduction or extra revenue.",
+    "recap": "Calculate net effort across the same boundary. Separate released capacity, its hypothetical valuation and verified cash savings; then measure how time is used.",
+    "reflection": "What valuable outcome could capacity enable even if payroll does not change?",
+    "deeper": "Recalculate if review takes three minutes and monitoring takes six hours. Compare net capacity and explain why a pilot should measure residual work.",
+    "sources": [
+      {
+        "title": "Institute for Healthcare Improvement — Establishing Measures",
+        "url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+        "note": "Outcome, process and balancing measures for improvement. Practice datasets and targets here are invented."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Define an aim, evidence of improvement and changes to test on a small scale."
+      }
+    ],
+    "calc": {
+      "q": "Before effort is 300 × 6 minutes monthly. After effort is 300 × 2 minutes plus four monitoring hours. How many net hours are forecast to be released?",
+      "answer": 16,
+      "explanation": "Before: 30 hours. After: 10 checking + 4 monitoring = 14. Forecast release: 30 − 14 = 16 hours. This does not prove cash savings."
+    }
+  },
+  {
+    "title": "Costs, benefits and ROI",
+    "eyebrow": "Make the assumptions visible",
+    "objective": "Build a simple period-based cost-benefit estimate, calculate ROI and payback, and test a less favorable scenario without inventing revenue.",
+    "scenario": "Maple is considering a fictional automation setup costing 1,200 currency units. Recurring service costs are 100 per month. The manager expects 300 per month in genuinely avoidable contractor spending, but that depends on a confirmed staffing arrangement. A proposal advertises “300 monthly benefit” without subtracting the service cost or specifying a period.",
+    "explain": "A cost-benefit estimate compares the resources a change requires with the benefits it could produce over a stated period. Include one-time setup, recurring subscriptions, maintenance, training and the relevant staff implementation effort. State whether a labor estimate is cash spending or an opportunity-cost valuation. Use consistent currency, time units and boundaries. Do not mix annual benefits with monthly costs or omit a recurring charge because it seems small.<br><br>Return on investment, usually shortened to ROI, can be expressed as net benefit over a defined period divided by total costs over that period, multiplied by one hundred. Net benefit is total benefit minus total cost. State this convention because other business cases may use different definitions. A first-year estimate and a steady monthly margin answer different questions. Simple payback is the time for recurring net benefit to recover setup cost, under assumptions such as steady benefit and cost beginning immediately.<br><br>Not every benefit belongs in the financial numerator. Released capacity can be shown separately unless a defensible method values it and avoids double counting. Improved quality may matter without a credible monetary estimate. Outstanding invoices are not recovered cash, and increased capacity is not guaranteed additional sales. Present unpriced benefits honestly rather than inventing a revenue figure to make the calculation attractive.<br><br>Sensitivity analysis recalculates using plausible changes in assumptions. Test lower volume, slower adoption, more review or higher maintenance. If the recommendation fails under a modest change, investigate that uncertainty before committing. A forecast is not a measured outcome, and a positive simple ROI is not sufficient authority to proceed. Decision makers also need the process prerequisites, consequences, implementation capacity and a plan to verify the benefit.",
+    "worked": "Hypothetical base case assumes 300/month of verified avoidable spending, 100/month recurring cost and 1,200 setup, with benefit starting immediately and no other costs. First-year benefit = 3,600; cost = 1,200 + 1,200 = 2,400; net = 1,200; ROI = 1,200 ÷ 2,400 × 100 = 50%. Monthly net after recurring cost = 200; simple payback = 1,200 ÷ 200 = six months. If benefit is only 150/month, annual net becomes 1,800 − 2,400 = −600 and ROI = −25%; payback becomes 24 months. Validate the contractor-spending assumption and add omitted implementation or training costs before a real decision.",
+    "flow": [
+      "Choose period and boundary",
+      "List setup and recurring costs",
+      "State defensible benefits",
+      "Calculate net, ROI and payback",
+      "Test assumptions and verify"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">Base first-year totals</th><td>3,600 benefit − 2,400 cost = 1,200 net.</td></tr><tr><th scope=\"row\">Base ROI</th><td>1,200 ÷ 2,400 × 100 = 50%.</td></tr><tr><th scope=\"row\">Base simple payback</th><td>1,200 ÷ (300 − 100) = 6 months.</td></tr><tr><th scope=\"row\">Lower-benefit case</th><td>150/month benefit gives −25% first-year ROI.</td></tr></tbody></table>",
+    "businessName": "Maple Services",
+    "businessType": "fictional service business",
+    "perspective": "The owner needs a decision grounded in assumptions, finance needs complete costs, and staff need training and maintenance effort acknowledged. A credible proposal makes the uncertainty inspectable rather than promising an outcome.",
+    "assessment": "Use the estimate to decide whether a bounded pilot is worth testing, after process and data prerequisites. Automate stable arithmetic if helpful; keep benefit assumptions and spending approval with accountable people.",
+    "pain": {
+      "quote": "“The proposal looks profitable, but I cannot see how it was calculated.”",
+      "symptom": "Benefits are quoted without complete costs or a period.",
+      "causes": "Mixed time units, ignored recurring work, double-counted benefits or unsupported revenue assumptions.",
+      "questions": "Which costs recur? Is the benefit cash or capacity? When does it begin? What evidence supports it? What if adoption is slower?",
+      "consequence": "Poor investment decisions, unexpected operating costs and misleading content claims.",
+      "improve": "Use a transparent period model and separate cash, capacity and unpriced benefits.",
+      "automation": "A simple calculator can recompute documented assumptions; it cannot validate the assumptions itself.",
+      "evidence": "Actual implementation and recurring costs, verified spending changes, quality and benefit timing."
+    },
+    "exercise": "Calculate the base first-year cost, net benefit, ROI and payback. Recalculate ROI at 150 monthly benefit. List two omitted costs to investigate and write a recommendation that states which assumption must be verified before approval.",
+    "rubric": [
+      "Uses consistent periods and includes setup plus recurring costs.",
+      "Calculates 50% base ROI, six-month payback and −25% lower-case ROI.",
+      "Labels the estimate hypothetical and identifies missing costs and benefit evidence."
+    ],
+    "sample": "Year-one cost is 2,400; benefit is 3,600; net is 1,200; ROI is 50%. Monthly net is 200, giving six-month simple payback under immediate steady benefit. At 150/month benefit, year-one net is −600 and ROI is −25%; payback at 50 net/month would be 24 months if steady benefit continues. Investigate staff training, implementation time and maintenance not already covered by the subscription. Recommendation: test a bounded pilot after confirming the contractor-spending reduction is actually avoidable. Show released capacity separately and do not count the same hours again as extra revenue.",
+    "quiz": [
+      {
+        "q": "Which denominator is used in the stated first-year ROI convention?",
+        "options": [
+          "Only the setup fee",
+          "Total first-year setup and recurring costs",
+          "Only the monthly benefit"
+        ],
+        "answer": 1,
+        "why": [
+          "Omitting recurring costs overstates this period-based ROI.",
+          "Correct. Net first-year benefit is divided by the full first-year costs under this convention.",
+          "Benefit is the numerator input, not the cost investment denominator."
+        ]
+      },
+      {
+        "q": "Why show the 150/month scenario?",
+        "options": [
+          "It guarantees the base case",
+          "It replaces the need to measure",
+          "It reveals how the decision depends on an uncertain benefit"
+        ],
+        "answer": 2,
+        "why": [
+          "A lower-case scenario does not validate the original assumption.",
+          "Sensitivity is a planning tool; real costs and benefits still need verification.",
+          "Correct. It exposes a material assumption and can guide the pilot or evidence request."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should a positive forecast ROI automatically authorize the purchase and staffing change?",
+    "decisionWhy": "Keep approval human-led. The forecast depends on evidence, complete costs, authority and organizational priorities. Verify the spending assumption and test a bounded pilot before commitments.",
+    "insight": "A useful ROI estimate makes the uncertain assumptions easier to challenge.",
+    "hooks": [
+      "Your ROI can change sign when one assumption changes.",
+      "Monthly benefit is not monthly net benefit.",
+      "A calculator can check the math, not the business promise."
+    ],
+    "linkedin": [
+      "Label the example hypothetical and define the period.",
+      "Show complete costs, base ROI and lower-benefit case.",
+      "Identify the evidence needed before making a spending recommendation."
+    ],
+    "facebook": [
+      "Use a simple setup-plus-subscription example.",
+      "Explain the difference between benefit and what remains after cost.",
+      "Ask which assumption is hardest to verify."
+    ],
+    "conversation": "Which assumption would have to be true for this investment to make sense?",
+    "claims": "This is simplified educational arithmetic, not investment advice or a client result. Verify cost completeness, benefit realization, timing and decision-specific financial conventions before real use.",
+    "recap": "State the period, include costs, distinguish benefits and calculate transparently. Test lower outcomes and keep forecasts separate from measured results.",
+    "reflection": "Which missing cost could materially change your first recommendation?",
+    "deeper": "Build a low/base/high estimate with delayed adoption. Explain why the simple steady-payback formula no longer describes the actual month of recovery.",
+    "sources": [
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Define an aim, evidence of improvement and changes to test on a small scale."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Establishing Measures",
+        "url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+        "note": "Outcome, process and balancing measures for improvement. Practice datasets and targets here are invented."
+      }
+    ],
+    "calc": {
+      "q": "First-year benefits are 3,600 and total first-year costs are 2,400. Using (benefit − cost) ÷ cost × 100, what is the first-year ROI percentage?",
+      "answer": 50,
+      "explanation": "(3,600 − 2,400) ÷ 2,400 × 100 = 50%. These are hypothetical cash-benefit assumptions, not measured returns."
+    }
+  },
+  {
+    "title": "Measure after the pilot",
+    "eyebrow": "Check outcomes, quality and unintended effects",
+    "objective": "Create a pilot scorecard with process, outcome and balancing measures, interpret before-and-after evidence carefully, and decide whether to adapt, stop or expand.",
+    "scenario": "Maple’s fictional reminder pilot sends messages faster and appears to reduce review effort. Two messages used stale balances, and one recipient reports an open dispute. The manager wants to expand immediately because most runs succeeded technically. Staff ask whether the pilot improved payment timing or merely increased message volume.",
+    "explain": "A pilot is a bounded test of a proposed change, designed to learn before wider use. Define the eligible work, owner, start and end, baseline, success measures and stop conditions before launch. Record what changed during the test, including rule edits and unusual events. Without a clear boundary, a pilot can grow into an unreviewed production system while its original assumptions remain untested.<br><br>An outcome measure reflects the business result, such as time until an eligible invoice is paid or time until a customer receives a meaningful response. A process measure checks whether the intended steps happen, such as the proportion of eligible cases reviewed within the agreed interval. A balancing measure detects harm or burden elsewhere, such as incorrect reminders, complaints, exception age or added review time. A successful software run is a technical process signal; it does not prove the customer or financial outcome improved.<br><br>Compare like with like using the same definitions, clock and observation window. Show counts, still-open work and case mix. Time plots can reveal whether a result is sustained or a temporary fluctuation. A short before-and-after comparison may be influenced by season, staffing or different customers; describe those limitations. Do not attribute every observed change to the workflow or hide cases that were excluded after launch.<br><br>Hold a review with the people doing and owning the work. Decide whether to stop, adapt and retest, continue the same scope, or expand gradually. Expansion needs evidence that both outcome and controls are acceptable, a maintenance owner and enough support capacity. A harmful error can trigger a stop even when the average speed improves. Record the decision, unresolved questions and next test. Learning that a pilot should pause is a valid result.",
+    "worked": "Hypothetical scorecard proposal: outcome = meaningful response time for the same request class; process = eligible cases assigned within the agreed interval; balancing = wrong-recipient actions, incorrect messages, exception age and review effort. For the reminder example, two stale-balance messages violate the proposed zero-incorrect-balance stop condition, so pause sends, have finance review affected cases and repair the current-balance check. Do not expand because 98 of 100 runs completed: that says little about the quality or benefit of the actions. Reconcile paused cases before restarting and retest with dummy records. Report what was observed, the sample and limitations; do not label a proposed benefit as an achieved client result.",
+    "flow": [
+      "Set scope and baseline",
+      "Measure process and outcomes",
+      "Check balancing measures",
+      "Investigate errors and comparison limits",
+      "Stop, adapt, continue or expand"
+    ],
+    "visual": "<table><caption>Practice comparison — hypothetical assumptions</caption><thead><tr><th scope=\"col\">Consider</th><th scope=\"col\">Interpretation</th></tr></thead><tbody><tr><th scope=\"row\">Technical run success</th><td>Useful signal; does not prove a correct business action.</td></tr><tr><th scope=\"row\">Outcome measure</th><td>Reflects the customer or business goal.</td></tr><tr><th scope=\"row\">Balancing measure</th><td>Detects harm, shifted work or burden.</td></tr><tr><th scope=\"row\">Stop condition breached</th><td>Pause and investigate even if average speed improves.</td></tr></tbody></table>",
+    "businessName": "Maple Services",
+    "businessType": "fictional service business",
+    "perspective": "The owner needs confidence in the whole outcome. Staff need permission to report problems without treating the pilot as a sales promise. Customers need incorrect actions corrected through an authorized route.",
+    "assessment": "Continue or expand only after the pilot meets agreed outcome and quality criteria. Automate scorecard calculations from verified events, but keep interpretation, incident response and expansion decisions with accountable people.",
+    "pain": {
+      "quote": "“The workflow runs successfully, but is it actually helping?”",
+      "symptom": "Technical success is treated as business success.",
+      "causes": "No baseline, missing quality measures, changed case mix or untested benefit assumptions.",
+      "questions": "What outcome changed? Which cases were excluded? What harm or new work appeared? Did any stop condition occur?",
+      "consequence": "Premature expansion, repeated errors, hidden workload and unsupported claims.",
+      "improve": "Use a balanced scorecard, comparable data and an explicit review decision.",
+      "automation": "Aggregate pilot evidence and flag breached controls without automatically approving expansion.",
+      "evidence": "Outcome, process and balancing measures with counts, time windows and documented decisions."
+    },
+    "exercise": "Design a scorecard for one Maple pilot with one outcome, one process and two balancing measures. State a stop condition and owner. Explain the decision after two stale-balance reminders, and write one honest sentence about what the evidence can support.",
+    "rubric": [
+      "Measures the business goal as well as execution and quality.",
+      "Uses a defined stop condition, owner and manual continuation.",
+      "Distinguishes observation, attribution and unproven benefit."
+    ],
+    "sample": "For a verified-invoice reminder pilot, outcome is eligible invoice payment timing under a consistent observation window; process is finance-reviewed eligible cases handled within the agreed interval; balancing measures are incorrect reminders and total review/exception time. Finance lead owns the pilot. Any stale-balance reminder pauses sending under the proposed stop rule. With two such messages, contain and review affected cases, fix current-balance verification, reconcile manual actions and retest. Honest statement: “In this fictional pilot, technical completion did not establish quality or faster payment; incorrect balances required a pause.” Comparable payment outcomes are still needed before a benefit claim.",
+    "quiz": [
+      {
+        "q": "Which is a balancing measure?",
+        "options": [
+          "Incorrect reminder rate and review burden",
+          "Only the number of runs started",
+          "Only the deployment date"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. These check unintended harm and work created elsewhere.",
+          "Run count describes activity, not whether harm or burden increased.",
+          "A deployment date is context, not a measure of unintended effects."
+        ]
+      },
+      {
+        "q": "A defined stop condition occurs while speed improves. What should happen?",
+        "options": [
+          "Ignore it because the average improved",
+          "Pause as agreed, investigate and retest before expansion",
+          "Expand before anyone notices"
+        ],
+        "answer": 1,
+        "why": [
+          "An average speed improvement does not cancel a breached quality condition.",
+          "Correct. Follow the agreed stop rule and learn before increasing exposure.",
+          "Hiding a problem prevents accountable evaluation and can spread harm."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should the workflow automatically approve its own expansion because most runs returned success?",
+    "decisionWhy": "Keep expansion human-led. Accountable owners must review business outcomes, quality, exceptions, comparison limitations and maintenance capacity before deciding the next scope.",
+    "insight": "A pilot should produce evidence for a decision, including the decision to pause.",
+    "hooks": [
+      "The workflow succeeded. Did the business outcome improve?",
+      "A faster average does not cancel a harmful error.",
+      "A useful pilot can end with “pause and fix.”"
+    ],
+    "linkedin": [
+      "Show a fictional technical-success-versus-stale-balance contrast.",
+      "Explain outcome, process and balancing measures.",
+      "Describe an honest pause-and-retest decision without claiming achieved savings."
+    ],
+    "facebook": [
+      "Use a faster message sent with the wrong amount as a familiar example.",
+      "Share three questions: did it help, was it correct, what new work appeared?",
+      "Ask what would make a team pause a pilot."
+    ],
+    "conversation": "What evidence would convince you to stop or adapt a pilot even if it ran quickly?",
+    "claims": "Pilot numbers and stop rules are hypothetical. Verify real outcomes, comparison periods, exclusions and corrective actions before publication; never invent a client result.",
+    "recap": "Use a baseline and balanced measures. Technical execution is only one signal; review outcomes, harm and uncertainty before expanding.",
+    "reflection": "What finding would make you change your recommendation after a pilot?",
+    "deeper": "Plot six fictional weekly observations and annotate a staffing change. Explain why a simple before-and-after average may not isolate the workflow’s effect.",
+    "sources": [
+      {
+        "title": "Institute for Healthcare Improvement — Establishing Measures",
+        "url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+        "note": "Outcome, process and balancing measures for improvement. Practice datasets and targets here are invented."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Define an aim, evidence of improvement and changes to test on a small scale."
+      },
+      {
+        "title": "NIST — AI Risk Management Framework",
+        "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "note": "Context, evaluation and ongoing management of AI risks; not a claim of product certification or compliance."
+      }
+    ],
+    "sequence": [
+      "Agree scope, baseline, measures and stop rules",
+      "Run the bounded pilot and record changes",
+      "Review outcomes, quality and comparison limitations",
+      "Decide to stop, adapt, continue or expand",
+      "Document ownership and the next test"
+    ],
+    "sequenceIntro": "Order an evidence-led pilot review cycle.",
+    "sequenceExplanation": "Define the test before running, collect evidence, review both outcomes and harm, then make and document an accountable next decision."
+  }
+]);
+challenges[4]="Juniper Admin has 600 monthly requests at four copying minutes each; 450 have verified inputs. The pilot removes copying for those 450 but adds six review hours. Assess a ready-status notification, contested refund, changing status labels, varied complaint draft and weekly reason-code report. Classify each as rules, AI assistance, analytics, process improvement or human-led, explaining authority and evidence. Calculate forecast released time. Design one bounded integration with event identity, field authority, permissions, duplicate prevention, business/technical exceptions, reviewer, stop condition, fallback and maintainer. Test a timeout after action and restart after manual completion. Finish with three credible content hooks.";
+challenges[5]="Maple Services has meaningful-response times of 10, 20, 30 and 100 minutes, plus open requests whose age must be reported separately. Invoice errors change from 10/100 to 12/200. A separate workload has 300 cases at six minutes before, two minutes review after and four monthly monitoring hours. The proposed cash-benefit model assumes 1,200 setup, 100/month cost and 300/month verified avoidable spending. Define a baseline and calculate mean/median response, both error rates, percentage-point/relative change, net released hours, first-year ROI and simple payback. Recalculate ROI at 150/month benefit. State missing evidence and avoid double counting capacity and cash. Propose outcome/process/balancing measures and decide what to do after a stale-balance reminder breaches the stop rule. Write three educational content ideas labeled as practice.";
+Object.assign(glossary,{"Process stability": "Relevant rules and definitions are settled enough to test and maintain for the intended scope.", "API": "An application programming interface: a defined way for software to request data or actions.", "Webhook": "An event notification sent by one system to a receiving endpoint.", "Idempotency": "Repeated handling of the same intended action does not create an additional business effect; the supported implementation must be verified.", "Field mapping": "An explicit match between source and destination values, including meaning, format and authority.", "Baseline": "Starting performance measured under an explicit definition before a change.", "Median": "The middle ordered value, or mean of the two central values for an even count.", "Percentage point": "One unit of arithmetic difference between percentages.", "Released capacity": "Staff time available for other work after remaining and new effort is accounted for; not automatically cash savings.", "ROI": "Under the course convention, period net benefit divided by total period cost, multiplied by 100.", "Simple payback": "Time to recover setup cost from steady recurring net benefit under stated assumptions.", "Sensitivity analysis": "Recalculating an estimate when important assumptions change.", "Balancing measure": "A measure of unintended harm or burden alongside the intended outcome.", "Stop condition": "A predefined event or threshold requiring a pilot to pause for review."});
+const revisedSubtitles=["Follow interest to agreement", "Make work ready for delivery", "Resolve the case and learn", "From invoice to verified payment", "Reports that support decisions", "Find the step limiting flow", "Trace work back to the first defect", "Remove the reason for chasing", "Test the explanation", "Make the next action visible"];
+revisedSubtitles.forEach((text,i)=>{lessons[i+10].eyebrow=text;});
+lessons[28].sources.push({title:'OpenStax — Payback Period Method',url:'https://openstax.org/books/principles-finance-2e/pages/16-1-payback-period-method',note:'Recovery of initial cost through cash flows and limitations of simple payback. The course uses a stated simplified ROI convention and hypothetical figures.'});
+lessons[28].explain += '<br><br>These simple calculations ignore the time value of money and do not describe benefits after the chosen horizon. If recurring net benefit is zero or negative, there is no finite simple payback under those steady assumptions. More complex real decisions may need a fuller financial appraisal.';
