@@ -535,3 +535,967 @@ Object.assign(glossary, {"Process boundary": "The agreed start and finish of the
 
 for (const lesson of lessons.slice(5,10)) { lesson.businessName='FixWell'; lesson.businessType='fictional repair shop'; }
 challenges[1]='FixWell receives form and email requests. In fictional case F-21, staff review for 5 minutes, wait 40 for missing availability, update for 5, wait 30 for slot review, review for 5, wait 5 for customer acceptance and confirm for 5. Map the CURRENT request-to-confirmation process with owners, inputs, outputs and waiting states. Add supported, unsupported and unknown eligibility branches; design an accepted handoff; write a short intake SOP; calculate active/waiting/elapsed time. Compare two cause hypotheses and propose one small improvement with a baseline and an exception measure. Label any FUTURE map separately.';
+
+// Full self-paced core-operations and diagnostic modules. Stable indices 10–19.
+lessons.push(...[
+  {
+    "title": "Marketing, sales and leads",
+    "eyebrow": "WEEK 03 · DAY 1 OF 5",
+    "objective": "Trace an inquiry through qualification and sale, assign ownership, and calculate a conversion rate with the right denominator.",
+    "scenario": "Cedar Studio, a fictional design agency, receives inquiries from social posts, referrals and its website. The owner celebrates 80 inquiries in a month but cannot explain why only eight become clients. Some inquiries never receive a reply. Others want a service the agency does not offer. The salesperson blames marketing; marketing says sales ignores good leads. You are asked to investigate before buying another lead-generation tool.",
+    "explain": "Marketing helps suitable people discover and understand a business. Sales helps a prospective customer decide whether the offer fits their needs, then agrees the work and price. A lead is a person or organization expressing potential interest; it is not yet a customer or a payment. Qualification means checking agreed fit criteria, such as the service needed, timing and ability to meet the engagement terms. These criteria should help people reach the right next step, rather than encourage staff to guess someone’s value from appearances.<br><br>A funnel describes counts moving through defined stages. An inquiry can become qualified, attend a discovery call, receive a proposal, and become a customer. Stages need observable entry rules. “Interested” is too vague if two staff members use it differently. Also record declined, unresponsive and unsuitable cases rather than silently deleting them. A lead owner is accountable for the next action, even when someone else helps.<br><br>Conversion rate is the number reaching a chosen outcome divided by the relevant starting group, multiplied by 100. Always name the starting group and period. Calls-to-sales conversion answers a different question from inquiries-to-sales conversion. A low rate might reflect unsuitable inquiries, slow replies, limited capacity, pricing, or poor fit. It does not prove which team is at fault. Follow comparable groups over enough time, because inquiries received today may close next month. Investigate actual case histories before increasing demand or automating follow-ups.",
+    "worked": "Hypothetical monthly cohort: 80 inquiries → 50 qualified inquiries → 20 completed calls → eight agreed sales. Calls-to-sales conversion is 8 ÷ 20 × 100 = 40%; inquiries-to-sales conversion is 8 ÷ 80 × 100 = 10%. Both are correct when labeled. Twelve inquiries lack a first-response timestamp, so you cannot assume they were ignored: compare email history and staff records. Define one intake record with source, received time, fit decision, owner and next action. Route unsupported requests to a clear explanation; do not push them into a sales sequence. Start with ownership and reliable timestamps, then consider a rule-based notification for newly assigned inquiries.",
+    "flow": [
+      "Inquiry received",
+      "Check service fit",
+      "Assign owner",
+      "Discuss and propose",
+      "Record outcome"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">80 inquiries</th><td>Check source and stage definitions.</td></tr><tr><th scope=\"row\">20 completed calls</th><td>Use 20 for calls-to-sales conversion.</td></tr><tr><th scope=\"row\">12 missing timestamps</th><td>Distinguish missing records from missing responses.</td></tr></tbody></table>",
+    "businessName": "Cedar Studio",
+    "businessType": "fictional service agency",
+    "perspective": "The owner wants predictable work, the salesperson wants useful conversations, and the prospect wants an answer without repeating their needs. More inquiries can worsen the experience when nobody owns the reply.",
+    "assessment": "A notification is suitable after intake and ownership rules are stable. Keep suitability disputes and negotiation human-led. Suppress duplicate alerts using the inquiry ID, log delivery failures, and give the sales lead responsibility for unresolved alerts.",
+    "pain": {
+      "quote": "“We get plenty of messages, but very few turn into clients.”",
+      "symptom": "Inquiries pile up and outcomes are unclear.",
+      "causes": "Poor fit, unclear ownership, slow replies, unrealistic promises or incomplete records.",
+      "questions": "What counts as an inquiry? Show the last five cases. Who replies, by when, and how is the outcome recorded?",
+      "consequence": "Lost opportunities, wasted sales time and disappointed prospects; revenue impact needs evidence of genuine fit and buying intent.",
+      "improve": "Agree stages, lead ownership, fit criteria and a response expectation.",
+      "automation": "Create a task for a validated new inquiry, with duplicate prevention and failed-task review.",
+      "evidence": "Comparable cohorts, reliable timestamps, unassigned rate and correctly defined conversion."
+    },
+    "exercise": "Map Cedar’s inquiry-to-sale path. Name a lead owner and one next action for an unanswered inquiry. Calculate both conversion rates, then list two competing explanations for low overall conversion and the records you need to distinguish them.",
+    "rubric": [
+      "Uses named stages and a responsible owner.",
+      "Labels both denominators and does not confuse inquiries with revenue.",
+      "Tests at least two explanations using case evidence."
+    ],
+    "sample": "Inquiry → fit check → assigned discovery → proposal → decision. The sales coordinator owns the unanswered case and checks prior replies before responding. Overall conversion is 10%; completed-call conversion is 40%. Hypothesis one: many inquiries request unsupported services; inspect recorded needs and fit decisions. Hypothesis two: suitable inquiries wait too long; compare received and first-response timestamps for comparable leads. Do not assume the twelve missing timestamps prove twelve lost sales. Trial ownership rules first, then a notification in one intake channel.",
+    "quiz": [
+      {
+        "q": "Which denominator measures conversion from completed calls to sales?",
+        "options": [
+          "80 inquiries",
+          "20 completed calls",
+          "50 qualified inquiries"
+        ],
+        "answer": 1,
+        "why": [
+          "This measures inquiry-to-sale conversion, a different question.",
+          "Correct. Eight sales divided by twenty completed calls measures this stage.",
+          "This measures qualified-inquiry-to-sale conversion, not completed calls."
+        ]
+      },
+      {
+        "q": "Twelve response timestamps are absent. What should you conclude?",
+        "options": [
+          "Twelve clients were lost",
+          "The salesperson did nothing",
+          "Check case evidence before deciding whether replies occurred"
+        ],
+        "answer": 2,
+        "why": [
+          "Missing data does not establish buying intent or a lost sale.",
+          "A missing record does not prove staff did not reply.",
+          "Correct. Email history and staff accounts can distinguish missing recording from missed work."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should Cedar immediately send automated follow-ups to every historical inquiry?",
+    "decisionWhy": "Improve first: verify permission and contact preferences, deduplicate records, establish fit and ownership, and exclude closed or unsuitable cases before any follow-up pilot.",
+    "insight": "A busy inbox measures attention; a defined, owned next step helps turn interest into a useful conversation.",
+    "hooks": [
+      "More leads can expose a response problem.",
+      "Eight sales can mean 10% or 40% conversion.",
+      "Who owns the inquiry after the notification arrives?"
+    ],
+    "linkedin": [
+      "Label Cedar as a fictional example and show the two denominators.",
+      "Explain three possible reasons for inquiry drop-off.",
+      "Offer ownership and timestamp questions before suggesting a tool."
+    ],
+    "facebook": [
+      "Describe the familiar experience of sending a message and hearing nothing.",
+      "Show the difference between an inquiry and a suitable customer.",
+      "Invite readers to name the step where inquiries wait."
+    ],
+    "conversation": "When a new inquiry arrives, who owns the next action and how can anyone see it?",
+    "claims": "All counts are hypothetical. Verify actual cohorts, consent requirements and response records before publishing rates or claiming lost revenue.",
+    "recap": "Marketing creates suitable attention; sales explores fit and agrees work. Define stages, owners and denominators before diagnosing conversion.",
+    "reflection": "Which piece of evidence would most change your first explanation for a low conversion rate?",
+    "deeper": "Compare referral and website cohorts using the same stage rules. Explain why small samples and unfinished buying decisions limit the comparison.",
+    "calc": {
+      "q": "Eight sales followed twenty completed calls. What is the calls-to-sales conversion percentage?",
+      "answer": 40,
+      "explanation": "8 ÷ 20 × 100 = 40%. Using eighty inquiries instead answers a different question: 10% inquiry-to-sale conversion."
+    }
+  },
+  {
+    "title": "Onboarding and delivery",
+    "eyebrow": "WEEK 03 · DAY 2 OF 5",
+    "objective": "Define a delivery-ready handoff and separate a sales promise from an accepted delivery commitment.",
+    "scenario": "A fictional Cedar client signs a proposal on Monday. Sales promises a Friday launch. Delivery learns on Wednesday that the client has not approved the text, supplied images or nominated an approver. Everyone is busy chasing information. The client believes work started when they signed; the designer believes the project has not yet become ready. The owner asks whether automatic welcome messages will solve late delivery.",
+    "explain": "Onboarding is the transition from an agreed sale to a customer who is ready to receive the service. Service delivery is the work that produces the promised result. A signed proposal can start onboarding without proving that delivery can begin. Define both milestones so the customer understands what happens next. A readiness checklist names the minimum information, approvals, access and capacity needed to start a particular stage.<br><br>Scope describes the work included in the agreement. Acceptance criteria describe how the output will be judged ready or complete. A handoff is successful when the receiving person can act on the information and accepts responsibility, not merely when someone sends an email. Sales should confirm feasible timing with delivery before making commitments. Delivery should explain dependencies in plain language, including which dates depend on customer inputs. Changing a deadline after the fact is different from agreeing the conditions in advance.<br><br>A checklist needs a named owner and a path for missing or unusual information. “Awaiting client” is insufficient without the missing item, the person requesting it and a review date. Distinguish an internal failure to ask for material from a customer’s delay after a clear request. Use evidence rather than blame. If the scope changes, the authorized person should agree the new work and timing before delivery proceeds. Automation can send approved instructions or create a task from an accepted handoff, but it cannot settle an unclear promise. First make the transition understandable to both the customer and the people doing the work.",
+    "worked": "Hypothetical project C-14 has an approved price but lacks final text and an authorized approver. Its record should say “onboarding: awaiting approved text; owner Lia; request sent Tuesday; review Thursday.” A delivery lead checks scope, inputs and capacity, then accepts the handoff and confirms a realistic schedule with the customer. Record the original promise and the updated agreement instead of quietly overwriting history. Pilot one standard website package: approved welcome checklist → verified inputs → delivery acceptance → agreed start. Measure missing-input handoffs and time from signature to readiness separately from readiness to completion; otherwise a faster design task could hide longer onboarding delays.",
+    "flow": [
+      "Agreement confirmed",
+      "Request required inputs",
+      "Check readiness",
+      "Delivery accepts handoff",
+      "Confirm delivery plan"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">Signed proposal</th><td>Begins the agreed onboarding stage.</td></tr><tr><th scope=\"row\">Complete inputs</th><td>Ready for receiving-team review.</td></tr><tr><th scope=\"row\">Accepted delivery handoff</th><td>Named owner and feasible plan confirmed.</td></tr></tbody></table>",
+    "businessName": "Cedar Studio",
+    "businessType": "fictional service agency",
+    "perspective": "The customer feels misled when a launch promise quietly changes. Staff feel pressured to rescue an impossible schedule. A clear readiness conversation prevents repeated chasing and makes dependencies visible.",
+    "assessment": "Improve the promise and handoff rules first. Automate approved checklist delivery only after the right project, recipient and package are verified. A human resolves scope changes and contested dates.",
+    "pain": {
+      "quote": "“We sell the project quickly, then everything gets stuck.”",
+      "symptom": "Signed work sits without a reliable start date.",
+      "causes": "Missing inputs, unapproved scope, absent approver or promises made without capacity checks.",
+      "questions": "What did the customer understand? Which inputs were requested, when, and who accepted the handoff?",
+      "consequence": "Idle delivery slots, rework, delayed invoices and loss of trust; not all delay belongs to the customer.",
+      "improve": "Define readiness, receiving acceptance, a customer-facing checklist and change authority.",
+      "automation": "Create onboarding tasks from an approved agreement; stop reminders when inputs arrive or a dispute is open.",
+      "evidence": "Signature-to-readiness time, incomplete handoffs, readiness-to-completion time and complaints."
+    },
+    "exercise": "Design a five-step onboarding checklist for C-14. Include required text and approval, an owner for missing inputs, a receiving-team acceptance step, and the communication needed when a promised date is infeasible. State one exception you would escalate.",
+    "rubric": [
+      "Separates signature, readiness and delivery completion.",
+      "Makes dependencies, acceptance and ownership visible.",
+      "Escalates scope or date disputes rather than letting software invent agreement."
+    ],
+    "sample": "Confirm agreed package and original date; Lia requests approved text and names the client approver; Lia checks completeness; delivery lead checks capacity and accepts the handoff; Lia agrees the feasible schedule with the client. Missing text stays owned by Lia with a Thursday review. A disputed extra page goes to the person authorized to agree scope and price. Record decisions in the project record. The pilot compares incomplete handoffs before and after the checklist, while also checking customer understanding and total lead time.",
+    "quiz": [
+      {
+        "q": "What proves a handoff is ready?",
+        "options": [
+          "The email was sent",
+          "The receiver can act and accepts ownership against agreed criteria",
+          "The client paid something"
+        ],
+        "answer": 1,
+        "why": [
+          "Sending does not establish completeness or receiving acceptance.",
+          "Correct. Handoff quality depends on usable information and an accepted next step.",
+          "Payment alone does not establish complete inputs or delivery capacity."
+        ]
+      },
+      {
+        "q": "Sales promised a date delivery cannot meet. What comes first?",
+        "options": [
+          "An automated apology sequence",
+          "Quietly replace the date",
+          "Have the authorized people resolve the commitment with the customer"
+        ],
+        "answer": 2,
+        "why": [
+          "Messages cannot settle the underlying commitment or scope.",
+          "Silently changing the record hides the problem and damages trust.",
+          "Correct. Resolve the promise explicitly, then record the agreed plan."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Will automatic welcome emails fix Cedar’s unagreed launch dates?",
+    "decisionWhy": "Improve first: align sales promises with readiness and capacity. A welcome email can support a clear agreement but cannot create one.",
+    "insight": "A signed project is not always a delivery-ready project.",
+    "hooks": [
+      "The sale closed. Did the handoff open?",
+      "“Awaiting client” needs an owner too.",
+      "A welcome email cannot repair an impossible promise."
+    ],
+    "linkedin": [
+      "Introduce fictional C-14 and its conflicting expectations.",
+      "Show signature, readiness and completion as separate milestones.",
+      "Share a short receiving-team acceptance checklist."
+    ],
+    "facebook": [
+      "Tell the story of booking work without knowing what to send.",
+      "Explain three things a clear welcome checklist should answer.",
+      "Ask what customers repeatedly have to clarify."
+    ],
+    "conversation": "What must be true before the delivery team can confidently accept a new project?",
+    "claims": "Label C-14 fictional. Verify contract terms, promised dates and actual delay records before attributing responsibility or financial loss.",
+    "recap": "Onboarding creates readiness. A usable handoff includes inputs, ownership, receiving acceptance and an understood delivery plan.",
+    "reflection": "Which dependency would you explain before a customer signs?",
+    "deeper": "Adapt the checklist to a fictional clinic’s nonclinical supplier onboarding. Use invented data; identify permissions and approvals without copying patient information.",
+    "sequence": [
+      "Confirm scope and original agreement",
+      "Request the required inputs",
+      "Verify inputs and readiness",
+      "Obtain delivery-team acceptance",
+      "Confirm the accepted delivery plan"
+    ],
+    "sequenceIntro": "Arrange this standard onboarding path. Exceptions return to the responsible owner rather than skipping readiness.",
+    "sequenceExplanation": "Start from the agreed scope, gather and verify inputs, secure receiving acceptance, then communicate the accepted delivery plan. A change requires explicit agreement."
+  },
+  {
+    "title": "Customer support",
+    "eyebrow": "WEEK 03 · DAY 3 OF 5",
+    "objective": "Separate resolution of a customer’s case from investigation of a recurring service problem.",
+    "scenario": "Cedar’s fictional support inbox contains six messages about the same broken download link, one billing question and a complaint about a missed launch. Staff answer whichever message looks easiest. Three people reply to one customer while another receives no response. The owner wants an AI agent to close the backlog, but nobody agrees what “resolved” means.",
+    "explain": "Customer support helps customers use the service, resolve problems and understand next steps. A ticket is a tracked request or issue. A category describes its type, such as access, billing or a delivery question. Priority describes the order in which it should be handled, based on agreed impact and urgency. An angry tone alone does not establish severity, and a polite message can describe a serious interruption.<br><br>First response and resolution are different events. An automatic acknowledgment may confirm receipt, but it does not mean someone investigated or fixed the issue. Define a meaningful first response and a resolved outcome before measuring either. Keep the case owned while it waits for another team. An escalation sends the case to someone with the authority or expertise to decide, with enough context and a clear expected next action.<br><br>Several tickets can have one underlying cause. Fixing a broken link can prevent repeated contact, while answering each message without fixing the link leaves the workload in place. This feedback loop connects support to delivery, onboarding and product decisions. Track both individual customer outcomes and recurring issue themes. Do not close a ticket merely because a reply was sent; use an agreed resolution rule, including what happens when the customer stops responding.<br><br>Automation can acknowledge receipt, find duplicate cases, or route requests using reliable rules. It should not promise refunds, disclose sensitive records or make contested judgments without approved authority and controls. Start with ownership, priority definitions and a route for uncertain cases. A useful support system makes it easy for people to see who needs help and why the same problem keeps returning.",
+    "worked": "In a hypothetical review, six download tickets share the same link. The support lead creates one linked issue for the delivery owner to investigate while retaining an owner and next-update time for each customer. The billing question goes to the finance contact; the missed-launch complaint goes to the manager authorized to discuss commitments. An acknowledgment says when a person will review the case, using a realistic approved expectation. It does not say the issue is solved. Measure meaningful response time, resolution time, repeat contact and incorrect closures together. A reduction in open tickets is weak evidence if cases were closed without helping customers.",
+    "flow": [
+      "Request recorded",
+      "Assess impact and urgency",
+      "Assign case owner",
+      "Resolve or escalate",
+      "Confirm and learn"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">Acknowledged</th><td>Receipt confirmed; investigation may not have started.</td></tr><tr><th scope=\"row\">Escalated</th><td>Specialist decides; case ownership stays explicit.</td></tr><tr><th scope=\"row\">Resolved</th><td>Agreed outcome recorded, with a reopening route.</td></tr></tbody></table>",
+    "businessName": "Cedar Studio",
+    "businessType": "fictional service agency",
+    "perspective": "A customer wants continuity and an honest next update. Support staff need clear authority and escalation contacts. The delivery team needs evidence about recurring defects rather than a vague report that customers complain.",
+    "assessment": "Keep contested complaint resolution human-led. Approved acknowledgments and bounded routing can be rule-based. Review uncertain categories, measure misroutes and provide a person customers can reach.",
+    "pain": {
+      "quote": "“We keep answering the same questions, and people still complain.”",
+      "symptom": "Repeat contacts and an uneven support queue.",
+      "causes": "Broken service steps, unclear instructions, duplicate replies, weak ownership or premature closure.",
+      "questions": "Show repeated cases. What was actually fixed? What counts as resolved? Who can authorize a remedy?",
+      "consequence": "Repeated staff effort, delayed service, customer frustration and possible cancellations; verify actual outcomes.",
+      "improve": "Define categories and priorities, assign owners and feed recurring issues to the responsible team.",
+      "automation": "Acknowledge receipt and route known categories, with uncertainty and urgent-case escalation.",
+      "evidence": "Repeat-contact rate, meaningful response time, resolution quality and wrongly closed cases."
+    },
+    "exercise": "Categorize the three issue types in Cedar’s inbox. Give each a case owner and escalation destination. Define “resolved” for a download failure, then explain how you would link repeated tickets without losing the individual customers’ next updates.",
+    "rubric": [
+      "Separates category, priority and ownership.",
+      "Defines a customer outcome instead of equating a reply with resolution.",
+      "Connects recurring contacts to a shared problem investigation."
+    ],
+    "sample": "Access issue → support owns the case; delivery investigates the shared link. Billing question → finance contact, with support retaining coordination until transfer is accepted. Launch complaint → authorized manager, with a promised next update. A download failure is resolved when access is restored and the outcome is checked using an agreed rule, not simply when a link is resent. Link the six cases to a common issue record, but retain individual ownership and update times. Review repeat contact and a sample of closures during the pilot.",
+    "quiz": [
+      {
+        "q": "Which metric alone can reward premature closure?",
+        "options": [
+          "Number of tickets marked closed",
+          "Repeat-contact rate with case review",
+          "Verified customer outcome"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. A closed label can rise without the underlying issue being resolved.",
+          "Repeat-contact evidence helps reveal unresolved problems, although definitions still matter.",
+          "Verified outcomes are closer to the purpose of support than an administrative label."
+        ]
+      },
+      {
+        "q": "Six customers report the same broken link. What is the best response?",
+        "options": [
+          "Send six replies and stop",
+          "Track individual cases and investigate their shared cause",
+          "Merge the records and remove customer follow-up"
+        ],
+        "answer": 1,
+        "why": [
+          "Replies alone leave a recurring defect in place.",
+          "Correct. Resolve each customer’s need while fixing the source of repeated contact.",
+          "Combining the issue must not erase individual ownership or communication."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should a system independently negotiate a remedy for a disputed launch complaint?",
+    "decisionWhy": "Keep the decision human-led. The complaint involves commitments, context and authority. A system may organize evidence or draft an approved message for review, but the responsible manager decides.",
+    "insight": "A smaller support queue is useful only if the customer’s problem is actually resolved.",
+    "hooks": [
+      "Closed does not always mean resolved.",
+      "Six support tickets may be one delivery problem.",
+      "An instant acknowledgment is not an instant solution."
+    ],
+    "linkedin": [
+      "Show the fictional repeated-link scenario.",
+      "Separate acknowledgment, ownership and resolution.",
+      "Recommend one feedback loop from support to delivery."
+    ],
+    "facebook": [
+      "Describe being sent the same unhelpful reply twice.",
+      "Explain why fixing the common issue reduces repeated chasing.",
+      "Ask which question customers keep having to ask."
+    ],
+    "conversation": "What recurring customer question points to a process you could improve upstream?",
+    "claims": "Use hypothetical ticket counts. Verify actual resolution definitions and evidence before claiming customer satisfaction or reduced workload.",
+    "recap": "Route requests with clear ownership, resolve customer outcomes and investigate repeated issues. Measure quality alongside speed.",
+    "reflection": "Which support decision needs authority rather than a faster reply?",
+    "deeper": "For a fictional healthcare administration team, separate a general opening-hours question from a complaint needing an authorized person. Never put real patient details into a practice workflow."
+  },
+  {
+    "title": "Invoices and collections",
+    "eyebrow": "WEEK 03 · DAY 4 OF 5",
+    "objective": "Trace delivered work to payment and identify which balances are suitable for a reminder.",
+    "scenario": "Cedar’s fictional finance assistant sees an invoice for 1,200 units and sends a reminder for the full amount. The customer has already paid 500 and disputed 200 of the remaining balance. Another invoice lacks the purchase reference needed by the customer’s finance team. The owner says “automate collections,” but the records do not yet agree.",
+    "explain": "An invoice is a request for payment for specified work under agreed terms. Issuing it does not prove the money has arrived. Accounts receivable is the amount customers still owe for invoiced work. Collections is the activity of obtaining payment, including checking receipt, resolving questions and following up when appropriate. A due date is the agreed date payment should be made; overdue means unpaid beyond that date according to the relevant terms.<br><br>The invoice-to-payment path starts before a reminder. Confirm what was agreed, whether required delivery or approval occurred, which legal business entity is billed and what information the customer needs to process it. Missing references or an incorrect recipient can block payment even when the customer intends to pay. Do not assume every delay is unwillingness. Record payments against the correct invoice and check pending receipts before sending another message.<br><br>A dispute is a disagreement about an amount or obligation. It needs an authorized person and an explicit status. Reconciliation means comparing records, such as invoice balances and received payments, and explaining differences. It is a data and control step, not a new source of revenue. A reminder should use a verified eligible balance, appropriate recipient and approved wording. Disputed amounts, pending payments and special arrangements may require a different path.<br><br>Automation can help when these rules and records are reliable. Start with a reviewable candidate list rather than sending messages across all unpaid records. Keep negotiation, contested charges and exceptions with authorized people. Measure correct reminders and resolved blockers as well as payment timing, because faster messages can damage trust when the balance is wrong.",
+    "worked": "Hypothetical invoice C-88: issued amount 1,200; received and matched payment 500; outstanding balance 700. Of that 700, 200 is disputed. Under this fictional company’s agreed policy, the maximum undisputed reminder candidate is 500, subject to due-date, recipient and pending-receipt checks. This is not proof the customer will pay 500 or that 500 is lost revenue. A finance owner reviews the 200 dispute separately. Another invoice is blocked by a missing purchase reference, so the next step is to obtain and correct that reference. A pilot first generates a daily review list for one approved customer segment; finance approves messages and logs exceptions.",
+    "flow": [
+      "Verify agreement and invoice",
+      "Match received payment",
+      "Check due date and exceptions",
+      "Review eligible follow-up",
+      "Record outcome and balance"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">1,200 issued − 500 received</th><td>700 outstanding.</td></tr><tr><th scope=\"row\">700 outstanding − 200 disputed</th><td>500 undisputed candidate under this fictional policy.</td></tr><tr><th scope=\"row\">Missing purchase reference</th><td>Correct the blocker before repeated reminders.</td></tr></tbody></table>",
+    "businessName": "Cedar Studio",
+    "businessType": "fictional service agency",
+    "perspective": "The owner wants cash for operating costs. Finance wants trustworthy balances. The customer wants accurate requests and a person who can resolve disagreements without repeated automated pressure.",
+    "assessment": "A verified, undisputed overdue reminder can be a rule-based pilot. Check current balances before send time, prevent repeat sends with a logged event ID, pause disputed cases and name a finance maintainer. No tool guarantees collection.",
+    "pain": {
+      "quote": "“We have unpaid invoices, but chasing them takes all morning.”",
+      "symptom": "Repeated follow-ups and uncertain balances.",
+      "causes": "Missing invoice fields, unmatched payments, disputes, wrong recipients or unagreed terms.",
+      "questions": "Show one delayed invoice end to end. Was it received and accepted? What is disputed? Are payments fully matched?",
+      "consequence": "Delayed cash, staff effort and damaged customer relationships; outstanding is not automatically uncollectible.",
+      "improve": "Agree invoice checks, payment matching, dispute ownership and follow-up eligibility.",
+      "automation": "Produce or send eligible reminders from verified balances with review and an audit trail.",
+      "evidence": "Incorrect reminders, unresolved blockers, overdue balance by agreed definition and payment timing for comparable groups."
+    },
+    "exercise": "Calculate C-88’s outstanding and undisputed amounts. Write four checks before a reminder is eligible. Describe who owns the dispute and what happens if a payment arrives after the candidate list is produced but before messages are sent.",
+    "rubric": [
+      "Calculates 700 outstanding and 500 undisputed candidate.",
+      "Checks timing, balances, recipient and exceptions.",
+      "Rechecks before sending and routes disputes to a named person."
+    ],
+    "sample": "Outstanding = 1,200 − 500 = 700; undisputed candidate = 700 − 200 = 500. Verify the due date, matched and pending payments, approved recipient/contact preference, and absence of a dispute or payment arrangement affecting the candidate. Finance owns the 200 dispute and records the next review date. Recheck the current balance just before sending; cancel or update the message if a payment arrived. Log the eligibility reason and send event so a retry does not create a duplicate. These are hypothetical rules for a pilot, not a universal collections policy.",
+    "quiz": [
+      {
+        "q": "What should happen when a payment arrives before the reminder is sent?",
+        "options": [
+          "Use yesterday’s balance",
+          "Recheck eligibility and update or cancel the message",
+          "Send now and apologize later"
+        ],
+        "answer": 1,
+        "why": [
+          "A stale balance can produce an incorrect demand.",
+          "Correct. Eligibility depends on current verified information at the point of action.",
+          "Avoidable inaccurate reminders harm trust and create more work."
+        ]
+      },
+      {
+        "q": "A customer cannot pay because a required purchase reference is missing. What helps first?",
+        "options": [
+          "Increase reminder frequency",
+          "Treat the entire invoice as lost revenue",
+          "Obtain the reference and correct the invoice route"
+        ],
+        "answer": 2,
+        "why": [
+          "More messages do not supply the missing processing information.",
+          "A processing blocker does not establish a permanent loss.",
+          "Correct. Remove the specific blocker and verify receipt of the corrected information."
+        ]
+      }
+    ],
+    "decision": "automate",
+    "decisionPrompt": "A finance owner has verified an undisputed overdue balance, approved the recipient and wording, and defined current-balance checks. Is a small reminder pilot reasonable?",
+    "decisionWhy": "Automate the bounded rule with the agreed checks, duplicate prevention, failure alerts and a finance owner. Keep disputes and arrangements outside that standard path and review incorrect messages as a stop condition.",
+    "insight": "An unpaid invoice can be an information problem before it is a reminder problem.",
+    "hooks": [
+      "Before chasing payment, check whether the invoice can be processed.",
+      "A 700 balance is not always a 700 reminder.",
+      "Faster collections messages need more reliable balances."
+    ],
+    "linkedin": [
+      "Use the fictional 1,200/500/200 example with transparent arithmetic.",
+      "Explain why outstanding, disputed and eligible are different.",
+      "List checks before automating a reminder."
+    ],
+    "facebook": [
+      "Describe receiving a reminder after already paying.",
+      "Explain matching payments and resolving missing references.",
+      "Ask what blocks invoices from reaching the right person."
+    ],
+    "conversation": "Which unpaid invoices are waiting for missing information rather than another reminder?",
+    "claims": "Figures and policy are hypothetical. Verify actual payment terms, communication rules and financial records before publication; never promise recovered revenue.",
+    "recap": "Invoice, payment and dispute records must agree. Fix processing blockers and automate only eligible follow-up with current data and clear ownership.",
+    "reflection": "What could make an apparently overdue invoice unsuitable for an automatic reminder?",
+    "deeper": "Adapt the map to fictional medical billing administration: distinguish submitted claims, payer responses and payments. Investigate the actual reason for a pending item; do not equate submission with payment or fabricate reimbursement rules.",
+    "calc": {
+      "q": "An invoice is 1,200, matched payment is 500, and 200 of the outstanding amount is disputed. Under the stated practice policy, what is the undisputed reminder candidate before other checks?",
+      "answer": 500,
+      "explanation": "1,200 − 500 = 700 outstanding. 700 − 200 = 500 undisputed candidate. Due date, pending payments, recipient and arrangement checks still apply."
+    }
+  },
+  {
+    "title": "Reporting and administration",
+    "eyebrow": "WEEK 03 · DAY 5 OF 5",
+    "objective": "Design a report around a decision, define its measures, and connect reliable administration to reliable data.",
+    "scenario": "Every Friday Cedar’s manager copies five spreadsheets into a report. Marketing counts inquiry messages; sales counts unique people. Delivery uses “complete” when work is sent, finance when it is approved. The report has attractive charts but nobody knows whether to change staffing. Meanwhile, a former contractor still appears on an access list. The manager asks for an AI dashboard.",
+    "explain": "Reporting turns recorded activity into information people can use to make decisions. A metric is a defined measure, such as the proportion of new inquiries still without an owner after one business day. A useful definition includes what is counted, which records qualify, the time window, the source and the person responsible for checking it. A dashboard is a display of selected measures. Its appearance cannot make inconsistent definitions comparable.<br><br>Start with the decision: what would the manager do differently if the result changed? If the choice concerns assignment capacity, measure unassigned work and age, not only total messages received. A leading indicator may show a developing issue, such as incomplete handoffs; an outcome measure describes what happened, such as late delivery. Use both carefully, because an indicator is a clue rather than proof of cause. A cutoff is the agreed time at which the report describes the records. Late updates can change results, so record how corrections are handled.<br><br>Internal administration includes maintaining access, shared records, schedules and routine approvals. These tasks support the other departments. An outdated access list is not merely untidy; someone must verify whether the person still needs access and remove it through the approved procedure when appropriate. Data stewardship means taking responsibility for definitions and data quality. One authoritative field and a named steward can reduce hours of reconciliation.<br><br>Automated aggregation and simple analysis are often enough for a well-defined report. AI is optional and cannot decide whose conflicting definition is correct. Agree definitions, ownership, access and actions first, then test whether the report matches a manual sample and supports a real decision.",
+    "worked": "Replace Cedar’s vague weekly pack with three hypothetical measures: (1) unique inquiries received this week still unassigned at Friday 16:00, divided by all unique inquiries received this week; (2) delivery handoffs missing a required input, divided by reviewed handoffs this week; (3) verified overdue undisputed invoice balance at Friday 16:00, in currency units. The first helps the sales lead allocate ownership, the second helps the delivery lead fix readiness, and the third helps finance prioritize review. Each definition names its source and steward. Review a sample against original records. Separately, the access owner checks the contractor’s need and records the approved access decision.",
+    "flow": [
+      "Name a decision",
+      "Define measure and cutoff",
+      "Check source records",
+      "Review exceptions",
+      "Act and assign follow-up"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">Message count versus unique inquiry count</th><td>Choose a consistent unit; deduplicate by an agreed ID.</td></tr><tr><th scope=\"row\">Sent versus approved</th><td>Keep distinct milestones rather than calling both complete.</td></tr><tr><th scope=\"row\">Chart without action owner</th><td>Specify who acts when a threshold is reached.</td></tr></tbody></table>",
+    "businessName": "Cedar Studio",
+    "businessType": "fictional service agency",
+    "perspective": "The manager wants a decision they can defend. Staff resent rebuilding numbers nobody uses. Finance and delivery need clear definitions so a report does not wrongly suggest that they missed work.",
+    "assessment": "Improve definitions and stewardship first, then automate repeatable aggregation. Compare the generated report with known records, show stale or missing inputs and keep an owner for data discrepancies and access reviews.",
+    "pain": {
+      "quote": "“We spend hours reporting, but still cannot see what needs attention.”",
+      "symptom": "Repeated report preparation and contradictory totals.",
+      "causes": "Inconsistent units, duplicate records, unclear cutoff, late updates or no decision owner.",
+      "questions": "What decision uses this number? Show the definition, source, cutoff and one record behind it.",
+      "consequence": "Wasted analysis time, poor staffing decisions and missed follow-up; do not infer causation from a chart alone.",
+      "improve": "Create a metric dictionary, source ownership and an action-focused review routine.",
+      "automation": "Aggregate validated records and flag incomplete source updates rather than inventing missing values.",
+      "evidence": "Sample reconciliation, report preparation time, data freshness and documented actions."
+    },
+    "exercise": "Choose three Cedar decisions and design one metric for each. State its unit or numerator and denominator, time window, authoritative source, owner and expected action. Explain how you would handle a late update without silently changing last week’s conclusion.",
+    "rubric": [
+      "Connects each measure to a concrete decision.",
+      "Defines units, eligibility, window, source and ownership.",
+      "Handles data quality and correction history explicitly."
+    ],
+    "sample": "Sales lead allocates unassigned inquiries using unique unassigned inquiries divided by all unique inquiries received that week, measured Friday 16:00 from the lead register. Delivery lead reviews incomplete accepted handoffs using the project checklist. Finance reviews verified undisputed overdue balance from reconciled invoices at the same cutoff. Each steward checks a small record sample and reports missing updates. A late correction is labeled with the new report time and explanation; it is not silently presented as the original result. Add an access-review owner for staff changes rather than treating the dashboard as an access-control solution.",
+    "quiz": [
+      {
+        "q": "What should be defined before building a dashboard?",
+        "options": [
+          "Chart colors",
+          "The decision, measure, source and action owner",
+          "Which AI model to use"
+        ],
+        "answer": 1,
+        "why": [
+          "Visual design matters after the measure has a purpose and a reliable definition.",
+          "Correct. A useful display supports a defined decision with trustworthy information.",
+          "A model choice does not resolve conflicting definitions or ownership."
+        ]
+      },
+      {
+        "q": "Marketing counts messages and sales counts people. Why do totals differ?",
+        "options": [
+          "One team must be dishonest",
+          "The dashboard needs more charts",
+          "The units differ; reconcile definitions before comparing"
+        ],
+        "answer": 2,
+        "why": [
+          "Different definitions can explain the difference without dishonesty.",
+          "More displays do not make different units comparable.",
+          "Correct. One person may send several messages; agree the unit and source."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should Cedar automate the current contradictory weekly totals into one authoritative dashboard?",
+    "decisionWhy": "Improve first: agree units, milestones, sources and correction rules. Then automate the stable calculations and highlight incomplete data instead of presenting false certainty.",
+    "insight": "A useful report starts with a decision someone is willing and able to make.",
+    "hooks": [
+      "What will change after someone reads this report?",
+      "A beautiful chart can compare incompatible numbers.",
+      "“Complete” needs a definition before it needs a dashboard."
+    ],
+    "linkedin": [
+      "Show the fictional message-versus-person mismatch.",
+      "Give a metric definition with unit, window and owner.",
+      "Explain how a small reporting pilot checks source records."
+    ],
+    "facebook": [
+      "Describe spending Friday copying numbers nobody discusses.",
+      "Offer three questions: what decision, which source, who acts?",
+      "Ask which report has no clear next action."
+    ],
+    "conversation": "Which number would cause you to take a specific action this week?",
+    "claims": "Verify any real metric definitions and source records. Do not imply a correlation proves a cause or that a dashboard makes data accurate.",
+    "recap": "Define the decision before the metric. Reporting depends on consistent records, access routines and named stewards; automate stable calculations after those foundations.",
+    "reflection": "Which existing report would you simplify, and what decision would remain?",
+    "deeper": "Write a one-page metric dictionary and trace one fictional record through each measure. Note where a changed status would alter the result."
+  },
+  {
+    "title": "Bottlenecks and queues",
+    "eyebrow": "WEEK 04 · DAY 1 OF 5",
+    "objective": "Compare arrival rate and effective capacity, locate a constrained step, and avoid moving the queue elsewhere.",
+    "scenario": "Harbor Services, a fictional administration business, receives 15 complete requests per hour during a four-hour window. Intake can check 20 per hour, one reviewer can decide 10, and dispatch can send 18. The owner wants faster intake because customers wait days. Staff say the reviewer is “slow,” but the reviewer also handles unusual cases and waits for a daily approval batch.",
+    "explain": "A queue is work waiting for a step, person, information or decision. A bottleneck is a step that limits the flow of the process under the conditions observed. It is not necessarily the person working hardest or the task that looks most complicated. Arrival rate describes how much work enters in a period. Capacity describes how much a step can complete in that period under stated assumptions. Effective capacity reflects interruptions, breaks, variation and other work, rather than an ideal uninterrupted speed.<br><br>If work arrives faster than it can be completed, the queue tends to grow. This is a useful arithmetic check, not a complete prediction of every customer’s waiting time. Cases differ, demand changes by hour, and some work returns for correction. Compare the same units and periods, and separate complete requests from cases awaiting missing inputs. Record beginning backlog and completed work so the balance can be checked.<br><br>Improving a step before the constraint may simply move more cases into the constrained queue. Speeding up intake does not create review capacity. Possible interventions include changing unnecessary approval rules, distributing authorized work, improving input quality, reducing interruptions or adjusting capacity. None should bypass decisions that genuinely need authority or expertise. Investigate why the apparent constraint exists before attributing it to an individual.<br><br>Use case timestamps and observation to distinguish a steady capacity shortage from batching, poor scheduling or missing information. Measure end-to-end turnaround as well as throughput, the number completed in a period. A local speed improvement is valuable only if it improves the broader outcome without increasing errors or pushing the delay downstream.",
+    "worked": "For this simplified hypothetical window, intake capacity 20/hour exceeds arrivals 15/hour, but review capacity is only 10/hour. If all arrivals need this review and those rates stay constant, review backlog grows by 15 − 10 = 5 requests per hour, or 20 over four hours. Dispatch capacity of 18/hour is not the limiting step at that load. Adding an intake bot that checks 30/hour does not change the 10/hour review limit. Inspect review start/end times, interruptions, case types and batch-release times. Trial one authorized change, such as removing duplicate approval for standard cases after the process owner confirms it is unnecessary. Compare total turnaround, error rate and queue age.",
+    "flow": [
+      "Receive complete request",
+      "Intake check · 20/hour",
+      "Wait for review",
+      "Review · 10/hour",
+      "Dispatch · 18/hour"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">Arrival: 15/hour</th><td>Hypothetical constant load of complete requests.</td></tr><tr><th scope=\"row\">Review: 10/hour</th><td>Queue grows 5/hour under stated assumptions.</td></tr><tr><th scope=\"row\">Faster intake</th><td>Does not increase review completion capacity.</td></tr></tbody></table>",
+    "businessName": "Harbor Services",
+    "businessType": "fictional administration business",
+    "perspective": "The customer experiences total waiting, not the speed of an intake form. The reviewer may feel blamed for a policy or workload they cannot change. The manager needs a view of flow rather than individual busyness.",
+    "assessment": "Investigate and improve first. Rules might remove a proven redundant routing step, but automating intake alone is unlikely to solve the constraint. Keep required judgments with authorized staff and monitor downstream queues.",
+    "pain": {
+      "quote": "“We answer quickly, but the work still takes days.”",
+      "symptom": "Fast intake followed by an aging review queue.",
+      "causes": "Insufficient effective review capacity, batching, interruptions, rework or incomplete cases.",
+      "questions": "How many complete cases arrive and finish per hour? What else does the reviewer do? When are approvals released?",
+      "consequence": "Long turnaround, chasing effort and missed commitments; a queue count alone does not price financial loss.",
+      "improve": "Protect review time, remove justified duplication, distribute authorized work or adjust capacity.",
+      "automation": "Route complete standard cases under approved rules once the constraint and exceptions are understood.",
+      "evidence": "Arrival and completion rates, queue age, total turnaround and quality for comparable work."
+    },
+    "exercise": "Use the three capacity figures to identify the likely constraint and estimate queue growth during four hours. State the assumptions. Give two explanations besides “the reviewer works slowly,” and explain why faster intake might not help.",
+    "rubric": [
+      "Compares consistent hourly units and identifies review.",
+      "Calculates 5/hour and 20 total while stating simplifying assumptions.",
+      "Tests batching or competing work and considers the whole flow."
+    ],
+    "sample": "Review is the apparent constraint: 10/hour against arrivals of 15/hour. Backlog grows 5/hour, or 20 cases in four hours, if every case needs review, rates stay constant, no rework occurs and capacity is available as stated. Existing backlog would be additional. Review may be interrupted by escalations or held until a batch approval; examine timestamps and observe work. Faster intake cannot increase review throughput. Trial a justified review-process change, with authorized decision makers, and monitor end-to-end time, error rate and downstream backlog.",
+    "quiz": [
+      {
+        "q": "Which change alone leaves the stated review limit unchanged?",
+        "options": [
+          "Raise intake capacity from 20 to 30/hour",
+          "Add authorized effective review capacity",
+          "Remove an unnecessary review step after validation"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. Intake already exceeds arrivals; the review constraint remains ten per hour.",
+          "This may increase capacity at the actual constraint, subject to quality and demand.",
+          "If the step is genuinely unnecessary, validated redesign could reduce constrained demand."
+        ]
+      },
+      {
+        "q": "What else is needed before blaming the reviewer?",
+        "options": [
+          "Only their job title",
+          "Evidence of case mix, interruptions and approval timing",
+          "A more colorful queue chart"
+        ],
+        "answer": 1,
+        "why": [
+          "A title does not establish the cause of limited effective capacity.",
+          "Correct. Policies, variation and competing work can create the apparent constraint.",
+          "A clearer display cannot establish causes without underlying evidence."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should Harbor automate intake first because it is easy to connect?",
+    "decisionWhy": "Improve first: target evidence about the review constraint. Tool convenience does not establish business value, and speeding a nonconstraint may only increase waiting work.",
+    "insight": "The easiest task to automate may be far from the step limiting delivery.",
+    "hooks": [
+      "Your fastest step may be feeding your longest queue.",
+      "Busy staff are not a bottleneck diagnosis.",
+      "Before speeding up intake, check what happens next."
+    ],
+    "linkedin": [
+      "State the fictional hourly capacities and assumptions.",
+      "Calculate queue growth and explain the nonconstraint trap.",
+      "Share evidence needed before changing review."
+    ],
+    "facebook": [
+      "Use a familiar line that moves quickly at entry and stalls inside.",
+      "Explain arrivals versus completions without jargon.",
+      "Ask where accepted work waits longest."
+    ],
+    "conversation": "Which step controls how many complete cases your business can actually finish?",
+    "claims": "All rates are hypothetical. Verify effective capacity, variability and required approvals before claiming a bottleneck or projected improvement.",
+    "recap": "Compare arrivals with effective capacity. Investigate the constrained step and measure end-to-end outcomes rather than optimizing one local task.",
+    "reflection": "What evidence would show that the queue is caused by batching rather than too few reviewers?",
+    "deeper": "Add variable arrivals and a starting backlog of twelve to the fictional example. Explain why the simple four-hour estimate is not a waiting-time forecast.",
+    "calc": {
+      "q": "Fifteen complete requests arrive per hour and ten are reviewed per hour. Under constant rates for four hours, how many requests are added to the review backlog?",
+      "answer": 20,
+      "explanation": "(15 − 10) × 4 = 20 additional requests. This excludes any starting backlog, rework or changes in demand and capacity."
+    }
+  },
+  {
+    "title": "Duplicate work and rework",
+    "eyebrow": "WEEK 04 · DAY 2 OF 5",
+    "objective": "Distinguish repeated data entry from correction work and trace both to their causes.",
+    "scenario": "In fictional Harbor case H-42, a coordinator copies a customer address from email into two spreadsheets. The first sheet contains an old address. Dispatch sends the document to the wrong place, then support corrects both sheets and asks the customer to confirm again. The owner calls all of it “manual work” and wants the two sheets synchronized immediately.",
+    "explain": "Duplicate work repeats an activity or stores the same information more than necessary. Rework corrects, repeats or repairs work because the first result did not meet requirements. These overlap but are not identical. Copying a correct address into a second system is duplicate entry; fixing a document after using the wrong address is rework. Separating them helps choose the right intervention. Integration may reduce repeated entry while still spreading a wrong address faster.<br><br>Trace a specific case from the first capture of information to the final accepted output. Record where data changed, who changed it and why. A case ID is a stable reference that distinguishes one request from another. A source of truth is the agreed authoritative record for a defined field or stage. It does not mean every system is authoritative for everything. Define who can update the address, how it is checked, and how downstream users know a correction occurred.<br><br>A rework reason code is a consistent category for why correction was needed, such as missing input, outdated data, misunderstood instructions or changed scope. Categories help find patterns, but a staff-selected label is still evidence to verify. “Human error” is too broad to explain why the error was possible or likely. Check the form, training, version history and workload before assigning cause.<br><br>Measure cases requiring correction separately from the number of correction events. One case can have several events. A rate needs a clear denominator and period. Preventing the first defect may reduce more work than speeding the correction step, while some checking remains useful. Do not remove a necessary verification simply because it repeats a field check.",
+    "worked": "Hypothetical week: 40 completed cases, ten of which required at least one correction. Case-level rework rate = 10 ÷ 40 × 100 = 25%. If those ten cases generated 16 correction events, that is not a 40% case rework rate; it is 16 events across 40 cases. For H-42, map email address → sheet A → sheet B → dispatch → complaint → correction. Agree one verified address field, update authority and downstream correction notifications. Trial better capture and validation before syncing. Track wrong-address outputs, correction events and time spent checking; do not count necessary checks as waste by default.",
+    "flow": [
+      "Capture address",
+      "Copy into two records",
+      "Dispatch uses old version",
+      "Customer reports error",
+      "Correct and verify"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">Duplicate entry</th><td>Same field copied into multiple records.</td></tr><tr><th scope=\"row\">Rework</th><td>Output corrected after wrong information was used.</td></tr><tr><th scope=\"row\">Necessary verification</th><td>May protect quality; assess its purpose before removal.</td></tr></tbody></table>",
+    "businessName": "Harbor Services",
+    "businessType": "fictional administration business",
+    "perspective": "The customer feels unheard when asked for the same information again. Staff feel trapped correcting records they did not design. The owner needs fewer defects, not merely faster copying.",
+    "assessment": "Improve authoritative data, validation and correction ownership first. Integrate only with an explicit field mapping, stable IDs, update rules and conflict handling. Preserve meaningful verification and correction history.",
+    "pain": {
+      "quote": "“We enter everything twice and still have to fix it.”",
+      "symptom": "Repeated entry followed by avoidable corrections.",
+      "causes": "No authoritative field, stale versions, missing validation or ambiguous update rights.",
+      "questions": "Where did the first wrong value enter? Which record was used? Who can correct it, and who receives the change?",
+      "consequence": "Repeated staff effort, delayed delivery and customer frustration; separate event counts from affected cases.",
+      "improve": "Agree authoritative fields, validate inputs and record correction reasons.",
+      "automation": "Populate downstream fields from verified data with conflict alerts and a maintainer.",
+      "evidence": "Cases requiring correction, correction events, wrong outputs and duplicated entry effort."
+    },
+    "exercise": "Map H-42 and label duplicate entry, rework and useful verification. Calculate the case-level rework rate. Propose one prevention change and identify the update rule that must exist before synchronizing the sheets.",
+    "rubric": [
+      "Distinguishes duplicate entry, correction and necessary checking.",
+      "Uses ten affected cases over forty completed cases: 25%.",
+      "Fixes authoritative data and update ownership before integration."
+    ],
+    "sample": "Copying the address into two sheets is duplicate entry. Reissuing the document is rework. Checking the corrected address against the customer’s authorized instruction is useful verification. Ten of forty completed cases required correction: 25%. Prevention: capture and verify the address once in the authoritative customer record. The coordinator owns corrections, downstream users receive a flagged change, and conflicts pause for review rather than using whichever timestamp is newest. Measure affected cases and correction events separately. Do not claim a synchronization has saved time until the pilot checks both effort and defect rates.",
+    "quiz": [
+      {
+        "q": "What could a two-way sync do before authority rules exist?",
+        "options": [
+          "Guarantee accurate addresses",
+          "Spread conflicting values faster",
+          "Eliminate the need for any verification"
+        ],
+        "answer": 1,
+        "why": [
+          "Synchronization moves values; it does not prove those values are correct.",
+          "Correct. Unresolved authority and update conflicts can propagate errors.",
+          "Some verification remains necessary even with good integration."
+        ]
+      },
+      {
+        "q": "Ten of forty cases needed correction, with sixteen correction events. What is the case rework rate?",
+        "options": [
+          "25%",
+          "40%",
+          "160%"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. Ten affected cases divided by forty completed cases equals twenty-five percent.",
+          "Sixteen divided by forty measures events per case, not the fraction of affected cases.",
+          "Neither the event count nor the denominator supports this case rate."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should Harbor immediately synchronize the two conflicting address sheets?",
+    "decisionWhy": "Improve first. Agree the authoritative address, correction authority, case IDs and conflict rules. An integration without those rules can reproduce the same defect across both systems.",
+    "insight": "Copying less data helps only when the data you copy is reliable.",
+    "hooks": [
+      "Automation can copy a wrong address perfectly.",
+      "Duplicate entry and rework need different questions.",
+      "“Human error” is the start of an investigation, not the end."
+    ],
+    "linkedin": [
+      "Trace fictional H-42 from capture to correction.",
+      "Separate duplicate entry from rework and useful checks.",
+      "Explain a field-authority rule before proposing integration."
+    ],
+    "facebook": [
+      "Describe being asked for an address already supplied.",
+      "Explain why two records can disagree even when software connects them.",
+      "Ask where the first incorrect value enters."
+    ],
+    "conversation": "When two records disagree, who decides which value is correct?",
+    "claims": "Label rates fictional. Verify the affected-case denominator, correction definitions and measured effort before claiming savings.",
+    "recap": "Trace the first defect. Separate duplicate entry from rework, use stable IDs and authoritative fields, and preserve useful verification.",
+    "reflection": "Which repeated check protects quality, and which repeated entry adds no new information?",
+    "deeper": "Apply the distinction to fictional claim administration: repeated entry versus correction after an incomplete submission. Use invented identifiers and do not assume every rejection has the same cause.",
+    "calc": {
+      "q": "Ten of forty completed cases required at least one correction. What percentage of cases required rework?",
+      "answer": 25,
+      "explanation": "10 ÷ 40 × 100 = 25%. Count affected cases once; track multiple correction events separately."
+    }
+  },
+  {
+    "title": "Follow-ups and missing information",
+    "eyebrow": "WEEK 04 · DAY 3 OF 5",
+    "objective": "Investigate why work needs chasing and design a next action that removes the blocker.",
+    "scenario": "Harbor’s fictional coordinator sends a third “just checking in” message about H-57. The customer cannot find the upload link. The request asks for “the usual documents,” and the shared queue says only “waiting.” Nobody has checked whether the link works for someone outside the company. The owner asks for daily automated reminders.",
+    "explain": "A follow-up is an action taken to move an earlier request toward an outcome. It can be useful when the request is clear, the recipient can act, and the timing is appropriate. Repeated chasing is also a symptom worth investigating. The missing item may not have been requested clearly, the recipient may lack access, an internal approval may be pending, or nobody may own the next step. More messages do not remove these blockers by themselves.<br><br>Define the required input in terms the recipient understands: what is needed, why it is needed, where to provide it and when it is needed. State acceptable alternatives or a contact for uncertainty. Check whether the recipient can actually use the route, using approved testing and fictional material. Avoid sending sensitive information through an improvised channel simply to get the case moving. Input completeness means the necessary information is present and usable, not merely that a form was submitted.<br><br>A dependency is something that must happen before another step can proceed. Waiting status should name the dependency, the person responsible for obtaining it and the next review time. A case may wait on the customer, an internal reviewer or an external organization. Do not describe all three as “customer delay.” Evidence includes original requests, delivery or access problems, timestamps and the recipient’s account.<br><br>After fixing clarity and access, a bounded reminder can support a stable process. Define when it starts, when it stops, how replies change eligibility and when a person takes over. Recheck the case before each send. A reminder that continues after the information arrives creates new work and makes the organization look unaware of its own records.",
+    "worked": "For hypothetical H-57, replace “usual documents” with a specific approved list and a working upload route. The coordinator tests the external experience using a dummy file and authorized access. Status becomes “waiting for signed form; coordinator Nia owns follow-up; next review Thursday.” If a reply reports an access failure, pause standard reminders and investigate. Pilot one reminder after the approved waiting interval only when the required item remains absent and no exception is open. Compare missing-input rate, successful uploads, number of chases per case and total turnaround. An improvement in replies alone does not prove the right information arrived.",
+    "flow": [
+      "Name missing input",
+      "Check request and access",
+      "Assign dependency owner",
+      "Resolve blocker or remind",
+      "Recheck and stop when complete"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">“Usual documents”</th><td>List required items in plain language.</td></tr><tr><th scope=\"row\">“Waiting”</th><td>Name dependency, owner and review time.</td></tr><tr><th scope=\"row\">Third reminder</th><td>Check clarity and ability to act before sending again.</td></tr></tbody></table>",
+    "businessName": "Harbor Services",
+    "businessType": "fictional administration business",
+    "perspective": "The customer feels blamed for a task they cannot complete. The coordinator feels responsible for chasing but lacks a usable process. The manager needs fewer stalled cases and clearer reasons for waiting.",
+    "assessment": "Improve unclear requests and broken access first. Automate reminders only after eligibility and stop rules work, including a pause for access problems, replies, disputes and manual escalation.",
+    "pain": {
+      "quote": "“Nothing moves unless someone keeps chasing.”",
+      "symptom": "Many follow-ups, few complete inputs.",
+      "causes": "Vague instructions, broken links, unclear responsibility or a hidden internal dependency.",
+      "questions": "Show the original request and reply. Can the recipient act? What exactly is missing, and who owns getting it?",
+      "consequence": "Longer turnaround, repeated staff effort and poor customer experience; do not assume every unanswered message is refusal.",
+      "improve": "Clarify required inputs, test the approved route and record the dependency owner.",
+      "automation": "Send a bounded reminder with live completeness checks and an escalation route after repeated failure.",
+      "evidence": "Complete-input rate, successful submission, chases per case and time awaiting each dependency."
+    },
+    "exercise": "Rewrite H-57’s request in plain language without inventing real document requirements. Create an actionable waiting status. List three conditions that should stop automatic reminders, and one record you would inspect before deciding the customer caused the delay.",
+    "rubric": [
+      "Makes the requested input, route and help option understandable.",
+      "Names dependency, owner and review time.",
+      "Defines stop conditions and tests causes without blame."
+    ],
+    "sample": "Practice request: “Please upload the signed practice form through the approved link by Thursday. If the link does not open or you are unsure which form is needed, reply so Nia can help.” The exact documents and timing require process-owner approval. Status: missing signed form; owner Nia; next review Thursday. Stop reminders when the form arrives, an access problem is reported or the case is paused by the owner. Inspect the original request and link-access evidence before attributing the wait to the customer. Measure completeness and turnaround, not just the number of messages sent.",
+    "quiz": [
+      {
+        "q": "What is the best first action after an access-error reply?",
+        "options": [
+          "Send the same reminder more frequently",
+          "Pause reminders and investigate the blocked route",
+          "Mark the customer uncooperative"
+        ],
+        "answer": 1,
+        "why": [
+          "Repeated messages do not repair the recipient’s ability to act.",
+          "Correct. Resolve the stated blocker and retain a responsible owner.",
+          "The reply provides evidence of a process problem, not refusal."
+        ]
+      },
+      {
+        "q": "Which waiting status is actionable?",
+        "options": [
+          "Waiting",
+          "Client issue",
+          "Signed form missing; Nia owns follow-up; review Thursday"
+        ],
+        "answer": 2,
+        "why": [
+          "It gives no dependency, owner or next review time.",
+          "It assigns blame without describing what must happen.",
+          "Correct. It identifies what is missing, who acts and when the case is reviewed."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Will daily reminders solve a vague document request with a broken upload link?",
+    "decisionWhy": "Improve first. Make the request specific, verify the approved route and assign ownership. More frequent messages amplify a blocker the recipient cannot remove.",
+    "insight": "Before automating a chase, check whether the person can complete the request.",
+    "hooks": [
+      "A reminder cannot fix a broken link.",
+      "“Waiting on the client” may hide an internal problem.",
+      "Three follow-ups are evidence to investigate, not proof to blame."
+    ],
+    "linkedin": [
+      "Introduce fictional H-57 and the unusable request.",
+      "Show a clear request and actionable waiting status.",
+      "Give eligibility and stop rules for a later reminder pilot."
+    ],
+    "facebook": [
+      "Describe receiving “just checking in” without knowing what to do.",
+      "Offer the what, where and help questions for clear requests.",
+      "Ask what makes a task difficult to complete."
+    ],
+    "conversation": "What would you check before deciding an unanswered request needs another reminder?",
+    "claims": "All examples are fictional. Verify actual requested items, approved channels and communication preferences before publishing workflow guidance as organization-specific advice.",
+    "recap": "Repeated chasing can signal unclear instructions, blocked access or hidden dependencies. Fix the blocker and define reminder stop rules.",
+    "reflection": "Which waiting label could you replace with an owned next action?",
+    "deeper": "Map two fictional waits: one external input and one internal approval. Compare evidence and escalation routes rather than combining them into one “client delay” measure.",
+    "sequence": [
+      "Identify the exact missing input",
+      "Inspect the original request and access route",
+      "Resolve clarity or access problems",
+      "Assign the next action and review time",
+      "Recheck eligibility before any reminder"
+    ],
+    "sequenceIntro": "Order the investigation before the next chase.",
+    "sequenceExplanation": "Identify the dependency, inspect the recipient’s experience, fix blockers, assign follow-up, and only then send an eligible reminder."
+  },
+  {
+    "title": "Symptoms versus causes",
+    "eyebrow": "WEEK 04 · DAY 4 OF 5",
+    "objective": "Develop competing explanations, test them with evidence, and distinguish a plausible story from a demonstrated cause.",
+    "scenario": "Harbor’s fictional manager says delays happen because “staff do not care.” A coordinator says the intake checklist is unclear. Another says the upload link fails on phones. Eight of twelve late cases lack a required field, but some complete cases are also late. You are asked to recommend a solution after a ten-minute conversation.",
+    "explain": "A symptom is an observed sign of a problem, such as late completion, repeated calls or missing fields. A cause is a condition that helps explain why the symptom occurs. A root cause is a sufficiently fundamental, actionable explanation within the investigation’s scope; it is not necessarily one single ultimate cause. Several conditions can combine. Calling something “staff error” does not explain how the process made that error likely or why it was not caught.<br><br>A hypothesis is a proposed explanation that can be tested. Form more than one: unclear instructions, mobile access failure, an overloaded reviewer or incomplete training. State what each would predict in the records and what would weaken it. Comparing delayed and on-time cases can reveal patterns, but a pattern alone does not establish causation. Cases may differ in complexity, channel or timing. Check those differences before concluding that one factor explains the outcome.<br><br>The five-whys technique asks successive why questions to move beyond the first symptom. It is a conversation aid, not proof. Each link in the chain needs evidence, and stopping at the fifth question is not a scientific rule. Ask staff to describe actual cases, inspect source records with appropriate permission, and observe the step using fictional test data when possible. Seek counterexamples rather than only confirming your preferred explanation.<br><br>Keep facts, interpretations and unknowns separate in your recommendation. A small reversible pilot can test a plausible cause, provided success measures, comparable cases and unintended effects are defined. Report the result honestly, including uncertainty. An AI summary of staff complaints can organize themes, but it does not independently establish why delays occur or who is responsible.",
+    "worked": "Hypothetical evidence: eight of twelve late cases have missing fields. That supports investigating intake, but it does not show how many on-time cases also have missing fields. Request both groups and compare channel and complexity. Hypothesis A: instructions omit the field; inspect form versions and observe comprehension. Hypothesis B: mobile upload fails; test the approved route using dummy data on a phone. Hypothesis C: complete cases wait in review; compare complete-input timestamp to review start. A possible why-chain is “late → missing form → unusable link → external-access setting,” but every arrow needs verification. Recommend repairing a confirmed access defect, then measuring complete-input and turnaround outcomes before broader automation.",
+    "flow": [
+      "Record observed symptom",
+      "List competing hypotheses",
+      "Seek confirming and contrary evidence",
+      "Test a bounded change",
+      "Revise the explanation"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">Fact</th><td>Eight of twelve late cases lack a field in this fictional sample.</td></tr><tr><th scope=\"row\">Interpretation</th><td>Intake quality may contribute; not yet proven.</td></tr><tr><th scope=\"row\">Unknown</th><td>Missing-field rate among on-time cases and other delays.</td></tr></tbody></table>",
+    "businessName": "Harbor Services",
+    "businessType": "fictional administration business",
+    "perspective": "The manager wants a confident explanation, while staff need a fair investigation. The customer wants fewer delays regardless of which department is blamed. Honest uncertainty protects trust better than a quick accusation.",
+    "assessment": "Keep causal investigation human-led. Analytics can compare patterns and automation can collect timestamps, but neither replaces observation, alternative hypotheses or authorized judgment about a process change.",
+    "pain": {
+      "quote": "“The same mistakes keep happening; it must be the staff.”",
+      "symptom": "Late work and repeated missing fields.",
+      "causes": "Unclear inputs, access failure, workload, training gaps or multiple interacting causes.",
+      "questions": "Which cases contradict that explanation? What differs between late and on-time work? What evidence supports each why?",
+      "consequence": "Misdiagnosis wastes implementation effort, leaves delays in place and unfairly blames staff.",
+      "improve": "Test alternatives, repair confirmed blockers and document remaining uncertainty.",
+      "automation": "Collect reliable event data or flag incomplete inputs after definitions are agreed; do not automate blame.",
+      "evidence": "Comparable case patterns, observed failures, pilot outcomes and evidence that could disprove the explanation."
+    },
+    "exercise": "Write two competing hypotheses for Harbor’s delays. For each, name supporting evidence, contrary evidence and a test. Draft a short why-chain but label every unverified link. State what you can recommend now and what you cannot yet claim.",
+    "rubric": [
+      "Separates observed facts from interpretations and unknowns.",
+      "Tests at least two causes and seeks disconfirming evidence.",
+      "Limits recommendations and avoids treating a why-chain as proof."
+    ],
+    "sample": "Fact: eight of twelve late cases lack a field; complete late cases also exist. Hypothesis A: unclear intake instructions. Support would be repeated misunderstanding on the same version; contrary evidence would be clear successful completion using it under comparable conditions. Test the request with dummy cases and inspect version history. Hypothesis B: review batching. Support would be complete cases released together; contrary evidence would be immediate reviews despite delay elsewhere. Inspect stage timestamps. The access-setting why-chain remains a hypothesis until tested. Recommend structured evidence collection and repair of any directly verified defect; do not claim one cause explains every late case.",
+    "quiz": [
+      {
+        "q": "Does eight of twelve late cases missing a field prove missing fields cause all delay?",
+        "options": [
+          "Yes, the majority proves it",
+          "No; compare on-time cases and other conditions",
+          "Yes, if AI summarizes the records"
+        ],
+        "answer": 1,
+        "why": [
+          "The pattern does not establish the cause or explain complete cases that were late.",
+          "Correct. Comparison, timing and alternative explanations are needed to assess the hypothesis.",
+          "A generated summary cannot turn an association into causal proof."
+        ]
+      },
+      {
+        "q": "What makes a five-whys chain credible?",
+        "options": [
+          "Exactly five answers",
+          "The manager’s agreement alone",
+          "Evidence for each link and tests of alternatives"
+        ],
+        "answer": 2,
+        "why": [
+          "The number of questions is not a validation rule.",
+          "Authority can approve action but does not establish factual causation.",
+          "Correct. Each causal link should be checked, including evidence that could weaken it."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should an AI summary decide which employee caused the late cases?",
+    "decisionWhy": "Keep investigation and responsibility decisions human-led. A summary may organize permitted evidence, but people must verify facts, context, alternative causes and fair authority before drawing conclusions.",
+    "insight": "A plausible root-cause story becomes useful when you know how to test it.",
+    "hooks": [
+      "Five whys are five questions, not five proofs.",
+      "What would prove your diagnosis wrong?",
+      "Missing fields may be part of the delay, not the whole explanation."
+    ],
+    "linkedin": [
+      "Label the eight-of-twelve sample fictional.",
+      "Separate fact, hypothesis and missing comparison.",
+      "Offer two tests and explain how the recommendation could change."
+    ],
+    "facebook": [
+      "Describe how easy it is to blame a person for repeated delays.",
+      "Show a blocked-link and review-queue alternative.",
+      "Ask what evidence readers would inspect first."
+    ],
+    "conversation": "Which case would most challenge your current explanation for the problem?",
+    "claims": "Never present the fictional sample as research or a client result. Verify denominators, comparability and causal evidence before making real claims.",
+    "recap": "Symptoms invite hypotheses. Test alternatives, verify why-chain links and report uncertainty before selecting a solution.",
+    "reflection": "Which assumption in your own diagnosis have you treated as a fact?",
+    "deeper": "Build a two-column evidence log: observations and interpretations. Add one counterexample for each hypothesis and explain how it changes your confidence."
+  },
+  {
+    "title": "Visibility and responsibility",
+    "eyebrow": "WEEK 04 · DAY 5 OF 5",
+    "objective": "Design an actionable work queue and use it to choose a bounded improvement with an owner and measurable success.",
+    "scenario": "Harbor’s fictional shared board has colorful labels: open, urgent and pending. H-61 says pending but has no owner. H-62 is assigned to two people, each expecting the other to act. H-63 has an owner but an old status after the required form arrived. The manager wants a new dashboard. Staff say they already have too many places to update.",
+    "explain": "Visibility means being able to understand the current state of work well enough to act. A board is not useful merely because it displays all cases. An actionable record identifies the case, its state, the next action, who owns it, the relevant due or review time, and any blocker. Status definitions should describe observable conditions. “Awaiting signed form” is more useful than “pending” because it explains what must change.<br><br>Responsibility should distinguish the owner coordinating the case from people performing particular tasks. Several people can contribute, but the next step must not disappear between them. A team-owned queue can work when there is an explicit assignment or on-duty rule; it should not mean everyone assumes someone else is handling it. Escalation identifies who can decide when the owner lacks authority or a dependency remains unresolved.<br><br>Data freshness matters. Record when the status was last checked and define which events update it. If a form arrives but the record remains unchanged, a dashboard may confidently show the wrong priority. Avoid adding another manual copy of the same queue. Agree an authoritative work record, update rights and practical routines before building a new view. Aging measures how long a case has remained open or in a particular state; define which clock matters for the decision and whether business time is used.<br><br>Use visibility to prioritize action rather than blame or rank people by raw case counts. Complexity and waiting dependencies differ. A small pilot can test a standard owned queue for one request type. Define maintenance and a manual fallback, measure missed next actions and turnaround, and check whether the new routine creates more administration than it removes.",
+    "worked": "Practice board: H-61 → awaiting signed form; Nia owns follow-up; review Thursday; blocked by missing form. H-62 → ready for review; Omar owns next decision; due Friday; previous duplicate assignment resolved explicitly. H-63 → inputs received; Nia verifies readiness today and updates the record. The team lead owns stale or unassigned exceptions and reviews them each morning. Prioritize ownerless work and time-sensitive verified blockers, not whichever row is brightest. Pilot one intake queue for two weeks: require owner, next action and review time, then consider alerts for unassigned or stale records. Baseline the percentage of open cases missing those fields and count missed next actions. These are proposed measures, not achieved results.",
+    "flow": [
+      "Define meaningful states",
+      "Assign next-action owner",
+      "Record blocker and review time",
+      "Update from verified events",
+      "Review exceptions and outcomes"
+    ],
+    "visual": "<table><caption>Practice comparison — all examples hypothetical</caption><thead><tr><th scope=\"col\">Observe</th><th scope=\"col\">Investigate or decide</th></tr></thead><tbody><tr><th scope=\"row\">Ownerless pending case</th><td>Assign responsibility and define the dependency.</td></tr><tr><th scope=\"row\">Two assumed owners</th><td>Name the accepted next-action owner.</td></tr><tr><th scope=\"row\">Stale waiting status</th><td>Check received evidence and update the authoritative record.</td></tr></tbody></table>",
+    "businessName": "Harbor Services",
+    "businessType": "fictional administration business",
+    "perspective": "The manager needs to know where intervention helps. Employees want clear responsibilities and fewer status-chasing messages. Customers want the next action to happen even when a colleague is absent.",
+    "assessment": "Improve state definitions, ownership and update routines first. Once stable, automate a narrow stale-record alert with a named recipient, duplicate suppression, acknowledgment and escalation. An alert cannot create authority or accountability by itself.",
+    "pain": {
+      "quote": "“I cannot tell who is doing what until I ask everyone.”",
+      "symptom": "Ownerless cases, duplicate assignments and stale statuses.",
+      "causes": "Vague states, no assignment rule, parallel trackers or updates disconnected from events.",
+      "questions": "Which record is authoritative? Who accepts the next action? When was this status last verified? What happens during absence?",
+      "consequence": "Missed deadlines, duplicated effort and customer chasing; staff busyness does not establish throughput or value.",
+      "improve": "Agree state definitions, accepted ownership, absence cover and a daily exception review.",
+      "automation": "Flag genuinely unassigned or stale records after stable update rules; keep assignment disputes human-led.",
+      "evidence": "Missing-owner rate, stale-status rate, missed actions, turnaround and additional admin time."
+    },
+    "exercise": "Create an actionable queue for H-61 to H-63 with status, owner, next action, review time and blocker. Diagnose three operational problems without assuming their causes. Prioritize one change, then specify a pilot, baseline, success measure and maintenance owner.",
+    "rubric": [
+      "Makes every case actionable and resolves ambiguous ownership.",
+      "Distinguishes symptoms, possible causes and required evidence.",
+      "Proposes a bounded pilot with baseline, quality check and maintenance."
+    ],
+    "sample": "H-61: awaiting signed form, Nia requests through the approved route, review Thursday. H-62: ready for review, Omar accepts the decision, due Friday; lead resolves the prior double assignment. H-63: inputs received, Nia checks readiness today; verify why the status stayed stale. Symptoms are missing ownership, ambiguous assignment and stale state; possible causes include unclear rules and parallel records. First agree the authoritative queue and assignment routine. Pilot one request type for two weeks. Baseline open cases lacking owner/next action/review time. Target fewer missing fields and missed actions without extra duplicate updates or worse turnaround. Team lead reviews failures and maintains the rules. No improvement is claimed before measurement.",
+    "quiz": [
+      {
+        "q": "Which record supports action best?",
+        "options": [
+          "Pending; urgent",
+          "Awaiting form; Nia owns request; review Thursday",
+          "Open; two people mentioned"
+        ],
+        "answer": 1,
+        "why": [
+          "It lacks a dependency, accountable owner and review time.",
+          "Correct. It tells the team what must happen, who acts and when it is checked.",
+          "Mentioning people does not show who accepted the next step."
+        ]
+      },
+      {
+        "q": "Why might a new dashboard fail to improve the process?",
+        "options": [
+          "It displays stale records without fixing update ownership",
+          "It uses readable labels",
+          "It shows a named owner and next action"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. A display can amplify inaccurate status without changing the underlying routine.",
+          "Readable labels help understanding, though they are not sufficient alone.",
+          "Accepted ownership and next actions help work move when records are reliable."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should Harbor add another dashboard while ownership and status updates are undefined?",
+    "decisionWhy": "Improve first: establish the authoritative queue, meaningful states and accepted owners. Then test whether an exception alert or view reduces missed work without creating another update burden.",
+    "insight": "A visible queue becomes useful when every row tells someone what to do next.",
+    "hooks": [
+      "“Pending” is a label, not a next action.",
+      "A dashboard cannot assign responsibility by itself.",
+      "Before adding a tracker, agree which record everyone trusts."
+    ],
+    "linkedin": [
+      "Show the fictional three-case board before and after clarification.",
+      "Explain owner, next action, review time and freshness.",
+      "Describe a small pilot with proposed measures rather than invented results."
+    ],
+    "facebook": [
+      "Describe a task everyone saw but nobody owned.",
+      "Share a five-field checklist for an actionable queue.",
+      "Ask what happens to a case when its owner is absent."
+    ],
+    "conversation": "If the case owner is away tomorrow, how does the next action still happen?",
+    "claims": "Label the board and pilot as practice. Verify actual ownership, baseline and post-change results before claiming fewer delays, saved hours or recovered revenue.",
+    "recap": "Visibility needs reliable states, accepted ownership and current evidence. Prioritize a small process improvement, then automate stable exception detection with a maintainer.",
+    "reflection": "Which field would make your own work queue more actionable today?",
+    "deeper": "Adapt the queue to fictional healthcare administration using case IDs without patient information. Identify which access, communication and retention policies need organizational review; a tool choice does not establish compliance."
+  }
+]);
+
+challenges[2] = "Cedar Studio receives 80 inquiries, qualifies 50, completes 20 calls and agrees eight sales. Twelve response timestamps are missing. Project C-14 lacks approved text but has a promised Friday launch. Support sees six broken-link requests. Invoice C-88 is 1,200, with 500 received and 200 disputed. Map inquiry → onboarding → delivery → support → invoicing → payment. Diagnose three cross-team risks, state alternative causes and evidence, calculate both conversion rates and the undisputed reminder candidate, define a delivery-ready handoff, and propose one narrow pilot with ownership, exceptions and measures. Finish with three educational hooks labeled as a fictional example.";
+challenges[3] = "Harbor Services receives 15 complete requests/hour; intake handles 20, review 10 and dispatch 18. Forty completed cases include ten requiring correction. H-57 waits on an unclear request and unusable link. H-61 has no owner, H-62 has two assumed owners, and H-63 has a stale status. Build the current map, calculate four-hour review backlog growth and case rework rate, and separate symptoms from hypotheses. Test two competing causes with supporting and contrary evidence. Create an actionable three-case queue and prioritize one two-week pilot with baseline, success measures, quality checks and maintenance. Explain one task to keep human-led and write three credible content ideas.";
+Object.assign(glossary, {"Qualification": "Checking whether a prospective customer’s need fits agreed service criteria.", "Conversion rate": "The fraction of a defined starting group reaching a specified outcome, expressed as a percentage.", "Readiness checklist": "The inputs, approvals and conditions needed before a stage can start.", "Ticket": "A tracked customer request or issue, with an owner and recorded outcome.", "Reconciliation": "Comparing records and explaining differences, such as matching payments to invoices.", "Metric dictionary": "Agreed definitions, units, sources, windows and owners for measures.", "Effective capacity": "Work a step can actually complete in a period under stated operating conditions.", "Throughput": "The amount of completed work in a defined period.", "Rework": "Work repeated or corrected because an earlier result did not meet requirements.", "Hypothesis": "A proposed explanation that can be tested using evidence.", "Data freshness": "How current a recorded value is relative to the event or decision it describes.", "Dependency": "An input, decision or event required before another step can proceed."});
+
+// References support core concepts, not fictional case outcomes.
+const lessonReferences={"ops": {"title": "OpenStax — Production and Operations Management", "url": "https://openstax.org/books/introduction-business/pages/10-1-production-and-operations-management-an-overview", "note": "Inputs, outputs, service operations and coordination across functions."}, "finance": {"title": "OpenStax — Accounting: More than Numbers", "url": "https://openstax.org/books/introduction-business/pages/14-1-accounting-more-than-numbers", "note": "Accounting information and its role in business decisions; practice figures are hypothetical."}, "marketing": {"title": "OpenStax — The Marketing Concept", "url": "https://openstax.org/books/introduction-business/pages/11-1-the-marketing-concept", "note": "Customer needs, exchanges and the distinction between marketing and sales."}, "map": {"title": "ASQ — Flowcharts and Process Maps", "url": "https://asq.org/quality-resources/flowchart", "note": "Representing process steps and decision paths to investigate and improve work."}, "root": {"title": "ASQ — Root Cause Analysis", "url": "https://asq.org/quality-resources/root-cause-analysis", "note": "Investigating underlying causes as part of a broader improvement process."}, "why": {"title": "ASQ — Five Whys and Five Hows", "url": "https://asq.org/quality-resources/five-whys", "note": "Structured questioning to move beyond symptoms; classroom hypotheses still require evidence."}, "lean": {"title": "Lean Enterprise Institute — Standardized Work", "url": "https://www.lean.org/lexicon-terms/standardized-work/", "note": "Work sequence, capacity and a baseline for improvement. The source uses manufacturing examples; lessons adapt the ideas to services."}, "auto": {"title": "GSA — Eliminate, Optimize, Automate", "url": "https://www.gsa.gov/technology/government-it-initiatives/eliminate-optimize-automate", "note": "Simplify and improve a process before automating repetitive tasks; federal guidance adapted as general practice."}, "health": {"title": "HHS — Guidance on HIPAA and Cloud Computing", "url": "https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html", "note": "US healthcare context: cloud use involves organizational safeguards and applicable agreements, not automatic compliance from a product choice."}};
+const referenceMap=[["ops", "marketing"], ["finance"], ["finance"], ["ops", "map"], ["auto", "health"], ["map"], ["map", "auto"], ["map", "ops"], ["lean", "map"], ["map", "lean"], ["marketing", "ops"], ["ops", "map"], ["ops", "root"], ["finance", "auto"], ["finance", "ops"], ["lean", "map"], ["root", "auto"], ["map", "root"], ["root", "why"], ["map", "auto", "health"]];
+lessons.forEach((lesson,i)=>{lesson.sources=referenceMap[i].map(key=>lessonReferences[key]);});
+
+lessons[1].sources.push({title:'OpenStax — The Income Statement',url:'https://openstax.org/books/introduction-business/pages/14-5-the-income-statement',note:'Revenue, expenses and profit measured over a period.'});
+lessons[2].sources.push({title:'OpenStax — The Statement of Cash Flows',url:'https://openstax.org/books/introduction-business-2e/pages/14-6-the-statement-of-cash-flows',note:'Cash receipts and payments differ from the profit measure.'});
