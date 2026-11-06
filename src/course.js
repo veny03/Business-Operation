@@ -2593,3 +2593,1094 @@ const revisedSubtitles=["Follow interest to agreement", "Make work ready for del
 revisedSubtitles.forEach((text,i)=>{lessons[i+10].eyebrow=text;});
 lessons[28].sources.push({title:'OpenStax — Payback Period Method',url:'https://openstax.org/books/principles-finance-2e/pages/16-1-payback-period-method',note:'Recovery of initial cost through cash flows and limitations of simple payback. The course uses a stated simplified ROI convention and hypothetical figures.'});
 lessons[28].explain += '<br><br>These simple calculations ignore the time value of money and do not describe benefits after the chosen horizon. If recurring net benefit is zero or negative, there is no finite simple payback under those steady assumptions. More complex real decisions may need a fuller financial appraisal.';
+
+// Full final modules. All previous lesson content and indices are retained.
+lessons.push(...[
+  {
+    "title": "Ask better discovery questions",
+    "eyebrow": "Understand the work before proposing change",
+    "objective": "Conduct a focused discovery conversation using open, neutral questions about actual cases, consequences, evidence and decision ownership.",
+    "scenario": "Elm Services, a fictional administration firm, asks you to “build an AI follow-up bot.” The owner says staff spend all day chasing customers. The coordinator says requests arrive without the details needed to act. The delivery lead says approvals wait in a shared inbox. You know how to connect Gmail and n8n, but you have not yet established which wait the owner wants to reduce.",
+    "explain": "Client discovery is a structured effort to understand a business problem before recommending a solution. A request for a tool is useful context, but it is not a complete problem definition. Begin with the outcome the business needs: fewer ownerless requests, quicker approved delivery, clearer customer updates or something else. Ask why that outcome matters and what would make a change useful. Keep the language understandable to the people doing the work.<br><br>An open question invites explanation rather than a yes or no. A neutral question does not suggest the answer you want. “Walk me through the last delayed request” is more useful than “Would automated reminders solve this?” Ask for a concrete recent example, then follow the steps, decisions, handoffs and waits. Explore a successful case too; comparing them can reveal conditions that an interview about failures alone misses. Do not treat one person’s account as the whole process.<br><br>Separate observations, estimates and interpretations in your notes. “Staff report repeated chasing” is different from “staff spend twenty measured hours on avoidable follow-ups.” Explore consequences without demanding a financial number the client cannot support. Ask who experiences the problem, who owns the process, who can approve changes and who would maintain a workflow. Check what information you are permitted to inspect or record, and collect only what is needed.<br><br>Finish by reflecting your understanding back in plain language, naming uncertainties and agreeing the next evidence request. Discovery can lead to a process change, a small automation pilot or no recommendation yet. It is successful when it improves understanding and narrows the next decision, not merely when it produces a tool sale.",
+    "worked": "Replace “Do you need an AI bot?” with “Which requests need chasing, and what happened in the last one?” Follow with “What was missing?”, “Who owned the next step?”, “How did the customer experience the wait?” and “Which record could show when that happened?” Elm’s coordinator describes an unclear document request; delivery describes an approval queue. Record these as two possible problems, not one proven cause. Close with: “We have not yet measured where the largest delay occurs. May we review approved, appropriately limited case records and compare the intake and approval waits?” A real engagement needs authorized access; practice uses invented material.",
+    "flow": [
+      "Clarify desired outcome",
+      "Walk through actual cases",
+      "Explore owners and consequences",
+      "Request appropriate evidence",
+      "Confirm understanding and next step"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">“Would a bot help?”</th><td>Leading and solution-specific.</td></tr><tr><th scope=\"row\">“Show the last delayed request.”</th><td>Invites a concrete process account.</td></tr><tr><th scope=\"row\">“What would change your explanation?”</th><td>Tests assumptions and competing causes.</td></tr></tbody></table>",
+    "businessName": "Elm Services",
+    "businessType": "fictional service business",
+    "perspective": "The owner wants to be understood, staff want their actual constraints heard, and customers need the reason for delay addressed. Thoughtful questions show competence without pretending to know the answer before investigation.",
+    "assessment": "Discovery stays human-led. Tools can organize permitted notes or timestamps, but the consultant must check interpretations, listen for contradictions and avoid turning a requested bot into an assumed solution.",
+    "pain": {
+      "quote": "“I just need something that chases people automatically.”",
+      "symptom": "A proposed solution arrives before the problem is defined.",
+      "causes": "Missing inputs, inaccessible routes, approval queues, unclear owners or genuine missed follow-ups.",
+      "questions": "Walk through the last case. What was requested, who could act, where did it wait, and which outcome matters most?",
+      "consequence": "A poorly diagnosed bot may increase messages while the delay and staff effort remain.",
+      "improve": "Clarify goals, compare successful and delayed cases, and request targeted evidence.",
+      "automation": "Consider bounded follow-up only after the cause, eligibility and stop rules are understood.",
+      "evidence": "Observed wait reasons, current timing, unowned cases and a measurable desired outcome."
+    },
+    "exercise": "Write six discovery questions for Elm: one each about goal, actual work, ownership, evidence, exceptions and maintenance. Rewrite a leading tool question. Draft a two-sentence summary separating what you heard from what still needs verification.",
+    "rubric": [
+      "Uses neutral questions grounded in a recent case.",
+      "Covers outcome, owners, consequences, exceptions and evidence.",
+      "Separates reports and hypotheses from established facts."
+    ],
+    "sample": "Questions: What should a better outcome look like? Walk me through the last delayed request. Who accepted its next action? Which timestamps or messages could verify the wait? What makes a request unusual? Who would maintain a changed workflow? Replace “Would an AI bot reduce chasing?” with “What usually prevents the requested item from arriving?” Summary: staff describe unclear input requests and a separate approval wait. We need permitted case traces to determine their frequency and contribution before selecting a change. No savings or root cause is established yet.",
+    "quiz": [
+      {
+        "q": "Which opening best supports discovery?",
+        "options": [
+          "Which AI model do you want?",
+          "Walk me through the last request that got stuck.",
+          "Would you agree reminders are the solution?"
+        ],
+        "answer": 1,
+        "why": [
+          "A model question narrows the solution before establishing the problem.",
+          "Correct. A concrete case helps reveal actual work, owners and waits.",
+          "This invites agreement with an untested recommendation."
+        ]
+      },
+      {
+        "q": "The owner estimates “all day” spent chasing. How should you record it?",
+        "options": [
+          "As eight proven hours saved daily",
+          "As a report to clarify and measure",
+          "As evidence that customers are uncooperative"
+        ],
+        "answer": 1,
+        "why": [
+          "An informal description is not a measured removable workload.",
+          "Correct. Preserve what was said and ask for cases, timings and context.",
+          "The statement does not establish why the inputs are missing."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should an automatically generated interview summary decide which problem Elm should solve first?",
+    "decisionWhy": "Keep the discovery decision human-led. A summary may help organize approved notes, but someone must verify meaning, conflicting accounts, evidence and the business priority.",
+    "insight": "A client’s requested tool is the beginning of discovery, not the conclusion.",
+    "hooks": [
+      "Before building the bot, ask about the last stuck case.",
+      "“We spend all day chasing” needs a closer look.",
+      "A good discovery question can change the solution."
+    ],
+    "linkedin": [
+      "Introduce Elm as a fictional discovery example.",
+      "Show a leading question rewritten as a neutral case question.",
+      "Explain the evidence needed before recommending automation."
+    ],
+    "facebook": [
+      "Describe being offered software before anyone understands the delay.",
+      "Share three questions about what happened, who owned it and what was missing.",
+      "Invite a discussion of a repeated operational frustration."
+    ],
+    "conversation": "What is one question you wish a solution provider had asked before recommending a tool?",
+    "claims": "Quotes and cases are fictional. Verify real consent, access, timing and business claims before using any actual interview material in public content.",
+    "recap": "Discover the outcome, trace real work, hear different perspectives and identify evidence. Confirm uncertainties before choosing a tool.",
+    "reflection": "Which question would help you notice that your preferred solution is unsuitable?",
+    "deeper": "Role-play owner, coordinator and consultant. Write a contradictory account from each role and identify the evidence that could reconcile them.",
+    "sources": [
+      {
+        "title": "GOV.UK Service Manual — Using In-depth Interviews",
+        "url": "https://www.gov.uk/service-manual/user-research/using-in-depth-interviews",
+        "note": "Planning interviews and learning from people’s actual experience; adapted here to client discovery practice."
+      },
+      {
+        "title": "GOV.UK Service Manual — How the Discovery Phase Works",
+        "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works",
+        "note": "Understanding the problem, context and constraints before committing to a solution; not a prescribed consulting contract."
+      }
+    ]
+  },
+  {
+    "title": "Map and establish a baseline",
+    "eyebrow": "Combine the story with the records",
+    "objective": "Build a current-state map from case evidence and define a baseline that makes missing and still-open work visible.",
+    "scenario": "Elm supplies a fictional five-case packet. Acknowledgments go out immediately; meaningful assignment takes 5, 15, 25, 35 and 70 business minutes. Two cases have an owner missing at the first review. Staff selected these cases because they remembered them, not at random. One request returned for clarification, but the standard procedure does not show that branch.",
+    "explain": "A current-state map represents how work happens now, including waits, exceptions and repeated steps. An interview gives a perspective; a case trace and observation add evidence about events. Combine sources rather than choosing whichever account fits the first theory. Define a start and finish, identify the case, and follow what moved, who accepted it and which system recorded the event. Mark unknown steps instead of filling gaps with guesses.<br><br>A baseline uses consistent definitions to describe starting performance. For Elm, “time to meaningful assignment” needs a received event, an accepted owner event, a clock convention and eligible request types. A notification that someone was mentioned does not prove a person accepted responsibility. Record completeness, unassigned cases and open-case age alongside finished-case times. Agree who checks the source and resolves missing timestamps.<br><br>Sampling affects interpretation. Five memorable cases can be useful for finding a failure mode, but they do not establish the typical frequency across all incoming work. A representative baseline needs a defensible selection method and time window, with exclusions and missing data documented. Do not infer a company-wide rate from a small purposive sample or silently replace unknown values with zero. Separate what the packet shows from what it cannot answer.<br><br>Use the map to decide where the next observation or data request is useful. A return-for-clarification branch may suggest unclear inputs; a long wait after complete inputs may suggest a capacity or ownership issue. Compare those explanations before choosing the intervention. Keep the original current map when drafting a future map so a proposed improvement is not mistaken for an observed process.",
+    "worked": "Practice map: request received → acknowledgment → completeness check → complete? If no, coordinator requests a named input and keeps ownership; if yes, wait for duty-lead assignment → receiving owner accepts → delivery begins. Mark the 70-minute case’s queue and ask what else the duty lead was doing. The five times sum to 150, so mean assignment time is 30 business minutes and median is 25. Two of five lacked an owner at the first review, or 40% in this selected packet only. Request a defined period of all eligible cases before treating that fraction as Elm’s baseline. Record first-review timing because a later review would measure something different.",
+    "flow": [
+      "Agree boundary and clock",
+      "Trace selected case events",
+      "Map normal and return paths",
+      "Define measures and sampling",
+      "Check evidence and unknowns"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">5,15,25,35,70 minutes</th><td>Mean 30; median 25 in the five-case packet.</td></tr><tr><th scope=\"row\">2 of 5 owner fields missing</th><td>40% of selected cases, not a proven population rate.</td></tr><tr><th scope=\"row\">Missing clarification branch</th><td>Add observed rework to the current map.</td></tr></tbody></table>",
+    "businessName": "Elm Services",
+    "businessType": "fictional service business",
+    "perspective": "The manager needs a baseline they can defend, while staff need the map to reflect the work they actually do. Customers experience the return loops and waiting that an ideal procedure can hide.",
+    "assessment": "Automated event capture may help after definitions, authority and permitted access are clear. Improve the evidence first if records do not distinguish mention, assignment and acceptance. Do not automate invented timestamps.",
+    "pain": {
+      "quote": "“Our process looks simple on paper, but cases keep coming back.”",
+      "symptom": "The formal procedure omits queues and clarification loops.",
+      "causes": "Unclear inputs, unrecorded acceptance, missing timestamps or an unrepresentative case selection.",
+      "questions": "What happened in each case? Which event proves ownership? How were cases selected? What work remains open?",
+      "consequence": "Misleading baselines, misplaced improvements and hidden rework.",
+      "improve": "Map actual branches and agree event definitions and a sampling window.",
+      "automation": "Capture verified events and summarize measures with missing-data flags.",
+      "evidence": "Audited timestamps, a clear case population, open-case age and documented exception paths."
+    },
+    "exercise": "Draw Elm’s current map with the clarification branch and receiving acceptance. Define the assignment-time baseline, calculate the sample mean and explain why the two-of-five observation cannot establish a company-wide rate.",
+    "rubric": [
+      "Maps actual waits, owners, decisions and return paths.",
+      "Uses a defined start, finish, clock and eligible group.",
+      "Calculates 30 minutes and states sampling limitations."
+    ],
+    "sample": "Map received → completeness check → incomplete returns to coordinator for clarification; complete waits for duty lead → named owner accepts → delivery. Measure received to accepted ownership in documented business minutes for all standard requests in an agreed period, reporting open work separately. Packet mean is 150/5 = 30 minutes and median 25. The 40% missing-owner observation describes only five remembered cases; it may overrepresent problems. Validate timestamps and sample all eligible cases in a defined window. Keep unknown events marked unknown rather than assuming instant assignment.",
+    "quiz": [
+      {
+        "q": "Why is the remembered-case packet limited?",
+        "options": [
+          "It cannot reveal any useful problem",
+          "Selection may overrepresent unusual failures",
+          "Five cases always represent the whole business"
+        ],
+        "answer": 1,
+        "why": [
+          "Selected cases can reveal failure modes even when their frequency is uncertain.",
+          "Correct. The selection method limits population-level conclusions.",
+          "A small, nonrepresentative sample does not establish a typical rate."
+        ]
+      },
+      {
+        "q": "Which event best ends assignment time?",
+        "options": [
+          "Automatic acknowledgment sent",
+          "A name appears in an unrelated note",
+          "The receiving owner accepts the next action"
+        ],
+        "answer": 2,
+        "why": [
+          "Receipt confirmation does not establish responsibility for the work.",
+          "A mention may not mean accepted ownership under the process definition.",
+          "Correct. Use a defined accepted-ownership event and verify its source."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should Elm use the selected five-case fraction as a proven baseline for all requests?",
+    "decisionWhy": "Improve the measurement first. Use the packet to find hypotheses, then define the eligible population, time window, review point and missing-data treatment before a broader claim.",
+    "insight": "A process map describes the journey; a trustworthy baseline shows how you know.",
+    "hooks": [
+      "Your procedure may be missing the return journey.",
+      "Five memorable cases can reveal a problem without measuring its frequency.",
+      "When does an assignment become an accepted responsibility?"
+    ],
+    "linkedin": [
+      "Show the fictional current map and missing clarification branch.",
+      "Calculate the small packet’s mean with its limitation.",
+      "Share a defined baseline request instead of claiming typical performance."
+    ],
+    "facebook": [
+      "Describe a task coming back for the same missing item.",
+      "Explain mapping what happens rather than what should happen.",
+      "Ask which return loop is absent from the written procedure."
+    ],
+    "conversation": "Which part of the work would disappear if you mapped only the official procedure?",
+    "claims": "All cases and times are invented. Verify sampling, event definitions and clock conventions before publishing a real baseline or rate.",
+    "recap": "Combine interviews and events, map the actual path and define the baseline. Small selected packets reveal hypotheses, not automatic population rates.",
+    "reflection": "What would you need to see before trusting an assignment timestamp?",
+    "deeper": "Create one still-open fictional request and explain how to report its age without pretending it has a completed assignment duration.",
+    "sources": [
+      {
+        "title": "GOV.UK Service Manual — Using In-depth Interviews",
+        "url": "https://www.gov.uk/service-manual/user-research/using-in-depth-interviews",
+        "note": "Planning interviews and learning from people’s actual experience; adapted here to client discovery practice."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Establishing Measures",
+        "url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+        "note": "Outcome, process and balancing measures used to assess a change rather than technical activity alone."
+      }
+    ],
+    "calc": {
+      "q": "Five assignment times are 5, 15, 25, 35 and 70 business minutes. What is their mean in business minutes?",
+      "answer": 30,
+      "explanation": "(5 + 15 + 25 + 35 + 70) ÷ 5 = 30. This describes the selected packet, not a verified company-wide baseline."
+    },
+    "sequence": [
+      "Agree the process start, finish and clock",
+      "Trace case events and receiving owners",
+      "Map waits, decisions and clarification returns",
+      "Define the eligible population and missing-data treatment",
+      "Verify the baseline against source evidence"
+    ],
+    "sequenceIntro": "Order the evidence-led mapping and baseline steps.",
+    "sequenceExplanation": "Define what is being traced, map observed events and exceptions, then establish and verify the population and measurement. Do not turn the desired future process into the current map."
+  },
+  {
+    "title": "Stakeholders and scope",
+    "eyebrow": "Agree who decides and what changes",
+    "objective": "Identify decision makers, users and maintainers, and write a bounded scope with exclusions, dependencies and acceptance criteria.",
+    "scenario": "Elm’s owner approves a pilot notification. Sales expects automatic customer emails; the coordinator expects task assignment; finance expects invoice chasing. The integration maintainer has not been consulted. Each person imagines a different project, and nobody knows who can approve a change to the eligibility rule.",
+    "explain": "A stakeholder is someone who affects, uses, decides about or is affected by a change. The sponsor authorizes the business priority or resources. The process owner is responsible for the work and its improvement. Users perform the tasks; a maintainer keeps the solution operating. An approver has authority over a defined decision. One person can hold several roles, but naming the roles helps expose gaps. Include people who handle exceptions, receive the output and manage relevant data or access.<br><br>Scope states the work and outcomes included in the proposed change. Exclusions state what is deliberately outside it, such as customer messages or payment decisions. Boundaries should be concrete enough to test: one channel, request type, team or event. Dependencies are conditions another person or system must provide, including agreed fields, authorized access and reviewer availability. An assumption is a condition not yet verified; do not present it as a fulfilled dependency.<br><br>Acceptance criteria describe observable conditions for judging whether the delivered change meets the agreed scope. “Works well” is too vague. “A verified eligible event produces one correct draft task, while missing owners are held for review” is testable. Define who checks the evidence and accepts the result. Changes to scope need an agreed decision route that considers effort, risk and measures rather than quietly expanding the pilot.<br><br>Stakeholder agreement is practical alignment, not merely a list of names. Ask each role to explain the intended behavior and exceptions in their own words. Resolve disagreements before implementation and record ownership during absence and after handover. A tool permission or an email from a colleague is not automatically authority for every business action. Clarify the relevant decision rights with the organization.",
+    "worked": "Practice scope: one form channel, standard complete requests, internal draft assignment tasks for the coordination team for two weeks. Excluded: customer emails, invoice reminders, refund decisions and unusual requests. Dependencies: accepted readiness rules, approved access and a staffed exception queue. Sponsor: owner; process owner: coordination lead; users: coordinators; maintainer: integration lead with named cover. The coordination lead approves eligibility changes. Acceptance tests include normal, duplicate, missing-owner and timeout cases, with one intended action and visible unresolved cases. A request to add collections becomes a separate change decision; it is not included because another department expected it.",
+    "flow": [
+      "Identify affected roles",
+      "Agree outcome and boundaries",
+      "Name exclusions and dependencies",
+      "Define acceptance and authority",
+      "Control changes and handover"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">Sponsor</th><td>Authorizes business priority and resources.</td></tr><tr><th scope=\"row\">Process owner</th><td>Owns rules, outcomes and improvement.</td></tr><tr><th scope=\"row\">Maintainer</th><td>Owns monitoring, technical changes and recovery.</td></tr><tr><th scope=\"row\">Scope expansion</th><td>Needs an explicit decision and revised test/evidence plan.</td></tr></tbody></table>",
+    "businessName": "Elm Services",
+    "businessType": "fictional service business",
+    "perspective": "The sponsor needs a useful outcome, staff need predictable behavior, and the maintainer needs capacity and access before receiving responsibility. Clear scope prevents incompatible expectations from becoming an implementation dispute.",
+    "assessment": "Improve agreement before building. A bounded internal task pilot may be suitable once owners, access, exclusions and acceptance are confirmed. Do not let a convenient integration silently expand into customer or financial decisions.",
+    "pain": {
+      "quote": "“I thought the automation would do that too.”",
+      "symptom": "Different teams expect different behavior.",
+      "causes": "Unwritten scope, missing stakeholders, vague acceptance or unclear change authority.",
+      "questions": "What exactly starts and ends the pilot? Who uses and maintains it? What is excluded? Who can approve rule changes?",
+      "consequence": "Rework, unexpected costs, delayed delivery and actions nobody intended to authorize.",
+      "improve": "Agree a scope statement, role ownership, dependencies and change route.",
+      "automation": "Implement only the accepted task boundary after prerequisites and tests are approved.",
+      "evidence": "Shared understanding, accepted test outcomes, controlled scope changes and owned failures."
+    },
+    "exercise": "Write Elm’s scope in six sentences: outcome, included work, excluded work, dependencies, roles and acceptance. Name who decides whether invoice chasing is added and what would need reassessment.",
+    "rubric": [
+      "Uses concrete channel, case type, event and team boundaries.",
+      "Names affected users, decision authority and maintenance/cover.",
+      "Makes exclusions, dependencies and testable acceptance explicit."
+    ],
+    "sample": "Outcome: reduce ownerless standard requests. Include internal draft assignment tasks for complete form requests for one coordination team over two weeks. Exclude customer emails, collections and unusual cases. Dependencies are accepted readiness rules, approved access and available reviewers. Owner sponsors; coordination lead owns rules; coordinators review; integration lead maintains with cover. Accept only after normal and exception tests show one correct intended task and visible failures. The sponsor and process owner decide a collections expansion after finance ownership, verified balances, cost, privacy, exceptions and success measures are reassessed.",
+    "quiz": [
+      {
+        "q": "Who should own an eligibility-rule change?",
+        "options": [
+          "Whoever edits the workflow fastest",
+          "The agreed authorized process decision maker",
+          "The email recipient by default"
+        ],
+        "answer": 1,
+        "why": [
+          "Technical ability does not establish business authority.",
+          "Correct. Record decision rights so the maintainer implements an authorized rule.",
+          "Receiving a message does not automatically grant authority to change policy."
+        ]
+      },
+      {
+        "q": "Which acceptance criterion is strongest?",
+        "options": [
+          "The demo looks impressive",
+          "The system is AI-powered",
+          "Duplicate and missing-owner tests preserve one intended action and visible exceptions"
+        ],
+        "answer": 2,
+        "why": [
+          "Appearance does not verify the agreed behavior or failure paths.",
+          "A technology label is not evidence of meeting the business requirement.",
+          "Correct. It defines observable outcomes for relevant normal and exceptional cases."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should the maintainer add invoice chasing because finance expected it, despite the agreed pilot covering internal assignments?",
+    "decisionWhy": "Improve scope agreement first. Treat collections as a change request needing finance authority, data checks, consequences, effort and revised measures before deciding whether to include it.",
+    "insight": "A clear scope protects both the client’s expectations and the people who must operate the change.",
+    "hooks": [
+      "“I thought it included that” is a scope warning.",
+      "The maintainer belongs in the conversation before handover.",
+      "Who can change the rule after launch?"
+    ],
+    "linkedin": [
+      "Show the fictional disagreement across sales, coordination and finance.",
+      "Give the six-sentence scope outline.",
+      "Explain acceptance, exclusions and change ownership in plain language."
+    ],
+    "facebook": [
+      "Describe several people imagining different versions of the same project.",
+      "Offer a simple included/excluded example.",
+      "Ask what needs to be agreed before a tool is connected."
+    ],
+    "conversation": "Who will be responsible for this workflow a month after the person who built it leaves?",
+    "claims": "Roles and scope are hypothetical. Verify actual authority, contracts, access and acceptance before representing a real engagement as agreed.",
+    "recap": "Name stakeholders and decision rights. Agree included work, exclusions, dependencies and observable acceptance before implementation or expansion.",
+    "reflection": "Which stakeholder could reveal a dependency you have overlooked?",
+    "deeper": "Role-play a request to add a second channel. Write how scope, tests, maintenance load and baseline would change.",
+    "sources": [
+      {
+        "title": "GOV.UK Service Manual — How the Discovery Phase Works",
+        "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works",
+        "note": "Understanding the problem, context and constraints before committing to a solution; not a prescribed consulting contract."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Aims, evidence of improvement and small tests of change; the course’s cases, pilot scope and targets are invented."
+      }
+    ]
+  },
+  {
+    "title": "Design a small pilot",
+    "eyebrow": "Test one change and learn safely",
+    "objective": "Write a pilot brief with eligibility, review, failure recovery, baseline, measures, stop conditions and a decision date.",
+    "scenario": "Elm agrees that complete form requests should receive accepted ownership promptly. The team suggests testing one internal assignment notification for two weeks. The owner immediately asks to include email requests, customer messages and payment follow-ups too. You need to keep the test useful and explain what a successful pilot would actually demonstrate.",
+    "explain": "A pilot is a bounded test of a change under stated conditions. It should answer a specific question, such as whether one verified internal notification reduces unassigned standard requests without creating duplicate tasks. The scope must be small enough to observe and support, but meaningful enough to test the problem. A small scope does not make every action low consequence; consider the information and decisions involved.<br><br>Define entry and exit conditions. Entry conditions describe eligible cases and required inputs. Exit conditions describe completion, transfer or pause. Document the normal action, human review and exception route. Name the business owner while a case waits, the technical maintainer for failures and the backup person during absence. Confirm that users can continue manually and that resuming the system will not repeat actions completed during the pause.<br><br>Choose a baseline and outcome, process and balancing measures before launch. An outcome might be time to accepted ownership. A process measure might check whether eligible cases were reviewed. Balancing measures look for incorrect recipients, duplicate effects, added work or slower downstream delivery. State proposed success thresholds as targets to agree, not results already achieved. A stop condition can override an attractive average when a harmful action occurs.<br><br>Set a review date and name who decides whether to stop, adapt, continue or expand. Test normal and unusual cases with fictional data first, then follow the organization’s authorization process for any real use. Record changes during the pilot so the comparison remains interpretable. The result may be that the process needs another improvement before automation. A pilot produces evidence for the next decision; it is not a miniature promise to automate the whole business.",
+    "worked": "Practice brief: one complete standard form-request type, one team, two weeks. Trigger is a verified ready transition; action is an internal draft assignment task tied to the case/event ID. Coordinator checks the owner and accepts the next action. Missing owner or conflicting records remain in the owned manual queue. Compare received-to-accepted-ownership time and unassigned count with a comparable baseline. Track duplicate tasks, wrong recipients and review effort. Proposed stop rule: any wrong-recipient task pauses the pilot. Technical maintainer investigates; coordinator continues cases manually and reconciles completed actions before restart. Process owner reviews the evidence at the agreed end date. Expansion requires a new decision, not an automatic response to successful runs.",
+    "flow": [
+      "Agree test question and eligibility",
+      "Establish baseline and measures",
+      "Test normal and exception paths",
+      "Run bounded scope with stop rules",
+      "Review evidence and choose next step"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">Test question</th><td>Does a verified internal task improve accepted ownership?</td></tr><tr><th scope=\"row\">Balancing measure</th><td>Duplicate tasks, wrong recipients and review effort.</td></tr><tr><th scope=\"row\">Stop rule</th><td>Pause after a wrong-recipient action under the proposed brief.</td></tr><tr><th scope=\"row\">Review decision</th><td>Stop, adapt, continue or expand with explicit authority.</td></tr></tbody></table>",
+    "businessName": "Elm Services",
+    "businessType": "fictional service business",
+    "perspective": "The owner wants confidence before investing further. Staff need a manageable test and a way to pause without abandoning cases. The customer benefits only if work moves correctly, not because more notifications are sent.",
+    "assessment": "A bounded verified notification can be a reasonable pilot after readiness, ownership and data rules are settled. Keep judgment, review and expansion decisions with accountable people. Do not include other functions without reassessing scope.",
+    "pain": {
+      "quote": "“Can we just launch it everywhere and see what happens?”",
+      "symptom": "A learning experiment becomes broad deployment before evidence.",
+      "causes": "Pressure for quick results, unclear risk, no review plan or confusion between test and rollout.",
+      "questions": "What question will the pilot answer? Which cases qualify? What stops it? Who continues work and decides the next scope?",
+      "consequence": "Wider error exposure, unclear attribution and an unmaintainable workload.",
+      "improve": "Use a testable brief, representative cases, manual fallback and a review date.",
+      "automation": "Trial one verified internal task action with reliable identity and visible exceptions.",
+      "evidence": "Accepted-ownership time, unassigned cases, wrong actions, duplicate effects and review load."
+    },
+    "exercise": "Write a one-page pilot brief for Elm. Include the question, boundary, trigger, inputs, owner, reviewer, exception path, baseline, three kinds of measure, a stop rule, fallback, maintainer and end-of-test decision.",
+    "rubric": [
+      "Defines a bounded test with eligibility and a measurable question.",
+      "Covers exceptions, real review, fallback and restart.",
+      "Includes baseline, quality checks and an authorized next decision."
+    ],
+    "sample": "Test whether internal draft assignments for complete standard form requests improve accepted ownership over two weeks. Use verified case/event IDs and authoritative readiness and owner fields. Coordinator reviews the destination and accepts the case; process lead owns missing-owner cases; integration lead maintains with cover. Baseline received-to-acceptance time and unassigned cases for comparable work. Measure that outcome, review completion and balancing indicators: duplicates, wrong recipients and review effort. Pause for any wrong-recipient action. Continue manually in the authoritative queue; reconcile prior actions before restart. At the review date the process owner decides stop, adapt, continue or expand. All thresholds are proposed practice rules.",
+    "quiz": [
+      {
+        "q": "What should happen before expanding a successful pilot?",
+        "options": [
+          "Automatically add all channels",
+          "Review outcome, quality, capacity and authorization for the new scope",
+          "Count only successful technical runs"
+        ],
+        "answer": 1,
+        "why": [
+          "Different channels can have different rules, data and consequences.",
+          "Correct. Expansion is a separate accountable decision based on more than a demo.",
+          "Run success alone does not establish business value or quality."
+        ]
+      },
+      {
+        "q": "Which is a testable pilot question?",
+        "options": [
+          "Can AI transform everything?",
+          "Can we remove people from operations?",
+          "Does one verified internal task reduce unassigned standard form requests without duplicates?"
+        ],
+        "answer": 2,
+        "why": [
+          "This is too broad to define evidence or a manageable boundary.",
+          "This starts with a staffing conclusion rather than an operational outcome.",
+          "Correct. It names the change, case type, desired outcome and a quality constraint."
+        ]
+      }
+    ],
+    "decision": "automate",
+    "decisionPrompt": "After readiness and data rules are settled, one verified internal assignment action has review, duplicate prevention, a manual path and a maintainer. Is a bounded pilot reasonable?",
+    "decisionWhy": "Automate the agreed narrow action as a test, with baseline and stop rules. Keep case ownership visible and require evidence and authorization before any wider scope.",
+    "insight": "A good pilot answers one business question and makes its limits visible.",
+    "hooks": [
+      "A pilot needs a stop rule as much as a success target.",
+      "One working channel is evidence about one working channel.",
+      "What decision will you make at the end of the test?"
+    ],
+    "linkedin": [
+      "Use Elm’s fictional pilot brief.",
+      "Show outcome, process and balancing measures with proposed stop rules.",
+      "Explain what the pilot can and cannot demonstrate."
+    ],
+    "facebook": [
+      "Describe trying a small change before applying it everywhere.",
+      "Share question, owner, measure and stop rule as four useful starting points.",
+      "Ask which one process is suitable for a bounded test."
+    ],
+    "conversation": "What would make a small pilot useful enough to change your next decision?",
+    "claims": "All pilot boundaries and thresholds are fictional proposals. Verify actual prerequisites, authority and evidence before claiming a rollout is ready.",
+    "recap": "Pilot one defined change with baseline, exceptions and maintenance. Use balanced evidence to decide the next scope rather than expanding by default.",
+    "reflection": "Which unexpected result would make you adapt the pilot rather than abandon the business goal?",
+    "deeper": "Test an event repeated after manual fallback. Explain how the owner can prove the work already happened before the integration restarts.",
+    "sources": [
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Aims, evidence of improvement and small tests of change; the course’s cases, pilot scope and targets are invented."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Establishing Measures",
+        "url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+        "note": "Outcome, process and balancing measures used to assess a change rather than technical activity alone."
+      }
+    ],
+    "sequence": [
+      "Agree the question, scope and authorized owners",
+      "Define baseline, measures and stop rules",
+      "Test normal, duplicate and failed cases",
+      "Run the bounded pilot with manual fallback",
+      "Review evidence and authorize the next decision"
+    ],
+    "sequenceIntro": "Arrange the pilot lifecycle from agreement to learning.",
+    "sequenceExplanation": "Agree the purpose, establish measures and controls, test the design, run the bounded scope, then review evidence before the next decision."
+  },
+  {
+    "title": "Present the recommendation",
+    "eyebrow": "Explain the business decision clearly",
+    "objective": "Present a concise recommendation with evidence, alternatives, uncertainty, scope, value assumptions and a concrete next decision.",
+    "scenario": "Elm’s owner expects a proposal titled “AI transformation.” Your investigation instead suggests clearer intake requirements and a narrow internal assignment pilot. You have a selected five-case packet but not a representative baseline. You want to explain why the smaller recommendation is useful without sounding vague or claiming results that have not occurred.",
+    "explain": "A recommendation connects a business outcome to an evidence-supported next action. Lead with the problem and its consequence in plain language, then explain what you observed, what remains uncertain and why the proposed response fits. A reader should understand the decision without knowing an automation platform. Technical details belong where they explain a dependency, control, cost or tradeoff.<br><br>Separate current facts from hypotheses and forecasts. A selected case packet can show a failure mode but may not establish frequency. An estimate can show how a benefit would be calculated without proving it will happen. State assumptions visibly and identify the most important evidence to collect. Do not use confident formatting to hide an uncertain diagnosis. “We propose testing whether…” is more honest than describing an unrun pilot as a proven improvement.<br><br>Offer proportionate alternatives. One option might be process clarification only; another might add a narrow rule-based action after readiness is stable; a broader option may be deferred because data, authority or support capacity is missing. Explain tradeoffs rather than presenting automation as inevitable. Include scope, exclusions, dependencies, ownership, maintenance and the conditions for acceptance or a pause. A useful proposal also says what decision is needed next and who can make it.<br><br>Value estimates should use transparent periods, formulas and realistic residual work. Keep released capacity separate from cash savings and avoid double counting the same benefit. If data is insufficient, recommend measurement rather than inventing a number. End with a concrete, bounded decision such as approving a baseline exercise or reviewing a pilot brief. An informed decision to improve the process first is a legitimate consulting outcome.",
+    "worked": "Practice recommendation: “Elm wants fewer ownerless standard requests. Selected cases show unclear inputs and delayed accepted ownership, but their frequency is not established. First agree readiness and receiving ownership, then measure a defined period of eligible requests. Option A is a clearer checklist and daily owner review. Option B adds an internal task pilot for one stable form-request type after those changes. Defer customer and finance messages. The coordinator owns cases; integration lead maintains failures. Use assignment time, unassigned cases, wrong actions and review effort. Decide now whether to approve the baseline and scope workshop; authorize the pilot only after prerequisites and tests are accepted.” No measured savings are claimed.",
+    "flow": [
+      "State outcome and problem",
+      "Show evidence and uncertainty",
+      "Compare proportionate options",
+      "Define bounded recommendation and ownership",
+      "Request a concrete next decision"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">Observation</th><td>Selected cases contain missing inputs and assignment waits.</td></tr><tr><th scope=\"row\">Hypothesis</th><td>Intake clarity and ownership may contribute.</td></tr><tr><th scope=\"row\">Proposal</th><td>Clarify first, measure, then test one internal action.</td></tr><tr><th scope=\"row\">Claim to avoid</th><td>“We have already saved hours” before implementation and measurement.</td></tr></tbody></table>",
+    "businessName": "Elm Services",
+    "businessType": "fictional service business",
+    "perspective": "The owner needs a decision they can understand and defend. Staff want their constraints reflected, and a future maintainer needs the proposal to allocate real responsibility rather than promise invisible support.",
+    "assessment": "Explain automation as one option tied to a stable task. Present a process-only alternative and keep uncertain or consequential decisions human-led. A proposal should be reviewable before any implementation commitment.",
+    "pain": {
+      "quote": "“I do not understand what we are buying or how we will know it helped.”",
+      "symptom": "A technical proposal lacks a clear operational outcome.",
+      "causes": "Tool-first language, vague scope, unsupported benefits or no success measures.",
+      "questions": "What decision does the client need to make? Which facts support it? What alternatives and assumptions matter?",
+      "consequence": "Poor expectations, wasted spending and difficulty judging delivery or value.",
+      "improve": "Lead with outcome, evidence, options, bounded scope and the next decision.",
+      "automation": "Propose one justified task with prerequisites, controls and an owned pilot.",
+      "evidence": "An agreed baseline, accepted scope, balanced measures and transparent post-pilot results."
+    },
+    "exercise": "Write a 180–250 word plain-language recommendation for Elm. Include two options, selected-case limitations, scope/exclusions, ownership, measures and a specific next decision. State why a financial benefit cannot yet be claimed.",
+    "rubric": [
+      "Connects the recommendation to the outcome and evidence.",
+      "Shows alternatives, limits and owned pilot requirements.",
+      "Labels forecasts honestly and asks for a concrete authorized next step."
+    ],
+    "sample": "Elm needs fewer requests waiting without accepted ownership. The selected packet shows missing inputs and assignment delays, but cannot establish typical frequency. Option A clarifies intake requirements, receiving ownership and daily exception review. Option B adds one internal task pilot after those rules are stable. I recommend A first, a defined baseline period and then B only if the evidence and tests support it. Exclude customer messages, unusual requests and collections. Coordinators own cases, the process lead owns rules and the integration lead maintains failures with cover. Compare received-to-accepted-ownership time and unassigned cases, checking duplicates, wrong recipients and review effort. Approve a baseline and scope workshop next; the authorized owner reviews a concrete pilot brief afterward. Savings cannot be claimed before representative effort, costs and actual outcomes are measured. This is a fictional practice recommendation.",
+    "quiz": [
+      {
+        "q": "What is the most credible financial statement now?",
+        "options": [
+          "The bot will recover lost revenue",
+          "All observed wait is removable paid effort",
+          "We need a representative effort baseline before estimating a defensible benefit"
+        ],
+        "answer": 2,
+        "why": [
+          "Neither recoverable loss nor an implemented outcome has been established.",
+          "Waiting time is not automatically active paid effort or removable cost.",
+          "Correct. Explain the evidence needed rather than inventing a persuasive number."
+        ]
+      },
+      {
+        "q": "Which ending helps a client act?",
+        "options": [
+          "Let us transform everything",
+          "Approve a defined baseline and scope review with named decision owners",
+          "Choose the newest AI model immediately"
+        ],
+        "answer": 1,
+        "why": [
+          "This leaves the next decision and boundary unclear.",
+          "Correct. A specific reviewable next step moves the work forward proportionately.",
+          "Model selection is premature if prerequisites and value remain uncertain."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should a proposal generator approve Elm’s scope and business-case assumptions without the process owner’s review?",
+    "decisionWhy": "Keep approval human-led. A draft can organize information, but accountable people must verify facts, authority, value assumptions, dependencies and the intended commitment.",
+    "insight": "A credible proposal helps a client make a sound decision, even when the first step is a better process.",
+    "hooks": [
+      "A smaller recommendation can show stronger judgment.",
+      "What should the client decide after reading your proposal?",
+      "The honest answer may be “measure this first.”"
+    ],
+    "linkedin": [
+      "Show Elm’s fictional problem, evidence and two options.",
+      "Explain the process-first recommendation and why benefits remain forecasts.",
+      "Offer a concise proposal outline ending in an authorized next decision."
+    ],
+    "facebook": [
+      "Describe wanting a simple explanation of what a project will change.",
+      "Translate one technical feature into an owned next action and outcome.",
+      "Ask what makes a proposal easier to assess."
+    ],
+    "conversation": "What would you need to understand before approving a small operational change?",
+    "claims": "Practice recommendations are not client engagements or results. Verify actual costs, authority, evidence and outcomes before publishing a case study or proposal claim.",
+    "recap": "Lead with outcome, evidence and uncertainty. Offer alternatives, clear ownership and a bounded decision; do not substitute confident language for measured value.",
+    "reflection": "Which sentence in your recommendation is an assumption rather than a verified observation?",
+    "deeper": "Read your proposal aloud to someone unfamiliar with automation. Rewrite any sentence that requires knowing a tool name to understand its business purpose.",
+    "sources": [
+      {
+        "title": "GOV.UK Service Manual — How the Discovery Phase Works",
+        "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works",
+        "note": "Understanding the problem, context and constraints before committing to a solution; not a prescribed consulting contract."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Aims, evidence of improvement and small tests of change; the course’s cases, pilot scope and targets are invented."
+      },
+      {
+        "title": "FTC — Advertising and Marketing",
+        "url": "https://www.ftc.gov/business-guidance/advertising-marketing",
+        "note": "US guidance on truthful, supported advertising claims; educational practice examples must not be presented as real client results."
+      }
+    ]
+  },
+  {
+    "title": "Services, agencies and shops",
+    "eyebrow": "Transfer the questions, adapt the process",
+    "objective": "Apply the same assessment framework across business types while respecting different promises, resources, approvals and constraints.",
+    "scenario": "Three fictional businesses ask for faster onboarding: a design agency waits for approved content, a repair shop waits for parts and a quote decision, and a consultancy waits for access and a named client sponsor. All use email and a shared table. You are tempted to sell the same intake automation to each because the tools look similar.",
+    "explain": "Transferable business reasoning begins with the outcome, customer and operating model. Businesses may share an inquiry-to-payment pattern while depending on different resources, decisions and promises. A design agency needs approved creative inputs, a repair shop may need physical stock and a feasible appointment, and a consultancy may need access and decision authority. Similar tools do not imply interchangeable processes.<br><br>Use the twelve assessment questions consistently: goal, current work, owners, friction, evidence, cause, stability, data, exceptions, pilot, measurement and maintenance. Adapt the answers to each business. Identify where a scarce resource or external dependency controls delivery. A reminder cannot create a missing part, settle disputed scope or grant access that a client has not authorized. It may support a clearly defined next action after those conditions are understood.<br><br>Define “ready” in each context and ask the receiving team to verify it. Distinguish promised dates from conditional estimates and accepted plans. Map the normal path and one important exception, then compare active work, waiting and quality. Use units appropriate to the decision: an agency project, repair job and consulting engagement may differ too much to compare raw average turnaround directly.<br><br>A reusable template is a starting checklist, not a universal finished solution. Keep field meanings, eligibility, permissions and exception ownership configurable and tested for the actual business. Compare process-only changes with bounded automation rather than assuming every adaptation needs new technology. A useful portfolio shows why your reasoning changes across contexts. It should explain what evidence you would request, what you would defer and how you would know whether the change helped.",
+    "worked": "Practice comparison: agency → ready when scope, text, assets and approver are accepted; improve the checklist before reminders. Repair shop → ready when diagnosis, approved quote, parts and capacity are confirmed; stock shortage needs supplier/capacity planning, not more customer messages. Consultancy → ready when agreed scope, authorized access and decision owner exist; access approval remains with the client’s authorized role. A stable internal ready-status notification may fit all three later, but it uses different eligibility rules and owners. Pilot one local definition at a time and compare appropriate measures, such as incomplete handoffs, quote-to-ready time or access waiting. No benefit is assumed from copying the workflow.",
+    "flow": [
+      "Understand business promise",
+      "Map local dependencies",
+      "Define accepted readiness",
+      "Choose proportionate change",
+      "Test and maintain local rules"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">Agency</th><td>Approved content and scope before delivery readiness.</td></tr><tr><th scope=\"row\">Repair shop</th><td>Parts, quote approval and capacity before booking commitment.</td></tr><tr><th scope=\"row\">Consultancy</th><td>Authorized access and sponsor before dependent work.</td></tr><tr><th scope=\"row\">Reusable workflow</th><td>Shared structure; local eligibility, authority and measures.</td></tr></tbody></table>",
+    "businessName": "Industry application",
+    "businessType": "fictional practice cases",
+    "perspective": "Each owner wants reliability, but the constraint feels different to staff and customers. A reusable solution becomes credible when it respects those differences rather than asking everyone to fit one template.",
+    "assessment": "Improve local readiness and dependencies first. Automate only the stable supporting task, with local field authority, exceptions and ownership. Do not treat a shared software stack as proof of shared eligibility.",
+    "pain": {
+      "quote": "“This template worked for another business; why are we still stuck?”",
+      "symptom": "A copied workflow does not remove the real dependency.",
+      "causes": "Different business promises, physical constraints, access rights or approval rules.",
+      "questions": "What does ready mean here? Which dependency controls delivery? Who can resolve it? What evidence supports the supposed similarity?",
+      "consequence": "More notifications, continued delay, rework and unrealistic customer promises.",
+      "improve": "Adapt readiness, ownership and dependency handling to the business model.",
+      "automation": "Notify an accepted local readiness event when rules and recipients are verified.",
+      "evidence": "Incomplete handoffs, dependency-specific waiting, wrong actions and total turnaround."
+    },
+    "exercise": "Compare the three businesses using the framework. For each, name its customer promise, one readiness condition, one exception, evidence to request and a suitable first change. Identify what can be reused and what must be redesigned.",
+    "rubric": [
+      "Explains operational differences beyond tool choices.",
+      "Uses evidence, local readiness and authorized owners.",
+      "Reuses a framework without assuming a universal workflow or benefit."
+    ],
+    "sample": "Agency promises an agreed design deliverable; request missing-input and approval traces, then clarify its content checklist. Repair shop promises a feasible repair; inspect parts and quote waits, then improve readiness and booking rules. Consultancy promises agreed advice or implementation; inspect access and sponsor handoffs, then clarify authorized access and decision ownership. Exceptions are scope change, unavailable part and refused access respectively, each with a named human route. Reuse the goal-to-evidence-to-pilot questions and perhaps a task-notification pattern. Redesign field meanings, eligibility, consequences and measures locally. These are fictional hypotheses to test, not three proven implementations.",
+    "quiz": [
+      {
+        "q": "What can most safely transfer between these businesses?",
+        "options": [
+          "Identical readiness rules",
+          "The questions used to investigate goal, flow and evidence",
+          "A guaranteed time-saving percentage"
+        ],
+        "answer": 1,
+        "why": [
+          "Readiness depends on different resources, approvals and promises.",
+          "Correct. A reasoning framework transfers while the process answers remain local.",
+          "Benefits depend on the actual workload, change and measured result."
+        ]
+      },
+      {
+        "q": "A repair job is waiting for a part. What does another customer reminder achieve by itself?",
+        "options": [
+          "Creates inventory",
+          "Guarantees faster repair",
+          "It does not remove the parts dependency"
+        ],
+        "answer": 2,
+        "why": [
+          "A message does not change physical stock availability.",
+          "The constraint remains unless the relevant supply or planning issue changes.",
+          "Correct. Investigate supplier, inventory and planning actions with the responsible owner."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Should you copy the same intake rules to all three businesses because they use the same tools?",
+    "decisionWhy": "Improve the fit first. Map local readiness, authority and dependencies. Shared tools can carry different business rules, so test each use case before reusing an implementation.",
+    "insight": "The questions transfer across industries; the answers and constraints do not stay identical.",
+    "hooks": [
+      "The same tools can hide very different businesses.",
+      "A template cannot make a missing part arrive.",
+      "Reuse the framework before reusing the workflow."
+    ],
+    "linkedin": [
+      "Compare the three fictional readiness definitions.",
+      "Show why reminders cannot solve every dependency.",
+      "Explain which framework questions transfer and which rules need local testing."
+    ],
+    "facebook": [
+      "Use agency content, repair parts and consulting access as familiar examples.",
+      "Explain the shared question: what must be true before work can start?",
+      "Invite a local dependency that software cannot create."
+    ],
+    "conversation": "What must be available or approved before your business can genuinely start the work?",
+    "claims": "All business cases are invented. Verify real readiness rules, workload, authority and outcomes before describing a template as proven for an industry.",
+    "recap": "Transfer the assessment framework, then adapt readiness, constraints, exceptions and measures. Similar software does not establish a similar process.",
+    "reflection": "Which business dependency would you investigate before proposing reminders?",
+    "deeper": "Create a fourth fictional business and apply all twelve questions. Identify one process-only improvement and one task to keep human-led.",
+    "sources": [
+      {
+        "title": "GOV.UK Service Manual — How the Discovery Phase Works",
+        "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works",
+        "note": "Understanding the problem, context and constraints before committing to a solution; not a prescribed consulting contract."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Aims, evidence of improvement and small tests of change; the course’s cases, pilot scope and targets are invented."
+      }
+    ]
+  },
+  {
+    "title": "Healthcare administration",
+    "eyebrow": "Keep administrative flow and clinical authority clear",
+    "objective": "Map a fictional administrative referral handoff, distinguish operational coordination from clinical decisions, and identify data-governance questions before real automation.",
+    "scenario": "Meadow Clinic is fictional. Its practice queue contains only invented referral IDs R-101 and R-102. Staff cannot see whether administrative completeness was checked or whether the receiving service accepted the handoff. One case has an unknown status. The clinic manager wants automatic patient updates, while staff warn that some requests require authorized clinical review.",
+    "explain": "Healthcare administration coordinates work such as scheduling, referral receipt, document completeness and service handoffs. These processes connect people and records around care, but operational coordination must not be confused with clinical decision authority. An administrative completeness check asks whether agreed required information is present and usable. It does not decide clinical urgency, diagnosis or whether a particular service is appropriate. Route those decisions to the organization’s authorized professionals.<br><br>Define the administrative start, finish and receiving acceptance. A message sent to another service does not establish that someone accepted responsibility for the next step. An unknown status requires verification, not a confident patient message. Track case owner, next action, review time and the reason for waiting. Cover staff absence and clarify how the receiving team accepts or returns incomplete work.<br><br>Information governance is part of the process design. In a real organization, identify the information involved, authorized users, purpose, communication channels, access controls, retention, logs and incident responsibilities. US HIPAA obligations depend on the organization, data, relationships and activities; other countries have different requirements. Appropriate agreements and risk review may be needed. Self-hosting, encryption, an automation tool or a vendor’s marketing statement does not by itself establish that a workflow meets all applicable obligations.<br><br>Use only invented records in this learning site and portfolio. Do not copy real patient data here to make an exercise realistic. For a possible real pilot, start with the organization’s authorized operational, clinical, privacy and security stakeholders. Limit the test to an approved administrative action, verify destinations and keep uncertain or clinical matters on an owned human route. Measure correct coordination and unresolved waits, not just the number of messages sent.",
+    "worked": "Practice map: referral received → administrative completeness checked → authorized review required? → receiving service accepts or returns with a specific reason → coordinator records the next owned step. R-101 lacks a required fictional practice document; coordinator Jo requests it through the agreed route and keeps ownership. R-102 has a sent message but no receiving acceptance; Jo verifies receipt before describing it as accepted. Any clinical concern follows the clinic’s authorized human procedure, not an improvised automation rule. A first prototype can use dummy IDs to test internal status-task routing without patient messages. Proposed measures include unaccepted handoff age, missing-owner cases and incorrect status actions.",
+    "flow": [
+      "Receive fictional referral ID",
+      "Check administrative completeness",
+      "Route authorized review",
+      "Verify receiving acceptance",
+      "Record owned next action"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">Administrative completeness</th><td>Presence and usability of agreed inputs.</td></tr><tr><th scope=\"row\">Clinical decision</th><td>Authorized professional judgment, outside this prototype.</td></tr><tr><th scope=\"row\">Sent but unaccepted</th><td>Verify receiving responsibility before changing status.</td></tr><tr><th scope=\"row\">Real patient data</th><td>Do not enter it in this learning or portfolio site.</td></tr></tbody></table>",
+    "businessName": "Industry application",
+    "businessType": "fictional practice cases",
+    "perspective": "The coordinator needs continuity, the receiving team needs usable information, and the person seeking care needs accurate communication. A fast incorrect status update can increase confusion rather than improve access.",
+    "assessment": "Improve handoff definitions and authorized governance first. A dummy-data internal task prototype may be reasonable later; clinical decisions and unverified patient updates remain outside its scope. Do not claim a product or hosting arrangement is automatically compliant.",
+    "pain": {
+      "quote": "“We sent the referral, but nobody can tell what happened next.”",
+      "symptom": "The administrative handoff has no verified receiving acceptance.",
+      "causes": "Unclear acceptance, missing inputs, fragmented records, absent cover or inappropriate status assumptions.",
+      "questions": "Who owns it while waiting? What proves acceptance? Which decisions are clinical? What data and communication policies apply?",
+      "consequence": "Repeated calls, delayed coordination, staff effort and incorrect expectations; do not infer clinical harm without evidence.",
+      "improve": "Define accepted handoffs, owned exceptions, review times and authorized data handling.",
+      "automation": "Prototype internal task routing using invented IDs after operational rules are agreed.",
+      "evidence": "Verified acceptance, unowned cases, unresolved wait age and incorrect routing or messages."
+    },
+    "exercise": "Map R-101 and R-102 without patient information. Name the administrative owner and clinical escalation boundary. List five governance questions for an authorized real-world review, and design one dummy-data internal prototype.",
+    "rubric": [
+      "Separates administrative coordination from clinical authority.",
+      "Keeps incomplete and unaccepted work owned and visible.",
+      "Uses invented data and identifies access, communication, agreements and maintenance questions."
+    ],
+    "sample": "R-101 remains with Jo pending the named practice document and a review time. R-102 remains unaccepted until the receiving service verifies responsibility. Administrative checks do not determine clinical urgency; authorized clinic staff handle that under their procedure. Governance questions: who may access which data, which channels are approved, what agreements and risk review apply, how logs/retention are handled, and who responds to incidents and changes? Prototype one internal task from a verified dummy readiness event, with no patient message and no clinical decision. Measure correct owner routing and duplicate-free handling before considering a real, separately authorized workflow.",
+    "quiz": [
+      {
+        "q": "A referral message was sent. What can you infer?",
+        "options": [
+          "The receiving team accepted responsibility",
+          "The message was sent; acceptance still needs verification",
+          "The case needs no human owner"
+        ],
+        "answer": 1,
+        "why": [
+          "Transmission alone does not establish accepted responsibility or the next action.",
+          "Correct. Check the agreed receiving acceptance evidence before advancing status.",
+          "Waiting or uncertain cases still need an accountable administrative owner."
+        ]
+      },
+      {
+        "q": "What establishes that a real healthcare workflow meets applicable obligations?",
+        "options": [
+          "Self-hosting alone",
+          "An encryption feature alone",
+          "An authorized review of the actual data, roles, safeguards, agreements and use"
+        ],
+        "answer": 2,
+        "why": [
+          "Hosting location does not settle all organizational and legal requirements.",
+          "Encryption is one safeguard, not a complete assessment of the workflow.",
+          "Correct. The real arrangement and applicable requirements must be evaluated together."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should an administrative automation independently decide clinical urgency or appropriate care routing?",
+    "decisionWhy": "Keep clinical decisions with the organization’s authorized professionals. This course’s prototype coordinates invented administrative cases and does not supply clinical triage rules.",
+    "insight": "A sent referral and an accepted handoff are different operational events.",
+    "hooks": [
+      "Who owns the referral while everyone is waiting?",
+      "An unknown status should not become a confident update.",
+      "Healthcare automation starts with workflow and authority, not a compliance slogan."
+    ],
+    "linkedin": [
+      "Label Meadow fictional and use only invented IDs.",
+      "Explain sent versus accepted and administrative versus clinical decisions.",
+      "List governance questions rather than promising a compliant tool."
+    ],
+    "facebook": [
+      "Describe the frustration of having to chase an unclear handoff.",
+      "Explain why someone must own the next administrative step.",
+      "Invite process questions without requesting patient details."
+    ],
+    "conversation": "Which administrative handoff needs clearer ownership, without sharing any patient information?",
+    "claims": "Use fictional information only. Verify current jurisdiction-specific requirements with authorized specialists before real use. Never claim HIPAA compliance, clinical safety or improved care from this exercise.",
+    "recap": "Map administrative coordination and verified acceptance. Keep clinical decisions authorized and assess real data governance before any production workflow.",
+    "reflection": "Where could an administrative status be mistaken for a clinical decision?",
+    "deeper": "Prepare a dummy-data demonstration with invented IDs only. Explain the controls and approvals that would still be needed before any real patient-related deployment.",
+    "sources": [
+      {
+        "title": "HHS — Guidance on HIPAA and Cloud Computing",
+        "url": "https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html",
+        "note": "US healthcare context: organizational safeguards and applicable agreements need review; a product or hosting choice is not automatic compliance."
+      },
+      {
+        "title": "HHS — Summary of the HIPAA Privacy Rule",
+        "url": "https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html",
+        "note": "US privacy context for regulated organizations. Practice uses invented records only and does not authorize real patient-data processing."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Aims, evidence of improvement and small tests of change; the course’s cases, pilot scope and targets are invented."
+      }
+    ]
+  },
+  {
+    "title": "Medical billing operations",
+    "eyebrow": "Investigate reasons before chasing balances",
+    "objective": "Distinguish submission, processing, adjustments and payment, then prioritize fictional billing work using verified status, actionability, deadlines and human review.",
+    "scenario": "Meadow Billing Office is fictional. MB-101 is 62 days old with a 900-unit balance and an unverified deadline. MB-102 is 20 days old with a 250-unit balance and a confirmed internal review due in two practice working days. MB-103 is 95 days old with a 1,200-unit balance but a possible unmatched payment. MB-104 is 40 days old with 400 units and missing documentation. The owner wants to chase the largest and oldest items automatically.",
+    "explain": "Medical billing operations connect recorded services, claim preparation, submission, payer responses, payment posting and follow-up. These events are different. A submitted claim is not proof of acceptance, approval or payment. In common operational usage, a rejection often describes a submission that did not pass an entry or processing check, while a denial describes an adverse processed decision. Actual statuses, messages and correction routes vary: inspect the specific acknowledgment, remittance and current payer instructions rather than treating those labels as universal rules.<br><br>A remittance advice explains processing and payment-related adjustments. In the US Medicare context, standardized reason and remark codes help explain adjustments. A code is a starting point for investigation, not a complete diagnosis of every case or proof that a balance is recoverable. Check the relevant records, authoritative explanation and applicable instructions with authorized billing specialists. Do not automatically transfer an unpaid amount to a patient, change coding or submit an appeal from an unverified label.<br><br>Aging groups open items by time under a defined clock, such as time since a specified billing event. State the anchor and reconcile payments, adjustments and disputes before prioritizing. Age and amount are useful signals, but actionability, verified deadlines, required documentation and responsibility also matter. An old apparent balance may reflect an unmatched payment rather than collectible money. No single aging bucket proves lost revenue.<br><br>Separate prevention from follow-up. Repeated missing inputs may need better intake and validation; a contested processed decision may need specialist review; a paid item needs reconciliation. Begin with a bounded internal worklist using approved authoritative data, named owners and human review. Verify actual payer-specific time limits and actions from current sources; the practice dates and priorities here are invented. Never enter real claims or patient details in this course.",
+    "worked": "Practice triage: MB-103 goes to payment reconciliation before a collection action. MB-102 receives timely owner review because its internal due point is verified, even though it is younger and smaller. MB-101 requires verification of status and any applicable deadline before deciding the next action. MB-104 needs the missing item and an authorized decision about the appropriate route; do not assume a resubmission or appeal is correct. The two-day internal review is a fictional workflow rule, not a payer deadline. A first prototype can create internal review tasks from verified reason/status data using dummy IDs; it sends no external messages, coding changes or claims. Measure worklist accuracy, unresolved status and owner follow-through rather than claiming recovered revenue.",
+    "flow": [
+      "Verify submission and response",
+      "Reconcile payment and adjustment",
+      "Identify cause and next authorized action",
+      "Prioritize verified actionable work",
+      "Review outcomes and prevention"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">MB-103 · possible payment</th><td>Reconcile before chasing an apparent balance.</td></tr><tr><th scope=\"row\">MB-102 · verified internal due point</th><td>Assign timely review under the fictional practice rule.</td></tr><tr><th scope=\"row\">MB-101 · deadline unknown</th><td>Verify current applicable instructions; do not invent urgency.</td></tr><tr><th scope=\"row\">MB-104 · missing documentation</th><td>Collect and review; do not assume appeal or resubmission.</td></tr></tbody></table>",
+    "businessName": "Industry application",
+    "businessType": "fictional practice cases",
+    "perspective": "The owner wants reliable cash visibility, billers want accurate actionable queues, and patients should not receive unsupported demands. A useful worklist reduces uncertainty and directs the right review rather than maximizing automatic messages.",
+    "assessment": "Improve status and balance verification first. A dummy-data internal prioritization/task prototype may suit stable rules. Keep coding, liability, appeals, submissions and contested decisions with authorized specialists; do not automate blanket external follow-up.",
+    "pain": {
+      "quote": "“Our aging report is huge; can automation recover it?”",
+      "symptom": "Large open balances are treated as uniformly collectible.",
+      "causes": "Unmatched payments, missing documentation, varied response reasons, stale status or unclear follow-up ownership.",
+      "questions": "What event starts aging? Which balances are reconciled? What does the response say? Which deadline is verified? Who can choose the next action?",
+      "consequence": "Wasted follow-up, duplicate actions, missed valid review opportunities and misleading financial claims.",
+      "improve": "Reconcile records, verify reasons and instructions, and assign an actionable next step.",
+      "automation": "Prototype an internal owned worklist from verified data; flag uncertainty for specialist review.",
+      "evidence": "Worklist correctness, reconciled statuses, timely review and actual documented outcomes without assumed recovery."
+    },
+    "exercise": "Prioritize the four Meadow items by next action, not just amount or age. For each, state owner, missing evidence and whether automation should act or hold. Write a prevention question for repeated missing documentation and a boundary for an internal pilot.",
+    "rubric": [
+      "Uses verified status, actionability and deadlines rather than age alone.",
+      "Reconciles possible payment and keeps specialist decisions authorized.",
+      "Labels practice rules fictional and avoids unsupported recovery or patient-liability claims."
+    ],
+    "sample": "MB-103: finance/payment-posting owner reconciles the possible payment; hold collection. MB-102: named billing reviewer acts before the verified internal review point. MB-101: specialist verifies current status and any applicable payer instructions/deadline; do not invent a due date. MB-104: document owner obtains the missing input and a qualified reviewer determines the route. Investigate whether the intake checklist consistently requests that input. Prototype internal tasks for verified statuses only, with unknowns held for review, stable IDs and duplicate prevention. These balances are hypothetical, not recoverable revenue estimates. No external claims, appeals or patient messages are authorized by the practice exercise.",
+    "quiz": [
+      {
+        "q": "Which is the strongest first action for MB-103?",
+        "options": [
+          "Send an automatic demand for 1,200",
+          "Reconcile the possible payment before deciding follow-up",
+          "Assume its age proves permanent loss"
+        ],
+        "answer": 1,
+        "why": [
+          "The recorded balance may be stale or unmatched to a received payment.",
+          "Correct. Establish the current reliable status before a collection action.",
+          "Age alone does not establish collectibility or permanent financial loss."
+        ]
+      },
+      {
+        "q": "What does the two-day review point for MB-102 represent?",
+        "options": [
+          "A universal payer appeal deadline",
+          "A guarantee the claim is payable",
+          "An invented internal review rule for this exercise"
+        ],
+        "answer": 2,
+        "why": [
+          "Actual payer requirements vary and must be verified from current authoritative instructions.",
+          "A review time does not establish entitlement to payment.",
+          "Correct. The exercise does not supply or imply a real payer deadline."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should a model automatically decide coding changes, patient liability or appeal submission from an aging row?",
+    "decisionWhy": "Keep those decisions with authorized billing and other appropriate specialists. The row does not establish the applicable rules, documentation, authority or correct route. Internal organization can assist after verification.",
+    "insight": "Aging tells you where to investigate; verified reasons and next actions tell you what to do.",
+    "hooks": [
+      "An old balance is not automatically lost or recoverable revenue.",
+      "Before chasing a claim, check whether the payment is already there.",
+      "The biggest balance is not always the first actionable item."
+    ],
+    "linkedin": [
+      "Use the four fictional IDs and label the internal due point invented.",
+      "Compare reconciliation, deadline verification and document follow-up.",
+      "Explain an internal review pilot without promising recovery or automatic appeals."
+    ],
+    "facebook": [
+      "Describe a report full of balances that need different next steps.",
+      "Explain why age, reason and payment matching belong together.",
+      "Invite process discussion without asking for real claim or patient details."
+    ],
+    "conversation": "How does your team distinguish a genuine follow-up item from an unresolved status or payment-matching issue?",
+    "claims": "All IDs, balances, dates and priorities are invented. Verify current payer rules, source records and qualified billing decisions before publication or implementation. Never claim recovered revenue, universal deadlines or automatic compliance.",
+    "recap": "Verify status and reconcile first. Prioritize actionable owned work using real evidence, and keep specialized billing decisions authorized and human-led.",
+    "reflection": "Which assumption in an aging report would you verify before creating a follow-up task?",
+    "deeper": "Create a fictional reason-category trend without real code values. Write the evidence needed to distinguish a preventable intake gap from a payer-specific or documentation decision.",
+    "sources": [
+      {
+        "title": "CMS — Health Care Payment and Remittance Advice",
+        "url": "https://www.cms.gov/medicare/coding-billing/electronic-billing/health-care-payment-remittance-advice",
+        "note": "Medicare remittance information and adjustment explanations. Verify current payer-specific rules separately; practice categories and deadlines are not payer policy."
+      },
+      {
+        "title": "HHS — Guidance on HIPAA and Cloud Computing",
+        "url": "https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html",
+        "note": "US healthcare context: organizational safeguards and applicable agreements need review; a product or hosting choice is not automatic compliance."
+      },
+      {
+        "title": "HHS — Summary of the HIPAA Privacy Rule",
+        "url": "https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html",
+        "note": "US privacy context for regulated organizations. Practice uses invented records only and does not authorize real patient-data processing."
+      }
+    ]
+  },
+  {
+    "title": "Teach through credible content",
+    "eyebrow": "Turn an observation into a useful insight",
+    "objective": "Create audience-specific educational content that separates observed facts, hypotheses, fictional examples, forecasts and verified results.",
+    "scenario": "You have completed fictional process exercises and want to post on LinkedIn and Facebook. A tempting draft says, “I recovered thousands for a clinic by automating denials,” but no such client engagement occurred. Another draft names only n8n features. You need content that is truthful, useful to prospective clients and grounded in the operational problem.",
+    "explain": "Educational content helps a defined audience notice, understand or investigate a relevant problem. Start with a concrete complaint or warning sign, such as ownerless requests or reminders based on stale balances. Explain the hidden process issue and offer a practical question or first step. A tool may appear when it clarifies the proposed action, but it should not replace the business explanation. Choose the audience before choosing the hook.<br><br>Classify the evidence behind each statement. An observation describes something actually seen; a hypothesis proposes an explanation; a fictional example illustrates reasoning; a forecast estimates a possible future outcome; a verified result describes a measured change with context and limits. These categories should remain visible in the writing. “In this fictional practice case…” is appropriate for this course’s scenarios. Do not rewrite it as “A client came to me…” or use invented testimonials, credentials, recovered revenue or time saved.<br><br>A useful post structure is audience problem, concrete example, explanation, proportionate action, evidence needed and a relevant conversation question. On LinkedIn, you might develop the operational tradeoff and decision more fully. On Facebook, you might use a familiar situation and a shorter conversational explanation. These are editorial starting points, not promises about platform algorithms or guaranteed reach. Adapt to the actual audience and test what they find useful.<br><br>Before publishing, review factual and legal or technical claims that need current authoritative verification. Statistics require a source, definition and date. Real client material needs appropriate permission and confidentiality review; anonymity alone may not make a case safe to share. Keep this course’s portfolio fully fictional. Avoid absolute claims such as “every business needs AI.” Credibility comes from useful reasoning and honest evidence, including examples where the first improvement is clearer ownership or better inputs.",
+    "worked": "Replace the invented clinic-result claim with: “In a fictional billing-workflow exercise, the oldest item was not ready for a reminder because a payment might already have arrived. The first step was reconciliation, not another chase.” LinkedIn outline: show the case boundary, explain age versus verified status, list three discovery questions and describe a possible internal review pilot. Facebook outline: begin with the familiar experience of receiving a reminder after paying, explain matching records, then ask how teams check the balance before messaging. Neither version claims a client outcome. Before publishing real billing details, verify current rules and avoid patient or confidential information.",
+    "flow": [
+      "Choose audience and pain",
+      "Classify the evidence",
+      "Explain one useful insight",
+      "Offer a proportionate action",
+      "Verify claims and invite discussion"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">Fictional example</th><td>“In a practice case…” with invented facts.</td></tr><tr><th scope=\"row\">Forecast</th><td>“Under these assumptions…” before measurement.</td></tr><tr><th scope=\"row\">Verified result</th><td>Requires real evidence, context, permission and limits.</td></tr><tr><th scope=\"row\">Unsupported claim</th><td>Invented engagement, testimonial or recovered amount; do not publish it.</td></tr></tbody></table>",
+    "businessName": "Industry application",
+    "businessType": "fictional practice cases",
+    "perspective": "The prospective client wants to recognize their challenge and learn something useful. They do not need exaggerated certainty. Honest boundaries help the reader judge both the insight and your practical reasoning.",
+    "assessment": "Content tools may organize drafts or suggest wording, but a person must verify facts, fictional labels and claims before publishing. Do not automate publication of unsupported case stories or confidential material.",
+    "pain": {
+      "quote": "“Everyone talks about AI, but nobody explains my actual problem.”",
+      "symptom": "Posts emphasize tools or invented outcomes instead of operational insight.",
+      "causes": "Undefined audience, weak process understanding, pressure for impressive results or unclear evidence labels.",
+      "questions": "Who is this for? What pain does it explain? Which statements are fact, example or forecast? What needs verification?",
+      "consequence": "Loss of trust, misleading expectations and unhelpful discovery conversations.",
+      "improve": "Choose one pain point, show the process and label the evidence honestly.",
+      "automation": "Use a notebook or draft workflow with a factual-claim review before any publication.",
+      "evidence": "Clear audience relevance, evidence labels, verified claims and relevant questions—not promised engagement."
+    },
+    "exercise": "Draft one LinkedIn and one Facebook outline about a hidden operational cost. Include three hooks, a fictional label, a practical first step, a conversation question and a claim-verification list. Rewrite the invented clinic-result sentence truthfully.",
+    "rubric": [
+      "Addresses a specific audience pain and explains the process.",
+      "Separates fictional illustration and forecasts from real outcomes.",
+      "Includes a useful action and explicit claims to verify without platform promises."
+    ],
+    "sample": "Insight: repeated chasing can signal an unusable request. Hooks: A reminder cannot fix a broken link; Before chasing, check whether someone can act; Waiting needs an owner. LinkedIn: introduce fictional H-57, trace vague instructions and blocked access, show an improved request and define reminder stop rules. Facebook: describe getting repeated messages without knowing how to respond, explain what/where/help and invite an example without personal data. Question: what would you check before sending another reminder? Verify any real frequency, timing, policy or savings claim. Rewrite: “In a fictional billing exercise, I proposed a verified internal worklist; it is practice reasoning, not a client result.”",
+    "quiz": [
+      {
+        "q": "Which wording is appropriate for a course case?",
+        "options": [
+          "A clinic hired me and I recovered revenue",
+          "In a fictional practice case, I proposed a review workflow",
+          "My proven system guarantees no denials"
+        ],
+        "answer": 1,
+        "why": [
+          "It invents an engagement and outcome that did not happen.",
+          "Correct. It identifies the evidence category and does not imply implementation or results.",
+          "This unsupported absolute claim goes beyond the exercise and real-world variability."
+        ]
+      },
+      {
+        "q": "What should happen to an unsupported statistic in a draft?",
+        "options": [
+          "Publish it because it sounds plausible",
+          "Add “research shows” without a source",
+          "Verify its source, definition and date, or remove/rewrite the claim"
+        ],
+        "answer": 2,
+        "why": [
+          "Plausibility is not evidence for a numerical public claim.",
+          "A vague attribution does not provide support or allow readers to assess it.",
+          "Correct. Use an appropriate current source and context, or avoid the unsupported number."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "Should generated posts be published automatically when they include results the reviewer cannot substantiate?",
+    "decisionWhy": "Keep publication review human-led and do not publish unsupported claims. Verify evidence and permissions, preserve fictional labels and rewrite claims that exceed what is known.",
+    "insight": "A useful fictional example can demonstrate judgment without pretending to be a client success story.",
+    "hooks": [
+      "You can teach from practice without inventing a client.",
+      "Show the hidden process cost, not just the tool.",
+      "“Under these assumptions” is different from “we achieved.”"
+    ],
+    "linkedin": [
+      "Define observation, hypothesis, example, forecast and result.",
+      "Show the truthful billing-example rewrite.",
+      "Give a post structure tied to pain, evidence and a useful next step."
+    ],
+    "facebook": [
+      "Use a familiar repeated-reminder experience.",
+      "Explain the hidden missing-input or ownership issue.",
+      "Invite a practical process conversation without requesting confidential details."
+    ],
+    "conversation": "Which warning sign would help your audience recognize a process problem earlier?",
+    "claims": "Verify factual claims, statistics, platform behavior, credentials and outcomes before publication. The course supplies fictional examples, not client testimonials or measured results.",
+    "recap": "Choose a real audience pain, explain the process and label your evidence. Useful, credible content does not require invented outcomes.",
+    "reflection": "Which sentence in your latest draft sounds more certain than the evidence allows?",
+    "deeper": "Create an evidence ledger for a draft: statement, category, source needed and publication decision. Save unresolved questions in the content notebook.",
+    "sources": [
+      {
+        "title": "FTC — Advertising and Marketing",
+        "url": "https://www.ftc.gov/business-guidance/advertising-marketing",
+        "note": "US guidance on truthful, supported advertising claims; educational practice examples must not be presented as real client results."
+      },
+      {
+        "title": "GOV.UK Service Manual — Using In-depth Interviews",
+        "url": "https://www.gov.uk/service-manual/user-research/using-in-depth-interviews",
+        "note": "Planning interviews and learning from people’s actual experience; adapted here to client discovery practice."
+      }
+    ]
+  },
+  {
+    "title": "Present your practice case study",
+    "eyebrow": "Bring the reasoning together",
+    "objective": "Complete and self-assess a seven-part fictional case study covering current flow, three problems, discovery, priorities, one pilot, a transparent estimate and five content ideas.",
+    "scenario": "You now analyze Willow Admin Services in the final project workspace. Willow receives 60 requests weekly through email and forms. Three coordinators use two spreadsheets. A fictional sample contains twelve requests without an owner and eight without required details, but its denominator and overlap are not established. Six of 30 invoices are overdue; two are disputed and one may already be paid, with overlap unresolved. The owner wants faster service and fewer chasers.",
+    "explain": "A practice case study demonstrates how you reason about a problem, not that you have delivered a real engagement. Label the business, evidence packet, figures and proposal fictional. Preserve the distinction between observed practice facts, hypotheses, assumptions and proposed outcomes. A portfolio reader should be able to follow why you selected a change, what you would verify and what could make you revise the recommendation.<br><br>Use the seven deliverables in the final project workspace. First map current work with owners, decisions, waits and exceptions. Then diagnose three distinct operational problems, separating symptoms from possible causes. Write discovery questions that could challenge those causes. Compare process-only improvement and suitable automation candidates using impact, effort, stability, data, authority and maintenance. Prioritization should explain why some tasks are deferred or remain human-led.<br><br>Propose one pilot with a boundary, eligibility, inputs, review, fallback, stop conditions, measures and an accountable maintainer. Build a transparent value estimate using labeled hypothetical assumptions where the case lacks measurements. Do not use the 60 weekly requests as the missing sample denominator or subtract disputed and possibly paid invoices as if the categories were known to be separate. Reconcile uncertain counts and payments first. Capacity and cash remain different, and proposed benefit is not achieved benefit.<br><br>Derive five educational content ideas from the analysis. Each should name an audience pain, one insight, a truthful hook and a claim to verify. Score your reasoning against the rubric and revise weak areas rather than treating a completion mark as professional certification. A thoughtful case can recommend better ownership and data before a small automation. The next learning step is supervised or appropriately authorized real-world observation, using proper confidentiality and domain expertise—not an inflated claim that practice established production competence.",
+    "worked": "One practice direction: map request → completeness check → owned assignment → delivery → approval → verified invoice/payment follow-up, with returns and disputes kept owned. Problems: unassigned work, incomplete inputs and inconsistent financial status. Causes remain hypotheses pending case traces, field definitions and reconciliation. First agree one authoritative queue, required inputs and receiving ownership. Then consider a one-channel internal assignment pilot; exclude customer and collections messages. For a separate explicitly assumed estimate of 200 cases/month, two removable minutes each and two new monitoring hours, forecast capacity is 200 × 2 ÷ 60 − 2 ≈ 4.67 hours/month, not cash savings. Content themes: ownership, input clarity, status truth, bounded pilots and capacity versus cash. Open the final project and write your own evidence-supported version.",
+    "flow": [
+      "Map current work",
+      "Diagnose and question",
+      "Prioritize proportionate changes",
+      "Design pilot and estimate",
+      "Create five ideas and self-assess"
+    ],
+    "visual": "<table><caption>Fictional practice example — not a client result</caption><thead><tr><th scope=\"col\">Observe or compare</th><th scope=\"col\">Reasoning and next step</th></tr></thead><tbody><tr><th scope=\"row\">12 missing owners / 8 missing details</th><td>Sample denominator and overlap are unknown; do not invent a rate.</td></tr><tr><th scope=\"row\">6 of 30 overdue invoices</th><td>20% overdue in this fictional invoice set; subcategory overlap remains unknown.</td></tr><tr><th scope=\"row\">200 × 2/60 − 2 hours</th><td>Approximately 4.67 forecast hours under additional hypothetical assumptions.</td></tr><tr><th scope=\"row\">Portfolio label</th><td>Fictional analysis and proposed pilot, not an implemented client result.</td></tr></tbody></table>",
+    "businessName": "Industry application",
+    "businessType": "fictional practice cases",
+    "perspective": "The fictional owner wants a credible next decision. A real prospective client reading your portfolio needs to see your reasoning, limitations and respect for operational reality rather than invented authority or outcomes.",
+    "assessment": "Prioritize process and data prerequisites. A verified internal assignment task may be a later bounded pilot. Keep disputes, unverified financial actions and consequential domain decisions with authorized people, and state what remains unimplemented.",
+    "pain": {
+      "quote": "“I want an automation, but I do not know which problem to tackle first.”",
+      "symptom": "Several symptoms compete without reliable prioritization.",
+      "causes": "Unclear ownership, missing inputs, contradictory records and insufficient baseline evidence.",
+      "questions": "What outcome matters? Which cases show each problem? What would disprove the cause? Which prerequisite must change before a pilot?",
+      "consequence": "Continued delays, repeated effort and weak investment decisions; unmeasured symptoms do not establish recoverable losses.",
+      "improve": "Agree authoritative records, ownership, required inputs and measurement.",
+      "automation": "Propose one verified internal assignment action after prerequisites, with an owned manual route.",
+      "evidence": "Balanced pilot measures, transparent costs, verified records and honest evidence labels."
+    },
+    "exercise": "Complete the seven final-project sections in your own words. Include three distinct diagnoses, at least six discovery questions, a prioritized shortlist with a process-only option, one bounded pilot, transparent assumptions and five content ideas. Use the rubric to identify and revise your weakest section.",
+    "rubric": [
+      "Makes current flow, owners, branches and evidence gaps explicit.",
+      "Justifies priorities and pilot controls without assuming every issue needs automation.",
+      "Uses transparent arithmetic and five truthful audience insights; labels all practice material fictional."
+    ],
+    "sample": "Current flow includes an owned clarification return and separate dispute handling. Diagnose missing ownership, incomplete intake and inconsistent invoice/payment status as distinct symptoms, then test authority, request clarity and reconciliation as hypotheses. Ask for actual case traces, sample denominator, overlap, authoritative fields, receiving acceptance and maintenance capacity. Prioritize ownership/data improvement before internal task routing. Pilot one complete-request form channel with verified IDs, reviewer, manual continuation, duplicate prevention and a maintainer; pause wrong-recipient actions. Label the separate 200-case estimate hypothetical: 6.67 gross hours minus two new hours is 4.67 forecast capacity hours. Use five content ideas on ownership, inputs, cash timing, pilot limits and honest savings claims. This direction is one possible answer, not a client result.",
+    "quiz": [
+      {
+        "q": "Can 60 weekly requests be used as the denominator for the missing-owner sample?",
+        "options": [
+          "Yes, because it is the only volume supplied",
+          "No; the sample population and period must be established",
+          "Yes, if the percentage looks reasonable"
+        ],
+        "answer": 1,
+        "why": [
+          "Weekly intake volume is not stated to be the sample size.",
+          "Correct. Establish the denominator and overlap rather than inventing a rate.",
+          "A plausible percentage is not a substitute for a defined population."
+        ]
+      },
+      {
+        "q": "What does a strong practice portfolio demonstrate?",
+        "options": [
+          "Guaranteed real-world results",
+          "That all financial decisions can be automated",
+          "Reasoning, evidence limits, proportionate design and honest proposed next steps"
+        ],
+        "answer": 2,
+        "why": [
+          "A fictional case cannot prove implemented outcomes.",
+          "Authority and context remain necessary, especially for contested decisions.",
+          "Correct. Credible reasoning is valuable without invented engagements or professional certification."
+        ]
+      }
+    ],
+    "decision": "improve",
+    "decisionPrompt": "Willow’s owner and financial-status records are unresolved. Should you immediately automate all assignment and collection actions?",
+    "decisionWhy": "Improve prerequisites first. Agree authoritative records and receiving ownership, reconcile balances and collect a baseline. A smaller internal pilot may follow; uncertain collections and disputes remain outside that scope.",
+    "insight": "A credible practice portfolio shows what you would investigate, change, measure and deliberately defer.",
+    "hooks": [
+      "A good case study makes uncertainty visible.",
+      "Your shortlist should explain what you would not automate yet.",
+      "Practice can show judgment without claiming a client result."
+    ],
+    "linkedin": [
+      "Label Willow as a fictional capstone.",
+      "Summarize problem, evidence gaps, priorities and one proposed pilot.",
+      "Show transparent assumptions and the five educational themes without claiming results."
+    ],
+    "facebook": [
+      "Tell the story of tasks that wait because responsibility is unclear.",
+      "Share one practical question for ownership, inputs and verified status.",
+      "Invite a process discussion and identify the example as practice."
+    ],
+    "conversation": "Which part of your recommendation would you change first if new evidence contradicted your diagnosis?",
+    "claims": "Every case detail and additional estimate is fictional. Verify all real sample counts, costs, authority and outcomes before adapting the work to a client or publishing results.",
+    "recap": "Bring the framework together: map, diagnose, question, prioritize, pilot, estimate and explain. Preserve evidence boundaries and revise against the rubric.",
+    "reflection": "What has changed in how you decide whether a business problem needs automation?",
+    "deeper": "Ask someone to review your fictional case against the seven rubric dimensions. Record questions they could not answer from your write-up and revise before using it in a practice portfolio.",
+    "sources": [
+      {
+        "title": "GOV.UK Service Manual — How the Discovery Phase Works",
+        "url": "https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works",
+        "note": "Understanding the problem, context and constraints before committing to a solution; not a prescribed consulting contract."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Model for Improvement",
+        "url": "https://www.ihi.org/library/model-for-improvement",
+        "note": "Aims, evidence of improvement and small tests of change; the course’s cases, pilot scope and targets are invented."
+      },
+      {
+        "title": "Institute for Healthcare Improvement — Establishing Measures",
+        "url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+        "note": "Outcome, process and balancing measures used to assess a change rather than technical activity alone."
+      },
+      {
+        "title": "FTC — Advertising and Marketing",
+        "url": "https://www.ftc.gov/business-guidance/advertising-marketing",
+        "note": "US guidance on truthful, supported advertising claims; educational practice examples must not be presented as real client results."
+      }
+    ],
+    "projectLink": true,
+    "calc": {
+      "q": "Six of 30 fictional invoices are overdue. What percentage of this invoice set is overdue?",
+      "answer": 20,
+      "explanation": "6 ÷ 30 × 100 = 20% for this fictional invoice set. Do not subtract disputed or possibly paid categories without resolving overlap and current status."
+    }
+  }
+]);
+challenges[6]="Elm Services requests an AI follow-up bot, but staff describe unclear inputs and approval waits. Its selected five-case assignment times are 5, 15, 25, 35 and 70 business minutes; two cases lack an owner at first review. Write six neutral discovery questions, map current work including clarification and receiving acceptance, calculate the sample mean and state its limits. Define a representative baseline request. Identify sponsor, process owner, users, reviewer, maintainer and cover. Write scope, exclusions, dependencies and acceptance for one internal form-request pilot with stop, fallback and restart handling. Present a plain-language recommendation comparing a process-only option with the bounded pilot, ending in a concrete authorized next decision. Label all material fictional.";
+challenges[7]="Complete Willow Admin Services in the final project workspace: current map; three distinct problem diagnoses; at least six discovery questions; a prioritized process/automation shortlist; one proposed pilot with owners, exceptions, stop rules and measures; a transparent estimate; and five credible content ideas. Do not invent the missing sample denominator or invoice-category overlap. Compare how your reasoning transfers to an agency, repair shop and consultancy. Explain why a healthcare referral needs verified receiving acceptance and why billing aging needs current status/payment reconciliation. Keep clinical, coding, liability and contested decisions authorized and human-led. Label every case, figure, proposed deadline and pilot fictional; use no patient data. Self-assess all seven dimensions and revise weak sections before downloading your practice case study.";
+for (const [term,definition] of Object.entries({"Discovery": "Structured investigation of goals, actual work, evidence and constraints before recommending a solution.", "Stakeholder": "A person or role that affects, uses, decides about or is affected by a change.", "Sponsor": "The role authorizing business priority or resources for a change.", "Scope": "The explicitly included work and outcomes of a proposed change, with stated boundaries.", "Change request": "A proposed alteration to agreed scope or rules that needs an authorized decision.", "Acceptance criteria": "Observable conditions for deciding whether a step or delivered change meets its agreed requirements.", "Purposive sample": "Cases chosen for a specific reason, useful for exploring issues but not automatically representative of a population.", "Remittance advice": "Information explaining claim processing and payment adjustments; verify the actual payer and applicable instructions.", "Aging": "Grouping open items by elapsed time from a defined event; not proof that every balance is collectible.", "Evidence ledger": "A record of statements, their evidence category, sources needed and publication decision.", "Practice case study": "An explicitly fictional analysis demonstrating reasoning and proposed next steps, not an implemented client engagement."})) { if (!(term in glossary)) glossary[term]=definition; }
