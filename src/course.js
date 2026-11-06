@@ -39,3 +39,499 @@ const challenges=[
 'Analyze fictional billing follow-ups without real patient information. Separate missing inputs from payer decisions; avoid automatic appeals. Produce a practice case study and five posts with assumptions and verification needs.'
 ];
 lessons[4].quiz.push({q:'Staff send conflicting updates. Which statement is a cause hypothesis worth testing?',options:['The business needs AI because updates conflict','Two lists lack shared project IDs and update ownership','Conflicting updates prove staff are careless'],answer:1,why:['This jumps from a symptom to a tool without explaining the mechanism.','Correct. Compare records and observe how staff choose which list to update; that evidence can support or challenge the hypothesis.','This blames people without evidence and overlooks process and data conditions.']});
+
+// Week 2: full daily lessons. Week 1 content and IDs remain unchanged.
+lessons.push(...[
+  {
+    "title": "Triggers, inputs and outputs",
+    "eyebrow": "Give the workflow a clear boundary",
+    "objective": "Define a process boundary, distinguish a trigger from an input, and describe an output that the next person can actually use.",
+    "scenario": "FixWell is a fictional laptop repair shop. Booking requests arrive through a form and email. The owner, Amina, says, “Automate our bookings.” Receptionist Jo means recording a request; technician Ben means accepting a device for assessment. Customers think a submitted form means they already have a confirmed appointment. Before choosing tools, you need to agree which process is being discussed.",
+    "explain": "A process is a repeatable set of activities intended to achieve an outcome. A workflow describes how a particular piece of work moves through those activities, including who does what and what happens at decisions. A process boundary states where your investigation starts and where it ends. “Booking” is too broad if people disagree about what is included.<br><br>A trigger is an event that starts a workflow instance: a booking request arrives, a payment is received, or a scheduled review time is reached. An input is something needed to do the work, such as a contact method, device type or requested service. The event “form submitted” is the trigger; the fields submitted are inputs. A trigger can fire even when the inputs are incomplete. That difference matters when designing automation.<br><br>An output is the result of a step. A useful output has acceptance criteria: conditions that make it usable by its recipient. “We sent an email” is an activity. “The customer received a proposed appointment with a reference and next steps” describes a more meaningful output. Even then, a proposal is not a confirmed booking. Completion must match what the business has agreed to deliver.<br><br>Use verbs and nouns to make the boundary specific: “Receive a repair request” to “send a confirmed appointment or a clear reason it cannot be booked.” Within that boundary, list steps before naming software. Keep diagnosis, repair and payment outside this first map unless the booking decision genuinely depends on them. A boundary narrows the investigation; it does not mean other parts of the business do not matter.",
+    "worked": "For FixWell, define the trigger as a new repair request received through an agreed channel. Required inputs are a safe contact method, device category, a short problem description and availability. Jo checks completeness and whether the requested service is within scope. If anything is missing, Jo asks for it; there is no promise of an appointment yet. If complete and eligible, Jo proposes a slot, receives the customer’s acceptance, then sends a confirmation with a request reference.<br><br>The intake step outputs a usable request record. Its acceptance criteria are a unique reference, readable contact details, service category and a named owner. The booking workflow outputs a confirmed appointment or a documented non-booking outcome. An automated acknowledgement should say “request received,” not “appointment confirmed.” This is a fictional design exercise; no improved results have been measured.",
+    "flow": [
+      "Request received",
+      "Check required inputs",
+      "Propose an eligible slot",
+      "Customer accepts",
+      "Confirm appointment"
+    ],
+    "visual": "<table><caption>One workflow, three different concepts</caption><thead><tr><th>Concept</th><th>FixWell example</th><th>How to check it</th></tr></thead><tbody><tr><td>Trigger</td><td>A new request arrives</td><td>Can you name the event and its timestamp?</td></tr><tr><td>Input</td><td>Contact method and problem description</td><td>Is each required field usable?</td></tr><tr><td>Output</td><td>Confirmed appointment with reference</td><td>Has the customer accepted, and is the record complete?</td></tr></tbody></table>",
+    "perspective": "Amina wants reliable demand and a manageable diary. Jo wants to know when a request is ready to move forward. Ben needs enough information to assess whether the shop can help. Customers need to distinguish a request acknowledgement from a promise. A poorly named output can create a service failure even when every message is delivered successfully.",
+    "assessment": "Acknowledge receipt and create a request record using rules once the agreed channels, fields and wording are stable. Missing inputs should create a follow-up task, not a confirmed appointment. Keep unusual service eligibility decisions with a person. Start by checking whether existing messages already promise more than staff can deliver.",
+    "pain": {
+      "quote": "“Customers keep saying they booked, but we have no confirmed slot for them.”",
+      "symptom": "Submitted requests are mistaken for confirmed appointments.",
+      "causes": "Ambiguous acknowledgement wording; no acceptance step; different definitions of “booked”; missing inputs.",
+      "questions": "What exactly does the first message promise? What event confirms a slot? Which fields are required? Can we trace one disputed booking?",
+      "consequence": "Unexpected arrivals, time spent resolving misunderstandings, unused or double-promised capacity and loss of trust. Do not assume every confused request is lost revenue.",
+      "improve": "Agree the boundary, completion conditions and clear wording for received, proposed and confirmed states.",
+      "automation": "Create a record and send an accurate receipt acknowledgement; propose or confirm only when the defined conditions are met.",
+      "evidence": "Request and confirmation timestamps, message wording, completeness, acceptance records and disputed-booking counts."
+    },
+    "exercise": "Map a fictional laundry pickup request from first contact to an agreed pickup slot. State the trigger, four required inputs, the owner, the final output and two acceptance criteria. Add a path for missing information. Keep washing, delivery and payment outside this boundary, and explain one dependency on those later steps.",
+    "rubric": [
+      "Separates the starting event from the information it carries.",
+      "Defines an observable end state and two usable acceptance criteria.",
+      "Shows missing-input handling, ownership and a clear scope boundary."
+    ],
+    "sample": "Trigger: a pickup request arrives. Inputs: service area, contact method, pickup address and availability. Owner: intake coordinator. Map: receive request → check completeness and service area → propose slot → receive acceptance → confirm pickup reference. Missing address returns to the customer for clarification. Acceptance criteria: an available slot is accepted and the address is validated for the service area. Washing is outside this map, but the pickup offer depends on downstream capacity being available.",
+    "quiz": [
+      {
+        "q": "A customer submits a repair form with no contact details. Which statement is most accurate?",
+        "options": [
+          "The trigger occurred, but a required input is missing",
+          "No trigger occurred because the form is incomplete",
+          "The form submission proves the booking is confirmed"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. The arrival event happened; the workflow needs an incomplete-input path.",
+          "Completeness affects how the case is handled, not whether the event happened.",
+          "Confirmation needs the agreed booking conditions, not merely a submitted form."
+        ]
+      },
+      {
+        "q": "Which output definition is most useful for the booking workflow?",
+        "options": [
+          "Reception sent three messages",
+          "An accepted available slot is recorded and confirmation sent with a reference",
+          "The booking tool ran without an error"
+        ],
+        "answer": 1,
+        "why": [
+          "An activity count does not establish that a booking exists.",
+          "Correct. It connects a business state, record and communication to completion.",
+          "Technical execution is not proof that the intended business outcome occurred."
+        ]
+      }
+    ],
+    "sequence": [
+      "Request received",
+      "Check required inputs",
+      "Propose an eligible slot",
+      "Customer accepts",
+      "Confirm appointment"
+    ],
+    "sequenceIntro": "Order the complete-input, in-scope path. Missing inputs and unusual services use separate branches. Check order to save this attempt.",
+    "sequenceExplanation": "Receive the request before checking its inputs; check eligibility and availability before proposing a slot; obtain acceptance before confirming. The incomplete-input branch asks for clarification instead of continuing.",
+    "decision": "automate",
+    "decisionPrompt": "The shop has agreed its required fields and acknowledgement wording. Should a complete form create a request reference and send “request received,” while leaving appointment approval to Jo?",
+    "decisionWhy": "This is a bounded, rule-based capture and acknowledgement task. It can be automated with duplicate checks and a failure owner; it must not imply that a booking is confirmed.",
+    "insight": "A submitted form and a confirmed service are different business states. Clear boundaries prevent automated promises the business cannot keep.",
+    "hooks": [
+      "A form submission is not always a booking.",
+      "Before automating intake, define what “done” means.",
+      "Your first workflow problem may be an unclear promise."
+    ],
+    "linkedin": [
+      "Open with FixWell as a fictional request-versus-confirmation example.",
+      "Explain trigger, required inputs and confirmed output in three short points.",
+      "Share a checklist for agreeing completion before choosing a tool."
+    ],
+    "facebook": [
+      "Tell a short fictional story about arriving for an appointment that was never confirmed.",
+      "Explain the difference between “we received your request” and “your slot is booked.”",
+      "Ask what customers are told immediately after they send a request."
+    ],
+    "conversation": "What does your customer think has happened when your first automatic message arrives?",
+    "claims": "Verify any actual booking-error rates, lost-sales estimates or customer quotes. The FixWell story is fictional, not a client engagement.",
+    "recap": "Define a workflow’s start and finish. A trigger is an event, inputs enable work, and the output needs clear acceptance criteria. Automating receipt is different from automating a promise.",
+    "reflection": "Which word in a client’s process—booked, approved, ready or complete—would you ask them to define?",
+    "deeper": "Compare the booking boundary with a wider repair-to-payment process. List three additional owners or dependencies the wider map would need."
+  },
+  {
+    "title": "Decisions and exceptions",
+    "eyebrow": "Map the paths that do not go straight through",
+    "objective": "Write explicit decision conditions, distinguish missing information from a definite answer, and route exceptions to a named person.",
+    "scenario": "FixWell’s standard repair form works for familiar devices, but one customer requests work on an unsupported model. Another leaves the model field blank. A third mentions a safety concern. Jo currently puts all three into a folder called “other.” Amina suggests letting AI approve whatever looks similar to past jobs.",
+    "explain": "A decision point chooses the next path according to a condition. Phrase it as a question the owner can actually answer: “Is the device category in the approved service list?” Each outgoing path needs a label and a next action. A decision is not simply a diamond drawn on a map; it needs a rule, evidence and someone authorized to handle uncertainty.<br><br>A yes/no rule is useful only when the necessary information exists. “Model unknown” is not the same as “model unsupported.” Treating missing data as a definite no can wrongly reject a suitable customer; treating it as yes can create an unsuitable promise. For many processes, use three states: yes, no and unknown. Unknown usually requires clarification or review.<br><br>An exception is a case that cannot follow the normal path. Exceptions may arise from unusual requests, conflicting records, system failures or decisions outside the normal owner’s authority. Some are predictable and deserve an explicit branch. Others need an escalation path: who reviews the case, what context they receive, and how the customer is kept informed. Escalation means passing a decision to someone with the necessary authority or expertise; it does not mean copying everyone on an email.<br><br>Not every rare situation should become a complex automated branch. A manual review queue can be better when cases vary widely or occur infrequently. That queue still needs an owner, a response expectation, visible status and a way back into the main process. Otherwise, “manual review” becomes a place where work disappears.",
+    "worked": "Use an approved service list maintained by Amina. Known supported category: continue to the normal booking check. Known unsupported category: Jo uses the agreed explanation and records the outcome. Unknown category: request clarification, then check again. A safety concern follows the shop’s approved escalation policy to a qualified person; the form must not generate diagnostic or handling advice.<br><br>Now test three fictional requests. Request A has a supported category and complete information: continue. Request B has no model: ask for the missing information rather than declining. Request C falls outside the list but may be assessable by a specialist: Amina reviews before any promise. AI could help draft a summary for that reviewer only under approved data handling and human checking. It should not silently approve unfamiliar work.",
+    "flow": [
+      "Request received",
+      "Check service eligibility",
+      "Supported → booking check",
+      "Unknown → clarify",
+      "Unusual concern → qualified review"
+    ],
+    "visual": "<table><caption>Make each branch actionable</caption><thead><tr><th>Condition</th><th>Route</th><th>Owner and next action</th></tr></thead><tbody><tr><td>Complete and on approved service list</td><td>Normal path</td><td>Jo checks available slots</td></tr><tr><td>Information missing</td><td>Clarification</td><td>Jo requests the missing field and records a follow-up</td></tr><tr><td>Definitely unsupported</td><td>Non-booking outcome</td><td>Jo uses the approved explanation</td></tr><tr><td>Outside Jo’s authority</td><td>Exception review</td><td>Amina or an appropriate qualified reviewer decides</td></tr></tbody></table>",
+    "perspective": "The customer wants an accurate answer, not a fast guess. Jo wants permission to pause cases that need judgment. Amina wants staff to follow consistent rules without accepting work the shop cannot responsibly deliver. A clear “waiting for clarification” status reduces the pressure to manufacture a yes or no.",
+    "assessment": "Keep unusual eligibility and sensitive concerns human-led. Use rules to route well-defined categories and create review tasks. Improve the exception queue before adding AI classification. Measure false routes and time waiting for review, not just the percentage of requests processed automatically.",
+    "pain": {
+      "quote": "“The easy jobs move quickly, but anything unusual gets forgotten.”",
+      "symptom": "Non-standard cases wait in an unmanaged “other” category.",
+      "causes": "Rules lack an unknown state; reviewer unclear; no review expectation; no route back into normal work.",
+      "questions": "Which cases enter “other”? Who checks them? What facts are missing? Who may approve an exception? What tells the customer they are waiting?",
+      "consequence": "Delayed replies, unsuitable promises, repeated chasing and avoidable escalation. Any financial effect needs actual case outcomes.",
+      "improve": "Define supported, unsupported, unknown and review-required routes with owners and next actions.",
+      "automation": "Create and notify a review task containing required context; pause ordinary confirmation until a person decides.",
+      "evidence": "Reason for review, routing accuracy, review wait time, decision and whether the case returns to an owned next step."
+    },
+    "exercise": "A fictional design agency receives three requests: a standard package with a complete brief; a request with no budget or deadline; and an unusual contract condition staff cannot approve. Build a decision table with the condition, information needed, owner, next action and customer message for each. Include what happens if the reviewer is unavailable.",
+    "rubric": [
+      "Distinguishes missing data from a known mismatch.",
+      "Gives each branch a named role, next action and communication.",
+      "Keeps authority-dependent judgment human-led and provides an escalation fallback."
+    ],
+    "sample": "Standard complete brief: coordinator checks package fit and capacity, then proposes the next step. Missing budget or deadline: coordinator asks for clarification; the message says the request is under review, not accepted. Unusual contract condition: send the exact clause and business context to the authorized owner; pause agreement until approval. If the owner is unavailable, the coordinator uses the agreed backup reviewer or informs the customer of the delay without making a new promise.",
+    "quiz": [
+      {
+        "q": "A required field is blank. How should an eligibility decision treat it?",
+        "options": [
+          "Assume the most common value",
+          "Treat it as unknown and request clarification or review",
+          "Automatically reject the customer as unsuitable"
+        ],
+        "answer": 1,
+        "why": [
+          "A frequent value is not evidence about this particular case.",
+          "Correct. Missing evidence needs an explicit route rather than a fabricated answer.",
+          "A rejection needs a justified rule; missing data alone may be fixable."
+        ]
+      },
+      {
+        "q": "Which exception path is best designed?",
+        "options": [
+          "Send unusual cases to “other” indefinitely",
+          "Let AI approve them unless a customer complains",
+          "Assign an authorized reviewer, send the necessary context and track the next action"
+        ],
+        "answer": 2,
+        "why": [
+          "A label without ownership and a next step is not a working exception path.",
+          "This substitutes an unchecked guess for an authority-dependent decision.",
+          "Correct. Review needs responsibility, information and a route toward resolution."
+        ]
+      }
+    ],
+    "decision": "human",
+    "decisionPrompt": "A request includes a contract condition outside the coordinator’s authority. Should a workflow automatically accept it because similar jobs were accepted previously?",
+    "decisionWhy": "Keep the acceptance decision with an authorized person. Prior examples do not establish authority or suitability for this case. Automation can assemble context and route the review without making the decision.",
+    "insight": "The quality of an automation often depends on what happens when the normal path cannot continue.",
+    "hooks": [
+      "Where do your unusual requests go to wait?",
+      "Missing information is not the same as a “no.”",
+      "An exception queue needs more than a label."
+    ],
+    "linkedin": [
+      "Introduce the fictional unmanaged “other” queue.",
+      "Compare known yes, known no and unknown with a short decision table.",
+      "Explain why a named reviewer is part of the workflow design."
+    ],
+    "facebook": [
+      "Describe the frustration of being told a request is “with someone.”",
+      "Show three simple questions: who owns it, what is missing, what happens next?",
+      "Invite examples of exceptions that regularly need chasing."
+    ],
+    "conversation": "Who owns a case when it cannot follow your standard process?",
+    "claims": "Verify any stated AI accuracy, automatic-approval safety, review times or customer outcomes. Do not present this practice case as a completed implementation.",
+    "recap": "Decisions need conditions, evidence and named routes. Missing information requires an unknown path. Exceptions need authorized review, visible ownership and a way back into work.",
+    "reflection": "Which decision would become unsafe or unfair if “unknown” were silently treated as “yes”?",
+    "deeper": "Add a system-failure branch to your decision table. If the service list cannot be loaded, what should pause, who is notified and how can work resume?"
+  },
+  {
+    "title": "Handoffs and ownership",
+    "eyebrow": "Make responsibility travel with the work",
+    "objective": "Design a handoff with a sender, receiving owner, required information, acceptance criteria and a fallback when ownership is not accepted.",
+    "scenario": "At FixWell, Jo marks a device “ready for assessment” and sends a message to a shared technician channel. Ben assumes another technician will take it. The device waits overnight. Jo says it was handed over; technicians say no one was assigned. The customer only sees that the promised update did not arrive.",
+    "explain": "A handoff transfers work or responsibility to the next person or team. A notification only announces that something happened. It does not prove that responsibility transferred. A usable handoff answers five questions: what is being passed, who sends it, who receives it, what must be included, and how acceptance is recorded.<br><br>An owner is the person or role accountable for moving a particular case to its next agreed state. A process owner has a broader responsibility: keeping the overall process effective and resolving gaps between steps. One person may fill both roles in a small business. “The technicians” can describe a team, but a case still needs a rule for assigning a specific receiving owner or an explicitly managed queue.<br><br>Acceptance criteria tell the receiver whether the work is ready. Required context might include the request reference, agreed scope, available information and any known exception. If inputs are incomplete, the receiver should reject the handoff with a specific reason and return it to a named owner. A silent refusal creates an invisible queue. Record the waiting state and customer impact while the gap is resolved.<br><br>Responsibility also needs a time expectation. Agree what “acknowledge promptly” means for this workflow and operating hours; do not invent a service promise without checking capacity. An escalation is triggered when the agreed expectation is missed. Design a backup for absence and overload. Ownership rules should support work, not become a mechanism for blaming whichever person was last mentioned in a message.",
+    "worked": "Define FixWell’s handoff as Jo passing a complete assessment-ready request to Ben or the named technician on duty. Required fields: request reference, device category, problem description, customer contact route and current status. A receiving technician records acceptance or a rejection reason. The shared channel may carry a notification, but the request record remains the place where ownership and next action are recorded.<br><br>In a fictional trace, request F-12 becomes ready at 10:00, is assigned at 10:05, and is accepted at 10:40. Handoff waiting time from readiness to acceptance is 40 minutes. It is not 40 minutes of technician work. If the assigned person is absent, the duty lead reassigns according to an agreed backup rule. A duplicate notification should not create a second assessment task for F-12.",
+    "flow": [
+      "Jo checks readiness",
+      "Assign named receiver",
+      "Receiver accepts or rejects",
+      "Record next action",
+      "Escalate if overdue"
+    ],
+    "visual": "<table><caption>A usable handoff record</caption><thead><tr><th>Field</th><th>Example</th><th>Why it matters</th></tr></thead><tbody><tr><td>Case reference</td><td>F-12</td><td>Keeps repeated messages tied to one case</td></tr><tr><td>Sender / receiver</td><td>Jo / duty technician Ben</td><td>Defines who is passing and accepting work</td></tr><tr><td>Acceptance condition</td><td>Required assessment information present</td><td>Separates ready work from incomplete work</td></tr><tr><td>Next action</td><td>Ben acknowledges assignment</td><td>Shows what must happen next</td></tr><tr><td>Fallback</td><td>Duty lead handles absence or overdue acceptance</td><td>Prevents silent waiting</td></tr></tbody></table>",
+    "perspective": "Jo feels that a message should have been enough. Ben may have an overloaded queue or no clear assignment rule. Amina needs reliable accountability without blaming staff for an undefined process. The customer should not have to discover the internal ownership gap by asking for an update.",
+    "assessment": "Improve the responsibility and acceptance rules first. Then rules can assign an eligible case and notify its owner, using the case reference to avoid duplicates. Keep reassignment for unusual capacity or skill constraints with the duty lead until those rules are explicit. Measure accepted handoffs and queue age, not messages sent.",
+    "pain": {
+      "quote": "“I thought someone else was handling it.”",
+      "symptom": "A case is visible to a group but has no accepted receiving owner.",
+      "causes": "Shared notifications treated as assignments; no acceptance step; missing inputs; absence or overload with no backup.",
+      "questions": "Who is accountable now? How do they accept work? What makes it ready? What happens if they reject it or are absent?",
+      "consequence": "Waiting time, duplicated effort, missed updates and customer chasing. The financial effect depends on the delayed work and actual outcomes.",
+      "improve": "Define the receiving owner, readiness checklist, acceptance state and escalation path.",
+      "automation": "Assign one case once, notify its owner and flag unaccepted work after the agreed expectation.",
+      "evidence": "Ready, assignment and acceptance timestamps; rejection reasons; duplicate tasks; overdue queue counts."
+    },
+    "exercise": "Design a sales-to-delivery handoff for a fictional agency. Specify the sender, receiver, five required fields, acceptance criteria, rejection route, time expectation and backup owner. Trace what happens when the customer’s approved brief is missing. Explain why sending a Slack message alone is insufficient.",
+    "rubric": [
+      "Names the current case owner and receiving role, including absence cover.",
+      "Defines completeness and how acceptance or rejection is recorded.",
+      "Connects the handoff to a visible next action and a reasonable escalation rule."
+    ],
+    "sample": "Sender: salesperson. Receiver: named project coordinator assigned by the delivery lead. Fields: project reference, approved scope, agreed date, customer contact and brief status. Accept only when required inputs are complete and timing has been checked. If the brief is missing, return the case to the salesperson with that reason and a follow-up date; do not leave it unowned. The lead agrees an acknowledgement expectation during working hours and acts as backup when the coordinator is absent. Slack carries a notification; the project record carries the accepted owner and next action.",
+    "quiz": [
+      {
+        "q": "A request was posted to a shared channel. What evidence best shows that responsibility transferred?",
+        "options": [
+          "Several people saw the message",
+          "A named receiver accepted the case and recorded the next action",
+          "The automation reported that the message was delivered"
+        ],
+        "answer": 1,
+        "why": [
+          "Visibility does not establish accountability.",
+          "Correct. Acceptance and a next action make the handoff operationally meaningful.",
+          "Delivery confirms a technical event, not that someone owns the work."
+        ]
+      },
+      {
+        "q": "The receiver finds a required input missing. What should happen?",
+        "options": [
+          "Silently leave the case untouched",
+          "Reject the handoff with a specific reason and return it to a named owner",
+          "Start work and guess the missing information"
+        ],
+        "answer": 1,
+        "why": [
+          "Silent waiting hides the problem and leaves responsibility ambiguous.",
+          "Correct. Make the missing information and next responsible person explicit.",
+          "Guessing can turn missing information into rework or an inappropriate promise."
+        ]
+      }
+    ],
+    "calc": {
+      "q": "A request is ready at 10:00 and accepted at 10:40. How many minutes elapsed from readiness to acceptance?",
+      "answer": 40,
+      "explanation": "10:40 minus 10:00 is 40 minutes of elapsed handoff waiting. It is not a measure of active assessment time."
+    },
+    "decision": "improve",
+    "decisionPrompt": "The shop has no assignment rule and nobody accepts responsibility for the shared technician queue. Should you immediately automate more channel notifications?",
+    "decisionWhy": "Define assignment, acceptance, backup ownership and escalation first. More notifications can increase noise while the case remains unowned.",
+    "insight": "A message can be delivered successfully while the work itself goes nowhere.",
+    "hooks": [
+      "A notification is not a handoff.",
+      "“Everyone can see it” does not mean someone owns it.",
+      "Measure accepted work, not just messages sent."
+    ],
+    "linkedin": [
+      "Start with the fictional overnight waiting case.",
+      "Explain sender, receiver, readiness and acceptance in a compact checklist.",
+      "Show how to measure waiting without calling it working time."
+    ],
+    "facebook": [
+      "Tell the short story of a customer waiting while two teams assume the other is responsible.",
+      "Explain why every case needs a clear next person.",
+      "Ask how the business knows someone has taken responsibility."
+    ],
+    "conversation": "How does your team know that the next person has actually accepted the work?",
+    "claims": "Verify claimed response expectations, waiting times and customer effects. Forty minutes is an invented example, not a measured client delay or a recommended universal target.",
+    "recap": "Ownership must move with the case. A good handoff defines readiness, a receiving owner, acceptance or rejection, and a fallback. Notifications can support these rules but do not replace them.",
+    "reflection": "What record would you inspect to distinguish “message delivered” from “work accepted”?",
+    "deeper": "Add a handoff rejection to your map and track who owns the case during clarification. Does the customer receive an accurate update?"
+  },
+  {
+    "title": "Write a usable SOP",
+    "eyebrow": "Turn repeatable work into a usable standard",
+    "objective": "Write and test a short standard operating procedure with a purpose, trigger, owner, steps, checks, exceptions and maintenance responsibility.",
+    "scenario": "FixWell hires a second receptionist. Jo’s instructions are “check the request, book it, then tell the technician.” The new receptionist books a slot before checking whether the shop supports the device. Amina asks for an automation to make staff follow the same process, but the agreed process is not written down.",
+    "explain": "An SOP, or standard operating procedure, is a usable description of how a repeatable task should be performed. It helps staff carry out agreed work consistently. A process map shows the route; an SOP supplies enough detail to perform the steps. Neither should be treated as a substitute for observation, training or appropriate judgment.<br><br>A short SOP should state its purpose, scope, trigger, responsible role and required inputs. Use numbered actions with one meaningful action per step. State what must be checked before a promise or irreversible action. Define the output and how the worker knows the task is complete. Include decision conditions and exception routes rather than instructions such as “use common sense” with no authority or escalation guidance.<br><br>Write for the person doing the task. “Check that all required fields are readable and present” is clearer than “ensure process integrity.” A screenshot can help with a specific interface, but a document consisting only of screenshots becomes fragile when the interface changes. Keep the business rule distinct from the button used to execute it.<br><br>An SOP needs an owner, a version, a review date and a change route. These make it possible to tell which instructions are current. Test the draft with someone who did not write it, using a normal case and an exception. Observe where they hesitate or interpret a step differently. If trained staff cannot reliably follow the procedure, investigate whether it is unclear, inaccessible, unrealistic or inconsistent with actual capacity. A signed training form alone does not prove that the process works.",
+    "worked": "Draft a fictional FixWell intake SOP, version 0.1, owned by the intake lead. Purpose: turn a received request into an eligible booking proposal or an owned exception. Trigger: new request in an approved channel. Required inputs: contact route, device category, problem description and availability.<br><br>Steps: (1) create or locate the request reference; (2) check required inputs and request missing information; (3) check the approved service list, routing uncertain cases to the duty lead; (4) check availability and propose an eligible slot; (5) record customer acceptance and send confirmation; (6) record the receiving owner and readiness for the next handoff. Missing data is not a confirmed booking. A duplicate submission should update or link to the existing request rather than create a second appointment.<br><br>Completion: one accurate booking outcome and an owned next step. Change control: the intake lead updates the procedure after an approved rule change and checks that staff can find the current version. The exact operating expectations must be agreed with the shop; this is a practice SOP, not an industry standard.",
+    "flow": [
+      "Define purpose and boundary",
+      "Write actionable steps",
+      "Add checks and exceptions",
+      "Test with a new reader",
+      "Assign version owner"
+    ],
+    "visual": "<table><caption>Improve the instruction, not just the formatting</caption><thead><tr><th>Vague instruction</th><th>More usable instruction</th></tr></thead><tbody><tr><td>Check the request</td><td>Confirm contact route, device category, problem description and availability are present</td></tr><tr><td>Book it</td><td>Check service eligibility and availability, then obtain acceptance before confirming</td></tr><tr><td>Handle unusual cases</td><td>Pause confirmation, assign the duty lead and record the review reason</td></tr><tr><td>Keep the SOP up to date</td><td>Name the intake lead as owner and review after approved rule changes</td></tr></tbody></table>",
+    "perspective": "A new worker wants instructions they can follow without guessing. Experienced staff may know unwritten exceptions but feel the document ignores reality. Amina wants consistent service without documenting every possible circumstance. Testing the SOP with both new and experienced staff helps find that balance.",
+    "assessment": "Improve and test the procedure first. A checklist or required-field validation may then support consistent execution. Automate only stable steps whose rules are agreed. Use human training and review when the issue is understanding or authority, rather than turning unclear instructions into rigid software.",
+    "pain": {
+      "quote": "“The process changes depending on who is on shift.”",
+      "symptom": "Similar requests are handled differently by different staff.",
+      "causes": "Unwritten rules; outdated instructions; inaccessible procedure; training gaps; conflicting expectations.",
+      "questions": "Which version do people use? Where do steps differ? Can a new worker follow a normal and an unusual case? Are the rules realistic?",
+      "consequence": "Errors, rework, inconsistent promises and more dependence on a few experienced staff. Benefits from a new SOP need measurement.",
+      "improve": "Write a short owned SOP, test it with staff and provide practical training.",
+      "automation": "Use validated checklists, structured intake and controlled task creation after the business rules are stable.",
+      "evidence": "Observed deviations, missing inputs, staff questions, exception handling and use of the current procedure."
+    },
+    "exercise": "Write a one-page SOP for a fictional agency’s new-client intake. Include purpose, boundary, trigger, owner, required inputs, five numbered steps, an exception, completion criteria and version ownership. Then write two test cases: one normal request and one missing an approved scope.",
+    "rubric": [
+      "Uses actionable steps in a safe, meaningful order and defines completion.",
+      "Includes a missing-input or authority exception with a named next owner.",
+      "States who maintains the procedure and how the two test cases would check it."
+    ],
+    "sample": "Purpose: prepare an accepted client for delivery. Scope: signed agreement received to intake accepted by project coordinator. Trigger: agreement receipt. Owner: intake coordinator. Inputs: approved scope, customer contact, agreed timing and required materials. Steps: locate client reference; validate inputs; resolve missing items with sales; confirm delivery readiness with the receiving owner; record acceptance and send next steps. Missing scope returns to the salesperson and pauses readiness. Complete only when the receiver accepts the record. Version 0.1 is owned by the operations lead. Test a complete case and verify it reaches acceptance; test a missing-scope case and verify it pauses with an owner instead of proceeding.",
+    "quiz": [
+      {
+        "q": "Which instruction is easiest for a new worker to apply consistently?",
+        "options": [
+          "Handle incomplete requests appropriately",
+          "Ensure operational excellence",
+          "If the contact route is missing, mark “waiting for information” and ask the intake owner to obtain it"
+        ],
+        "answer": 2,
+        "why": [
+          "“Appropriately” leaves the condition, action and owner undefined.",
+          "This is an aspiration rather than an executable instruction.",
+          "Correct. It identifies the condition, status, next action and owner."
+        ]
+      },
+      {
+        "q": "An SOP is followed inconsistently. What should you investigate first?",
+        "options": [
+          "Whether the current instructions are clear, accessible, trained and workable",
+          "Which tool can enforce every line immediately",
+          "How to remove all exceptions from customer requests"
+        ],
+        "answer": 0,
+        "why": [
+          "Correct. Inconsistent behavior may reflect unclear or unrealistic instructions rather than a software gap.",
+          "Enforcement can make an untested process harder to correct.",
+          "Exceptions are part of real operations; they need handling rather than denial."
+        ]
+      }
+    ],
+    "sequence": [
+      "Define purpose and boundary",
+      "Write actionable steps",
+      "Add checks and exceptions",
+      "Test with a new reader",
+      "Assign version owner"
+    ],
+    "sequenceIntro": "Order this simplified SOP drafting exercise. Ownership should be involved throughout; the final step records who maintains the approved version. Check order to save your attempt.",
+    "sequenceExplanation": "Agree the scope before describing actions, then add checks and exception routes. Test the draft with someone using it, revise it, and record ownership of the approved version. Real drafting can loop back after a test fails.",
+    "decision": "improve",
+    "decisionPrompt": "Staff disagree about the correct intake steps and the only instructions are “check it and book it.” Should you build a workflow that enforces those instructions immediately?",
+    "decisionWhy": "Write, agree and test the SOP first. Training or clearer rules may solve much of the inconsistency. Software should enforce stable, useful conditions rather than ambiguous instructions.",
+    "insight": "A workflow cannot consistently enforce a process the business has not agreed.",
+    "hooks": [
+      "Could a new team member follow your process without guessing?",
+      "An SOP is useful only if someone can use it.",
+      "Before enforcing the process, test the instructions."
+    ],
+    "linkedin": [
+      "Introduce the fictional shift-to-shift inconsistency.",
+      "Compare one vague instruction with a specific condition, action and owner.",
+      "Offer a short SOP checklist and recommend testing with a new reader."
+    ],
+    "facebook": [
+      "Describe a new worker hearing “that’s just how we do it.”",
+      "Explain why a clear checklist and practical training help.",
+      "Ask which step everyone interprets differently."
+    ],
+    "conversation": "Which instruction in your current process still requires an experienced colleague to translate it?",
+    "claims": "Verify any claimed reduction in training time, errors or rework. A written procedure alone does not prove an improvement, and this sample is fictional.",
+    "recap": "An SOP turns agreed rules into usable actions. Include checks, exceptions, completion criteria and an owner. Test and teach the procedure before enforcing it through automation.",
+    "reflection": "How would you know that your SOP improved real work rather than simply creating another document?",
+    "deeper": "Ask a friend to read your fictional SOP without extra explanation. Record two points where the wording could lead to different actions, then revise those steps."
+  },
+  {
+    "title": "Map the current process",
+    "eyebrow": "Show actual work, including the waiting",
+    "objective": "Build a current-state map from a fictional case trace, distinguish active work from waiting, and choose a small improvement supported by evidence.",
+    "scenario": "FixWell’s ideal booking map is short, but an ordinary request took 95 minutes to confirm during one fictional working morning. Jo says the tools are slow; Ben says the missing details were the problem. Amina wants a “faster booking system.” You need to trace what actually happened before deciding what to change.",
+    "explain": "A current-state map describes how work happens now, including workarounds, repeated steps, queues and exceptions. A future-state map describes a proposed way of working. Label them clearly. Presenting an ideal procedure as the current process hides the very delays you need to understand.<br><br>Start with one concrete case. Ask the people who handled it to show each event, record and handoff. Record the trigger, actions, decisions, owner, system and output. Add timestamps when available. Mark missing or disputed information as unknown rather than filling the gaps with your preferred explanation. Then compare additional cases to discover whether the trace is typical, unusual or one of several valid routes.<br><br>Active work time is time someone is performing the task. Waiting time is time the case is not being actively worked, such as waiting for information or acceptance. Elapsed turnaround time measures the total duration between defined start and end events. In a simple, non-overlapping trace, active time plus waiting equals elapsed time. In parallel workflows the relationship is more complex, so avoid adding overlapping durations twice. Also define whether you use clock time or business hours.<br><br>A queue is a collection of work waiting for a step or resource. Long waiting can arise from missing information, batch habits, lack of ownership, external dependencies or insufficient capacity. One trace cannot prove which cause dominates. Use the map to ask better questions and choose what evidence to collect. It should reveal uncertainty and business consequences, not just produce a neat diagram.",
+    "worked": "Fictional trace F-21 runs from 09:00 to 10:35, using clock minutes within the same working morning. Jo spends 5 minutes reviewing a request, then waits 40 minutes for missing availability. She spends 5 minutes updating the record; it waits 30 minutes for slot review. The slot review takes 5 minutes, the customer takes 5 minutes to accept, and confirmation takes 5 minutes. For this exercise, treat the customer acceptance interval as waiting and the four staff actions as active work.<br><br>Total elapsed time is 95 minutes. Staff active work is 5 + 5 + 5 + 5 = 20 minutes. Waiting is 40 + 30 + 5 = 75 minutes. The missing availability and slot-review queue are investigation targets; they are not automatically proven root causes across all requests. A hypothetical change saving 3 minutes of typing would address only a small part of this trace. Check several other cases before promising a turnaround reduction.",
+    "flow": [
+      "Receive & review: 5 min",
+      "Wait for information: 40 min",
+      "Update record: 5 min",
+      "Wait for review: 30 min",
+      "Review, acceptance & confirm: 15 min"
+    ],
+    "visual": "<table><caption>Fictional case F-21: trace the actual morning</caption><thead><tr><th>Time</th><th>Actual event</th><th>Owner / state</th><th>Minutes</th></tr></thead><tbody><tr><td>09:00–09:05</td><td>Review request; availability missing</td><td>Jo / active</td><td>5</td></tr><tr><td>09:05–09:45</td><td>Await availability</td><td>Customer response; Jo tracks / waiting</td><td>40</td></tr><tr><td>09:45–09:50</td><td>Update request</td><td>Jo / active</td><td>5</td></tr><tr><td>09:50–10:20</td><td>Await slot review</td><td>Review queue / waiting</td><td>30</td></tr><tr><td>10:20–10:25</td><td>Check and propose slot</td><td>Duty lead / active</td><td>5</td></tr><tr><td>10:25–10:30</td><td>Await acceptance</td><td>Customer response; Jo tracks / waiting</td><td>5</td></tr><tr><td>10:30–10:35</td><td>Confirm and record next owner</td><td>Jo / active</td><td>5</td></tr></tbody></table>",
+    "perspective": "The customer experiences the whole 95-minute interval, not only staff activity. Jo experiences repeated checking. The duty lead may be batching reviews for a reason that is not visible on the map. Amina needs to know whether a change improves the end-to-end experience instead of only making one screen faster.",
+    "assessment": "Improve the intake checklist and investigate slot-review ownership before automating the whole path. A bounded missing-field prompt may help after the requirement is agreed. Keep unusual eligibility decisions human-led. Record a baseline from multiple comparable cases, then pilot one change and monitor exceptions. No turnaround improvement is established by this single invented trace.",
+    "pain": {
+      "quote": "“It only takes a few minutes of work, so why does the customer wait so long?”",
+      "symptom": "Elapsed turnaround is much longer than active staff work.",
+      "causes": "Missing inputs; queueing; batch review habits; unclear next owner; customer response delays. These are hypotheses to test.",
+      "questions": "Where do timestamps begin and end? Which periods are active or waiting? What makes this case typical? Who owns waiting cases? Can we compare five other traces?",
+      "consequence": "Uncertain promises, repeated status checks and slower customer decisions. Do not translate all elapsed waiting into paid labor cost.",
+      "improve": "Clarify required inputs, ownership and review expectations; distinguish waiting reasons in the record.",
+      "automation": "Prompt for agreed missing fields or flag an owned review queue, with duplicate protection and a failure path.",
+      "evidence": "Defined start/end timestamps, active and waiting intervals, waiting reasons, comparable case mix and post-change exceptions."
+    },
+    "exercise": "Use the F-21 trace to draw the current process with owners, two waiting states and the missing-information loop. Calculate active, waiting and elapsed minutes. Write two competing explanations for the 30-minute review queue and specify evidence that would distinguish them. Propose one small improvement and one measure, without promising an untested result.",
+    "rubric": [
+      "Represents the actual trace, including missing-input handling, owners and waiting.",
+      "Calculates 20 active, 75 waiting and 95 elapsed minutes without treating all waiting as labor.",
+      "Tests competing causes and chooses a bounded improvement with a baseline and exception measure."
+    ],
+    "sample": "Map: request → Jo reviews → availability missing? yes → request availability and wait under Jo’s ownership → update → wait for duty-lead slot review → propose slot → wait for acceptance → confirm and record next owner. Active = 20 minutes; waiting = 75; elapsed = 95. The 30-minute queue could reflect batch reviews or a lead already busy with other work. Compare review timestamps, staffing and incoming volume across several cases. First test a clearer availability field for one intake channel. Compare the missing-availability rate and median turnaround for similar requests, while checking incorrect confirmations and extra customer effort. This is a proposed test, not a proven result.",
+    "quiz": [
+      {
+        "q": "Which evidence best supports a current-state map?",
+        "options": [
+          "The ideal SOP alone",
+          "A tool vendor’s demo of the fastest possible path",
+          "Actual case records and staff walkthroughs, with unknown steps marked"
+        ],
+        "answer": 2,
+        "why": [
+          "The SOP describes expected work, which may differ from actual behavior.",
+          "A demo does not establish how this business operates.",
+          "Correct. Use observable cases, staff context and explicit uncertainty."
+        ]
+      },
+      {
+        "q": "What can you conclude from the single fictional F-21 trace?",
+        "options": [
+          "All FixWell requests have the same root cause",
+          "This case contains specific waiting intervals worth investigating",
+          "Replacing the booking system will remove 75 minutes from every request"
+        ],
+        "answer": 1,
+        "why": [
+          "One case cannot establish the frequency or cause of delays across all work.",
+          "Correct. The trace identifies hypotheses and where further evidence is useful.",
+          "The map does not establish that software caused all waiting or that a replacement removes it."
+        ]
+      },
+      {
+        "q": "The review queue lasted 30 minutes. Which question best distinguishes possible causes?",
+        "options": [
+          "Why is the reviewer careless?",
+          "Which AI tool should replace the reviewer?",
+          "Were reviews batched, and what other work or incoming demand occupied the reviewer during that interval?"
+        ],
+        "answer": 2,
+        "why": [
+          "This assumes a people failure before gathering evidence.",
+          "This jumps to a tool before establishing the work and constraint.",
+          "Correct. The question tests plausible explanations using timing and capacity evidence."
+        ]
+      }
+    ],
+    "calc": {
+      "q": "F-21 took 95 elapsed minutes and 20 minutes of active staff work. How many minutes were waiting, assuming no overlap?",
+      "answer": 75,
+      "explanation": "95 − 20 = 75 waiting minutes. The four active staff intervals total 20 minutes; the three waiting intervals total 40 + 30 + 5 = 75."
+    },
+    "decision": "improve",
+    "decisionPrompt": "One trace shows a long review queue, but you have not checked ownership, batch rules or other demand. Should you replace the whole booking process with AI now?",
+    "decisionWhy": "Investigate and improve first. Compare multiple cases, verify the cause of waiting, then test one bounded change. One trace is not enough evidence for a broad replacement.",
+    "insight": "A process can contain little active work and still deliver a slow customer experience.",
+    "hooks": [
+      "The longest delay may happen while nobody is working on the case.",
+      "A neat workflow diagram can hide an untidy reality.",
+      "Before speeding up a task, find out where the case waits."
+    ],
+    "linkedin": [
+      "Show the clearly labeled fictional 95-minute trace.",
+      "Separate 20 minutes of active work from 75 minutes of waiting.",
+      "Explain two competing queue hypotheses and the evidence you would request before recommending automation."
+    ],
+    "facebook": [
+      "Use the familiar experience of being told “it only takes five minutes.”",
+      "Explain how waiting for information and ownership extends the whole journey.",
+      "Ask which waiting step customers most often chase."
+    ],
+    "conversation": "Where does a request spend time waiting, and who owns it while it waits?",
+    "claims": "Label the 95, 20 and 75 minute figures hypothetical. Verify actual timing, sample size, business-hours definitions and causes before claiming savings or recovery.",
+    "recap": "Map actual work, not only the ideal procedure. Separate active work, waiting and total elapsed time. Use case traces to test causes, then pilot a measured improvement.",
+    "reflection": "What would make you change your first explanation for a delay after seeing another case?",
+    "deeper": "Create a second fictional trace with complete inputs but a longer review queue. Compare the two cases and explain why a single average could hide different problems."
+  }
+]);
+
+Object.assign(glossary, {"Process boundary": "The agreed start and finish of the work being investigated.", "Acceptance criteria": "Conditions that make a step’s output ready for its recipient.", "Current-state map": "A description of how work actually happens now, including queues, rework and exceptions.", "Future-state map": "A proposed description of how work should operate after a change.", "Active work time": "Time spent performing work on a case.", "Waiting time": "Time a case spends awaiting information, a decision, capacity or another dependency.", "Elapsed turnaround time": "Time between defined start and finish events; state whether clock time or business hours is used.", "Queue": "Cases waiting for a step, resource or decision.", "Escalation": "Routing a case to a named person with the authority or expertise to resolve it.", "Process owner": "The role responsible for the overall process and its improvement.", "Case owner": "The person or explicitly managed role accountable for moving a specific case to its next state."});
+
+for (const lesson of lessons.slice(5,10)) { lesson.businessName='FixWell'; lesson.businessType='fictional repair shop'; }
+challenges[1]='FixWell receives form and email requests. In fictional case F-21, staff review for 5 minutes, wait 40 for missing availability, update for 5, wait 30 for slot review, review for 5, wait 5 for customer acceptance and confirm for 5. Map the CURRENT request-to-confirmation process with owners, inputs, outputs and waiting states. Add supported, unsupported and unknown eligibility branches; design an accepted handoff; write a short intake SOP; calculate active/waiting/elapsed time. Compare two cause hypotheses and propose one small improvement with a baseline and an exception measure. Label any FUTURE map separately.';
